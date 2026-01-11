@@ -45,6 +45,7 @@ export class CompanyService {
         activity: company.activite_principale,
         status: company.etat_administratif,
         employees: company.tranche_effectif_salarie,
+        naf_code: company.activite_principale,
       };
     } catch (error) {
       if (error instanceof HttpException) {

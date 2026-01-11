@@ -11,7 +11,6 @@ import {
   OneToOne,
 } from 'typeorm';
 import { RefreshToken } from './refresh-token.entity';
-import { UserRoleEnum } from './user-role.enum';
 import { Onboarding } from './onboarding.entity';
 import { Chat } from './chat.entity';
 
@@ -26,9 +25,6 @@ export class User {
 
   @Column()
   password_hash: string;
-
-  @Column({ default: UserRoleEnum.USER })
-  role: string;
 
   // Relationships
   @OneToOne(() => Onboarding, (onboarding) => onboarding.user)
