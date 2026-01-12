@@ -19,7 +19,10 @@ export class UsersController {
   @Get('me')
   @UseGuards(JwtAuthGuard)
   async getProfile(@Request() req) {
-    const user = await this.usersService.findOne({ id: req.user.id });
+    const user = await this.usersService.findOneWithRelations(
+      { id: req.user.id },
+      ['onboarding'],
+    );
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password_hash, ...result } = user;
     return { data: result };

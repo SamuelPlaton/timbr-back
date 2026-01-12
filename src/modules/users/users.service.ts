@@ -10,6 +10,13 @@ export class UsersService {
     return this.usersApi.findOne(filters);
   }
 
+  async findOneWithRelations(
+    filters: object = {},
+    relations: string[] = [],
+  ): Promise<User | null> {
+    return this.usersApi.findOneWithRelations(filters, relations);
+  }
+
   async findOneOrFail(filters: object = {}): Promise<User> {
     return this.usersApi.findOneOrFail(filters);
   }

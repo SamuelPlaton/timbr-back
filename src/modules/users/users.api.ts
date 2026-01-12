@@ -17,6 +17,16 @@ export class UsersApi {
       .findOne();
   }
 
+  public async findOneWithRelations(
+    filters: object = {},
+    relations: string[] = [],
+  ): Promise<User | null> {
+    return new QueryBuilder<User>(this.repository, 'user')
+      .withFilters(filters)
+      .withRelations(relations)
+      .findOne();
+  }
+
   public async findOneOrFail(filters: object = {}): Promise<User> {
     return new QueryBuilder<User>(this.repository, 'user')
       .withFilters(filters)
