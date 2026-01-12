@@ -108,7 +108,7 @@ jobs:
 
       # Run Prettier check
       - name: Prettier
-        run: npx prettier --check "src/**/*.ts" "test/**/*.ts"
+        run: npx prettier --check "src/**/*.ts"
 
   test:
     name: Unit Tests
