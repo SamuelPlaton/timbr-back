@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsEnum, IsArray, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsEnum } from 'class-validator';
 import { ChatTypeEnum } from '../../entities';
 
 export class CreateChatDto {

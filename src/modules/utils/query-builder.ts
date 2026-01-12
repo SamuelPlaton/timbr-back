@@ -1,5 +1,10 @@
 import { NotFoundException } from '@nestjs/common';
-import { EntityNotFoundError, In, Repository, SelectQueryBuilder } from 'typeorm';
+import {
+  EntityNotFoundError,
+  In,
+  Repository,
+  SelectQueryBuilder,
+} from 'typeorm';
 
 export function prepareFilters(filters: Record<string, any>) {
   const result: Record<string, any> = {};

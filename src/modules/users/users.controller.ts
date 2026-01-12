@@ -20,6 +20,7 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   async getProfile(@Request() req) {
     const user = await this.usersService.findOne({ id: req.user.id });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password_hash, ...result } = user;
     return { data: result };
   }
@@ -30,6 +31,7 @@ export class UsersController {
   async updateProfile(@Request() req, @Body() body: { email?: string }) {
     const user = await this.usersService.findOneOrFail({ id: req.user.id });
     const updatedUser = await this.usersService.update(user, body);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password_hash, ...result } = updatedUser;
     return { data: result };
   }
@@ -38,6 +40,7 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   async getUser(@Param('id') id: string) {
     const user = await this.usersService.findOne({ id });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password_hash, ...result } = user;
     return { data: result };
   }

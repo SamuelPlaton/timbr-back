@@ -39,9 +39,7 @@ export class AuthController {
 
   @Post('register')
   @UsePipes(new ValidationPipe({ whitelist: true }))
-  async register(
-    @Body() body: RegisterDto,
-  ): Promise<{ data: AuthAttributes }> {
+  async register(@Body() body: RegisterDto): Promise<{ data: AuthAttributes }> {
     const existingUser = await this.userService.findOne({ email: body.email });
 
     if (existingUser) {
@@ -135,8 +133,7 @@ export class AuthController {
     console.log('Reset token:', token);
 
     return {
-      message:
-        'Si cet email existe, un lien de réinitialisation a été envoyé.',
+      message: 'Si cet email existe, un lien de réinitialisation a été envoyé.',
     };
   }
 
@@ -148,12 +145,16 @@ export class AuthController {
     });
 
     if (!resetToken) {
-      throw new BadRequestException('Token de réinitialisation invalide ou expiré');
+      throw new BadRequestException(
+        'Token de réinitialisation invalide ou expiré',
+      );
     }
 
     if (resetToken.expires_at < new Date()) {
       await this.authService.deletePasswordResetToken(resetToken.id);
-      throw new BadRequestException('Token de réinitialisation invalide ou expiré');
+      throw new BadRequestException(
+        'Token de réinitialisation invalide ou expiré',
+      );
     }
 
     const user = await this.userService.findOne({ id: resetToken.user.id });
