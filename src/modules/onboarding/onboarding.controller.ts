@@ -39,10 +39,7 @@ export class OnboardingController {
 
   @Post()
   @UsePipes(new ValidationPipe({ whitelist: true }))
-  async createOnboarding(
-    @Request() req,
-    @Body() body: CreateOnboardingDto,
-  ) {
+  async createOnboarding(@Request() req, @Body() body: CreateOnboardingDto) {
     const user = await this.usersService.findOneOrFail({ id: req.user.id });
 
     // Check if onboarding already exists
@@ -70,10 +67,7 @@ export class OnboardingController {
 
   @Put()
   @UsePipes(new ValidationPipe({ whitelist: true }))
-  async updateOnboarding(
-    @Request() req,
-    @Body() body: UpdateOnboardingDto,
-  ) {
+  async updateOnboarding(@Request() req, @Body() body: UpdateOnboardingDto) {
     const user = await this.usersService.findOneOrFail({ id: req.user.id });
     const onboarding = await this.onboardingService.findOne({
       user: { id: user.id },

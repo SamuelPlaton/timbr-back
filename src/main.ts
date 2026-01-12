@@ -34,7 +34,9 @@ async function bootstrap() {
   // Swagger documentation
   const config = new DocumentBuilder()
     .setTitle('Formator API')
-    .setDescription('API pour l\'aide à l\'administration des entreprises françaises')
+    .setDescription(
+      "API pour l'aide à l'administration des entreprises françaises",
+    )
     .setVersion('1.0')
     .addBearerAuth()
     .build();

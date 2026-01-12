@@ -15,8 +15,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
     if (!jwtSecret) {
       throw new Error(
-        'ERREUR DE SÉCURITÉ CRITIQUE: La variable d\'environnement JWT_SECRET n\'est pas définie. ' +
-          'L\'application ne peut pas démarrer sans un secret JWT sécurisé.',
+        "ERREUR DE SÉCURITÉ CRITIQUE: La variable d'environnement JWT_SECRET n'est pas définie. " +
+          "L'application ne peut pas démarrer sans un secret JWT sécurisé.",
       );
     }
 
@@ -46,7 +46,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: any) {
-    console.log('[JWT Strategy] Validating token payload:', { sub: payload.sub });
+    console.log('[JWT Strategy] Validating token payload:', {
+      sub: payload.sub,
+    });
 
     if (!payload.sub) {
       console.error('[JWT Strategy] No user ID in token payload');
