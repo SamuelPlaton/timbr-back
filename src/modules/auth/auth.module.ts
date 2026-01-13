@@ -9,6 +9,7 @@ import { JwtStrategy } from './jwt.strategy';
 import { AuthApi } from './auth.api';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PasswordResetToken, RefreshToken } from '../../entities';
+import { BrevoModule } from '../brevo/brevo.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { PasswordResetToken, RefreshToken } from '../../entities';
       inject: [ConfigService],
     }),
     forwardRef(() => UsersModule),
+    BrevoModule,
   ],
   exports: [AuthApi, AuthService, JwtStrategy],
   providers: [AuthApi, AuthService, JwtStrategy],

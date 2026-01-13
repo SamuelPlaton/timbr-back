@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UsersService } from '../users/users.service';
+import { BrevoService } from '../brevo/brevo.service';
 import {
   ForgotPasswordDto,
   LoginDto,
@@ -35,6 +36,7 @@ export class AuthController {
     private authService: AuthService,
     @Inject(forwardRef(() => UsersService))
     private userService: UsersService,
+    private brevoService: BrevoService,
   ) {}
 
   @Post('register')
@@ -51,6 +53,8 @@ export class AuthController {
       email: body.email,
       password_hash: hashedPassword,
     });
+
+    await this.brevoService.createOrUpdateContact(body.email);
 
     return {
       data: {
@@ -128,9 +132,11 @@ export class AuthController {
 
     const token = await this.authService.generatePasswordResetToken(user.id);
 
-    // TODO: Send email with reset link
-    // For now, just return the token (in production, this should be sent via email)
-    console.log('Reset token:', token);
+    // Send password reset email via Brevo
+    const resetLink = `${process.env.FRONTEND_URL}/auth/reset-password?token=${token}`;
+    await this.brevoService.sendTransactionalEmail(user.email, 1, {
+      RESET_PASSWORD_LINK: resetLink,
+    });
 
     return {
       message: 'Si cet email existe, un lien de réinitialisation a été envoyé.',
