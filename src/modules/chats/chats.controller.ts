@@ -1,39 +1,67 @@
 import {
-  Controller,
-  Get,
-  Post,
-  Delete,
   Body,
-  Param,
-  UseGuards,
-  Request,
-  ValidationPipe,
-  UsePipes,
+  Controller,
+  Delete,
+  Get,
   NotFoundException,
+  Param,
+  Post,
+  Query,
+  Request,
+  UseGuards,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { ChatsService } from './chats.service';
+import { ChatMessagesService } from './chat-messages.service';
 import { ChatGPTService } from './chatgpt.service';
-import { UsersService } from '../users/users.service';
-import { JwtAuthGuard } from '../../guards/jwt-auth.guard';
-import { CreateChatDto, SendMessageDto } from './chats.dto';
+import { UsersService } from '../users';
+import { JwtAuthGuard } from '../../guards';
+import { CreateChatDto, PaginationQueryDto, SendMessageDto } from './chats.dto';
 
 @Controller('chats')
 @UseGuards(JwtAuthGuard)
 export class ChatsController {
   constructor(
     private readonly chatsService: ChatsService,
+    private readonly chatMessagesService: ChatMessagesService,
     private readonly chatGPTService: ChatGPTService,
     private readonly usersService: UsersService,
   ) {}
 
   @Get()
-  async getChats(@Request() req) {
+  @UsePipes(new ValidationPipe({ whitelist: true, transform: true }))
+  async getChats(@Request() req, @Query() query: PaginationQueryDto) {
     const user = await this.usersService.findOneOrFail({ id: req.user.id });
-    const chats = await this.chatsService.findMany({
+    return await this.chatsService.findManyPaginated(
+      { user: { id: user.id } },
+      query.page,
+      query.limit,
+    );
+  }
+
+  @Get(':id/messages')
+  @UsePipes(new ValidationPipe({ whitelist: true, transform: true }))
+  async getChatMessages(
+    @Request() req,
+    @Param('id') id: string,
+    @Query() query: PaginationQueryDto,
+  ) {
+    const user = await this.usersService.findOneOrFail({ id: req.user.id });
+    const chat = await this.chatsService.findOne({
+      id,
       user: { id: user.id },
     });
 
-    return { data: chats };
+    if (!chat) {
+      throw new NotFoundException('Chat non trouvé');
+    }
+
+    return await this.chatMessagesService.findMany(
+      chat.id,
+      query.page,
+      query.limit,
+    );
   }
 
   @Get(':id')
@@ -67,23 +95,30 @@ export class ChatsController {
       body.type,
     );
 
-    // Build conversation history
-    const conversation = [
-      { role: 'user' as const, content: body.firstMessage },
-      { role: 'assistant' as const, content: response },
-    ];
-
-    // Create chat with conversation
+    // Create chat
     const chat = await this.chatsService.create({
       user,
       title,
       type: body.type,
-      conversation,
       openai_thread_id: null,
     });
 
+    // Store messages in chat_message table
+    const messages = await this.chatMessagesService.createMany([
+      { chat, role: 'user', content: body.firstMessage, token_cost: 0 },
+      {
+        chat,
+        role: 'assistant',
+        content: response.content,
+        token_cost: response.token_cost,
+      },
+    ]);
+
     return {
-      data: chat,
+      data: {
+        chat,
+        messages,
+      },
     };
   }
 
@@ -104,8 +139,18 @@ export class ChatsController {
       throw new NotFoundException('Chat non trouvé');
     }
 
-    // Get existing conversation from database
-    const conversationHistory = chat.conversation || [];
+    // Get existing conversation from chat_message table
+    // Fetch all messages without pagination for conversation context
+    const messagesResult = await this.chatMessagesService.findMany(
+      chat.id,
+      1,
+      1000, // Large limit to get all messages for context
+    );
+
+    const conversationHistory = messagesResult.data.map((msg) => ({
+      role: msg.role,
+      content: msg.content,
+    }));
 
     // Get response from ChatGPT with full conversation history
     const response = await this.chatGPTService.sendMessage(
@@ -114,20 +159,25 @@ export class ChatsController {
       conversationHistory,
     );
 
-    // Update conversation with new messages
-    const updatedConversation = [
-      ...conversationHistory,
-      { role: 'user' as const, content: body.message },
-      { role: 'assistant' as const, content: response },
-    ];
+    // Store new messages in chat_message table
+    const newMessages = await this.chatMessagesService.createMany([
+      { chat, role: 'user', content: body.message, token_cost: 0 },
+      {
+        chat,
+        role: 'assistant',
+        content: response.content,
+        token_cost: response.token_cost,
+      },
+    ]);
 
-    // Update chat with new conversation
-    const updatedChat = await this.chatsService.update(chat, {
-      conversation: updatedConversation,
-    });
+    // Update chat's updated_at timestamp
+    const updatedChat = await this.chatsService.update(chat, {});
 
     return {
-      data: updatedChat,
+      data: {
+        chat: updatedChat,
+        messages: newMessages,
+      },
     };
   }
 

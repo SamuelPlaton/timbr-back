@@ -11,11 +11,6 @@ import {
 import { User } from './user.entity';
 import { ChatTypeEnum } from './chat-type.enum';
 
-export interface ConversationMessage {
-  role: 'user' | 'assistant';
-  content: string;
-}
-
 @Entity()
 export class Chat {
   @PrimaryGeneratedColumn('uuid')
@@ -33,9 +28,6 @@ export class Chat {
 
   @Column({ type: 'text', nullable: true })
   openai_thread_id: string; // ID du thread OpenAI pour récupérer la conversation
-
-  @Column({ type: 'jsonb', default: [] })
-  conversation: ConversationMessage[]; // Historique complet de la conversation
 
   @Index()
   @CreateDateColumn()
