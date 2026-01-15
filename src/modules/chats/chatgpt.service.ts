@@ -48,7 +48,7 @@ export class ChatGPTService {
     message: string,
     chatType: ChatTypeEnum,
     conversationHistory: Array<{ role: string; content: string }> = [],
-  ): Promise<string> {
+  ): Promise<{ content: string; token_cost: number }> {
     const messages = [
       {
         role: 'system',
@@ -65,8 +65,11 @@ export class ChatGPTService {
       model: process.env.OPENAI_MODEL || 'gpt-3.5-turbo',
       messages: messages as any,
     });
-    console.log('completion', completion);
-    return completion.choices[0].message.content;
+
+    return {
+      content: completion.choices[0].message.content,
+      token_cost: completion.usage.total_tokens,
+    };
   }
 
   /**

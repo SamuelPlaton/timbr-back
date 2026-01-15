@@ -3,5 +3,6 @@ export * from './refresh-token.entity';
 export * from './password-reset-token.entity';
 export * from './onboarding.entity';
 export * from './chat.entity';
+export * from './chat-message.entity';
 export * from './user-role.enum';
 export * from './chat-type.enum';

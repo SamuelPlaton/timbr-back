@@ -21,8 +21,32 @@ export class ChatsApi {
   public async findMany(filters: object = {}): Promise<Chat[]> {
     return new QueryBuilder<Chat>(this.repository, 'chat')
       .withFilters(filters)
-      .withSort({ created_at: 'DESC' })
+      .withSort({ updated_at: 'DESC' })
       .getMany();
+  }
+
+  public async findManyPaginated(
+    filters: object = {},
+    page: number = 1,
+    limit: number = 20,
+  ): Promise<{ data: Chat[]; total: number; hasMore: boolean }> {
+    const skip = (page - 1) * limit;
+
+    const queryBuilder = new QueryBuilder<Chat>(this.repository, 'chat')
+      .withFilters(filters)
+      .withSort({ updated_at: 'DESC' })
+      .getQueryBuilder();
+
+    const [data, total] = await queryBuilder
+      .skip(skip)
+      .take(limit)
+      .getManyAndCount();
+
+    return {
+      data,
+      total,
+      hasMore: skip + data.length < total,
+    };
   }
 
   public async create(params: Partial<Chat>): Promise<Chat> {

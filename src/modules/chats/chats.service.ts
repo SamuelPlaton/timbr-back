@@ -14,6 +14,14 @@ export class ChatsService {
     return this.chatsApi.findMany(filters);
   }
 
+  async findManyPaginated(
+    filters: object = {},
+    page: number = 1,
+    limit: number = 20,
+  ): Promise<{ data: Chat[]; total: number; hasMore: boolean }> {
+    return this.chatsApi.findManyPaginated(filters, page, limit);
+  }
+
   async create(params: Partial<Chat>): Promise<Chat> {
     return this.chatsApi.create(params);
   }
