@@ -13,6 +13,8 @@ import { ChatsModule } from './modules/chats/chats.module';
 import { CompanyModule } from './modules/company/company.module';
 import { StripeModule } from './modules/stripe/stripe.module';
 import { ContactModule } from './modules/contact/contact.module';
+import { AuditsModule } from './modules/audits';
+import { AuditItemsModule } from './modules/audit-items';
 import databaseConfig from './database/config';
 
 @Module({
@@ -38,6 +40,8 @@ import databaseConfig from './database/config';
     CompanyModule,
     StripeModule,
     ContactModule,
+    AuditsModule,
+    AuditItemsModule,
   ],
   controllers: [AppController],
   providers: [

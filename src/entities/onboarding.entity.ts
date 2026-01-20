@@ -8,6 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { User } from './user.entity';
+import { CompanyInformation } from '../types/company-information.type';
 
 @Entity()
 export class Onboarding {
@@ -28,15 +29,7 @@ export class Onboarding {
 
   // Étape 3: Informations de l'entreprise (stocké en JSON)
   @Column({ type: 'jsonb' })
-  company_information: {
-    siren?: string;
-    siret?: string;
-    company_name?: string;
-    legal_form?: string;
-    address?: string;
-    creation_date?: string;
-    [key: string]: any;
-  };
+  company_information: CompanyInformation;
 
   @Column({ default: false })
   completed: boolean;
