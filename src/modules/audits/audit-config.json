@@ -1,0 +1,296 @@
+[
+  {
+    "id": "tns_tva_liberation_eligible_danger",
+    "category": "TNS",
+    "type": "danger",
+    "title": "Éligibilité au prélèvement libératoire en TVA",
+    "summary": "Vous n'êtes pas éligible au prélèvement libératoire pour la TVA.",
+    "content": "<div><p>Selon vos informations, votre chiffre d'affaires dépasse le seuil d'éligibilité au prélèvement libératoire en TVA. Vous devrez suivre la procédure intégrant le prélèvement libératoire.</p></div>",
+    "sources": [
+      {
+        "url": "https://www.impots.gouv.fr/particulier/le-prelevement-liberatoire",
+        "title": "Prélèvement libératoire - Impôts.gouv.fr"
+      },
+      {
+        "url": "https://www.urssaf.fr/portail/home/auto-entrepreneur/mes-cotisations/le-prelevement-liberatoire.html",
+        "title": "Prélèvement libératoire - URSSAF"
+      }
+    ]
+  },
+  {
+    "id": "tns_tva_guide_accre",
+    "category": "TNS",
+    "type": "success",
+    "title": "Guide pour la déclaration à l'ACCRE",
+    "summary": "Vous êtes éligible à l'ACCRE, suivez notre guide.",
+    "content": "<div><p>Guide pour la déclaration à l'ACCRE avec les démarches simplifiées et les avantages fiscaux associés.</p></div>",
+    "sources": [
+      {
+        "url": "https://www.service-public.fr/particuliers/vosdroits/F11677",
+        "title": "ACRE - Service Public"
+      }
+    ]
+  },
+  {
+    "id": "fiscalite_prelevements_liberatoires_danger",
+    "category": "Fiscalité",
+    "type": "danger",
+    "title": "Déclarations prélèvements libératoires",
+    "summary": "Vous devez déclarer vos prélèvements libératoires en raison de votre situation fiscale.",
+    "content": "<div><p>Votre revenu fiscal de référence dépasse le seuil requis pour bénéficier automatiquement des prélèvements libératoires. Vous devez effectuer les démarches nécessaires.</p></div>",
+    "sources": [
+      {
+        "url": "https://www.impots.gouv.fr/particulier/le-prelevement-liberatoire",
+        "title": "Prélèvement libératoire - Impôts.gouv.fr"
+      }
+    ]
+  },
+  {
+    "id": "fiscalite_prelevements_acces_eligible",
+    "category": "Fiscalité",
+    "type": "success",
+    "title": "Accès au prélèvement libératoire",
+    "summary": "Vous êtes éligible au régime de prélèvement libératoire.",
+    "content": "<div><p>Votre situation fiscale vous permet d'accéder au prélèvement libératoire simplifié. Cela réduit la complexité de vos déclarations et optimise votre fiscalité.</p></div>"
+  },
+  {
+    "id": "fiscalite_prelevements_calcul_gains",
+    "category": "Fiscalité",
+    "type": "success",
+    "title": "Calcul des gains",
+    "summary": "Estimation de vos gains grâce au prélèvement libératoire.",
+    "content": "<div><p>Grâce au régime de prélèvement libératoire, vous économisez environ {{savings}} euros par an comparé au régime standard.</p></div>"
+  },
+  {
+    "id": "fiscalite_urssaf_declaration",
+    "category": "Fiscalité",
+    "type": "warning",
+    "title": "Déclaration URSSAF",
+    "summary": "Attention, vous devez effectuer votre déclaration URSSAF.",
+    "content": "<div><p>Rappel : vos cotisations URSSAF doivent être déclarées avant la fin du mois. Assurez-vous d'avoir préparé les documents nécessaires.</p></div>"
+  },
+  {
+    "id": "fiscalite_reductions_entreprise_orange",
+    "category": "Fiscalité",
+    "type": "warning",
+    "title": "Abattement sur les revenus entreprise",
+    "summary": "Vous bénéficiez d'un abattement mais attention aux seuils.",
+    "content": "<div><p>Selon le type de revenus (BNC/BIC), vous bénéficiez d'un abattement fiscal. Assurez-vous de ne pas dépasser les seuils pour conserver cet avantage.</p></div>"
+  },
+  {
+    "id": "fiscalite_plafonds_cotisations",
+    "category": "Fiscalité",
+    "type": "danger",
+    "title": "Plafond de cotisations atteint",
+    "summary": "Attention, vous approchez ou dépassez les plafonds de cotisations.",
+    "content": "<div><p>Vos cotisations sociales approchent les plafonds légaux. Cela peut avoir des conséquences fiscales importantes. Nous vous recommandons de consulter un expert-comptable.</p></div>"
+  },
+  {
+    "id": "simulation_micro_entreprise_versements",
+    "category": "Simulation",
+    "type": "warning",
+    "title": "Versement libératoire en Micro-Entreprise",
+    "summary": "Attention au montant de vos versements libératoires.",
+    "content": "<div><p>En tant que micro-entrepreneur, vous devez effectuer vos versements libératoires à temps. Un retard peut entraîner des pénalités.</p></div>"
+  },
+  {
+    "id": "simulation_micro_entreprise_status",
+    "category": "Simulation",
+    "type": "success",
+    "title": "Statut d'intervention adéquat",
+    "summary": "Votre statut de micro-entreprise est adéquat pour votre activité.",
+    "content": "<div><p>Votre statut actuel de micro-entrepreneur convient parfaitement à votre activité et à votre chiffre d'affaires. Aucune action n'est requise.</p></div>"
+  },
+  {
+    "id": "social_sas_sasu_micro_entreprise_avertissement",
+    "category": "Social",
+    "type": "warning",
+    "title": "Avantage du statut SASU",
+    "summary": "Le statut SASU peut offrir des avantages sociaux à considérer.",
+    "content": "<div><p>Pour un chiffre d'affaires supérieur à {{threshold}} euros, le statut SASU peut être plus avantageux que la micro-entreprise en termes de cotisations sociales.</p></div>"
+  },
+  {
+    "id": "social_sas_sasu_protection_sociale",
+    "category": "Social",
+    "type": "information",
+    "title": "Protection sociale SASU",
+    "summary": "La SASU offre une meilleure protection sociale.",
+    "content": "<div><p>En SASU, vous êtes assimilé salarié, ce qui vous offre une protection sociale équivalente à celle d'un employé. Cela inclut l'assurance maladie, la retraite, et plus.</p></div>"
+  },
+  {
+    "id": "retraite_sasu_declaration_arebasee",
+    "category": "Retraite",
+    "type": "warning",
+    "title": "Proposition d'intégrer le calcul des droits ARE basée sur les droits",
+    "summary": "Vérifiez vos droits ARE avant la transition.",
+    "content": "<div><p>Avant de changer de statut, assurez-vous que vos droits ARE sont correctement calculés et déclarés pour éviter toute perte de revenus.</p></div>"
+  },
+  {
+    "id": "retraite_sasu_explication_trimestres",
+    "category": "Retraite",
+    "type": "information",
+    "title": "Explication des trimestres de retraite",
+    "summary": "Comprendre vos trimestres de retraite en SASU.",
+    "content": "<div><p>En SASU avec un salaire de {{monthly_salary}} euros par mois, vous validez {{quarters}} trimestres par an pour votre retraite.</p></div>"
+  },
+  {
+    "id": "demission_are_chomage",
+    "category": "Démission",
+    "type": "success",
+    "title": "Éligibilité ARE au chômage",
+    "summary": "Vous êtes potentiellement éligible à l'ARE en cas de démission.",
+    "content": "<div><p>Sous certaines conditions, votre démission peut vous rendre éligible à l'Allocation de Retour à l'Emploi. Consultez Pôle emploi pour plus d'informations.</p></div>"
+  },
+  {
+    "id": "demission_sasu_conseil_versement",
+    "category": "Démission",
+    "type": "information",
+    "title": "Conseil sur le versement SASU",
+    "summary": "Optimisez vos versements en SASU.",
+    "content": "<div><p>Il est conseillé de verser un salaire minimum en SASU pour valider vos trimestres de retraite et conserver vos droits sociaux, même si cela peut réduire vos marges à court terme.</p></div>"
+  },
+  {
+    "id": "are_chomage_optimisation_arebasee",
+    "category": "ARE",
+    "type": "information",
+    "title": "Optimisation chômage ARE vs ARCE",
+    "summary": "Comparez les options ARE et ARCE pour maximiser vos allocations.",
+    "content": "<div><p>Selon votre situation, vous pouvez opter pour l'ARE (allocation mensuelle) ou l'ARCE (capital versé en deux fois). Nous recommandons l'ARE si votre activité est incertaine.</p></div>"
+  },
+  {
+    "id": "are_chomage_conseil_expert",
+    "category": "ARE",
+    "type": "success",
+    "title": "Conseil expert SASU",
+    "summary": "Vous bénéficiez de conseils d'experts pour optimiser votre situation.",
+    "content": "<div><p>Notre réseau d'experts peut vous aider à optimiser votre statut SASU et vos droits ARE pour maximiser votre protection sociale et vos revenus.</p></div>"
+  },
+  {
+    "id": "age_maintenir_are",
+    "category": "AGE",
+    "type": "success",
+    "title": "Maintenir l'ARE via Chomemis",
+    "summary": "Vous pouvez maintenir vos droits ARE grâce au dispositif Chomemis.",
+    "content": "<div><p>Le dispositif AGE (Aide à la Gestion de l'Entreprise) vous permet de conserver vos allocations chômage tout en développant votre activité entrepreneuriale.</p></div>"
+  },
+  {
+    "id": "tva_choix_regime_micro",
+    "category": "TVA",
+    "type": "information",
+    "title": "Choix du régime micro en TVA",
+    "summary": "Vous devez choisir votre régime de TVA.",
+    "content": "<div><p>Pour votre activité, vous avez le choix entre le régime micro (franchise en base) et le régime réel. Le régime micro simplifie vos démarches mais limite vos possibilités de récupération de TVA.</p></div>"
+  },
+  {
+    "id": "tva_risque_credibilite",
+    "category": "TVA",
+    "type": "warning",
+    "title": "Risque de crédibilité",
+    "summary": "L'absence de TVA peut nuire à votre crédibilité auprès de certains clients.",
+    "content": "<div><p>Certains clients professionnels peuvent préférer travailler avec des entreprises assujetties à la TVA. Considérez l'option du régime réel si vous ciblez principalement des entreprises.</p></div>"
+  },
+  {
+    "id": "tva_sasu_sasu_conseil_expert",
+    "category": "TVA",
+    "type": "success",
+    "title": "Conseil expert SASU",
+    "summary": "Nos experts peuvent vous guider dans votre choix de TVA.",
+    "content": "<div><p>Nos experts-comptables peuvent vous aider à choisir le régime de TVA le plus adapté à votre situation et à vos objectifs de développement.</p></div>"
+  },
+  {
+    "id": "social_rapport_estimation_revenus",
+    "category": "Social",
+    "type": "information",
+    "title": "Rapport d'estimation de revenus",
+    "summary": "Estimation de vos revenus sociaux pour l'année.",
+    "content": "<div><p>Selon vos données, votre revenu estimé pour l'année en cours est de {{estimated_revenue}} euros, ce qui détermine vos cotisations sociales.</p></div>"
+  },
+  {
+    "id": "social_sasu_dividendes",
+    "category": "Social",
+    "type": "success",
+    "title": "Conseil expert SASU dividendes",
+    "summary": "Optimisation de la rémunération par dividendes.",
+    "content": "<div><p>En SASU, vous pouvez optimiser votre rémunération en combinant salaire et dividendes. Les dividendes sont soumis à la flat tax de 30% et ne génèrent pas de cotisations sociales.</p></div>"
+  },
+  {
+    "id": "futur_optimisation_arebasee",
+    "category": "Démission",
+    "type": "success",
+    "title": "Optimisation chômage ARE vs ARCE",
+    "summary": "Planifiez votre transition avec l'ARE ou l'ARCE.",
+    "content": "<div><p>Si vous envisagez de quitter votre emploi pour devenir auto-entrepreneur, l'ARCE peut vous fournir un capital de départ important.</p></div>"
+  },
+  {
+    "id": "futur_rfr_changement_regime",
+    "category": "Fiscalité",
+    "type": "information",
+    "title": "Risque de changement de régime",
+    "summary": "Votre RFR pourrait entraîner un changement de régime fiscal.",
+    "content": "<div><p>Avec un revenu fiscal de référence supérieur à {{rfr_threshold}} euros, vous pourriez ne plus être éligible à certains régimes fiscaux simplifiés.</p></div>"
+  },
+  {
+    "id": "futur_tva_prevoyance_assurances",
+    "category": "TVA",
+    "type": "information",
+    "title": "Prévoyance et assurances",
+    "summary": "Pensez à souscrire à une prévoyance et des assurances.",
+    "content": "<div><p>En tant que futur auto-entrepreneur, il est essentiel de souscrire à une assurance responsabilité civile professionnelle et à une mutuelle adaptée.</p></div>"
+  },
+  {
+    "id": "tresorerie_assurances_placements",
+    "category": "Fiscalité",
+    "type": "information",
+    "title": "Conseiller sur placements et assurances",
+    "summary": "Optimisez votre trésorerie avec les bons placements.",
+    "content": "<div><p>Pour sécuriser votre trésorerie, nous vous recommandons d'explorer les placements adaptés aux entrepreneurs, comme le Plan d'Épargne Retraite (PER).</p></div>"
+  },
+  {
+    "id": "tresorerie_impots_reduction_date_cloture",
+    "category": "Fiscalité",
+    "type": "warning",
+    "title": "Réduction suite changement de date de clôture",
+    "summary": "Le changement de date de clôture impacte vos impôts.",
+    "content": "<div><p>Un changement de date de clôture peut entraîner une réduction ou un ajustement de vos impôts pour l'exercice en cours. Consultez votre expert-comptable.</p></div>"
+  },
+  {
+    "id": "tresorerie_impots_plafonds_preferences",
+    "category": "Fiscalité",
+    "type": "information",
+    "title": "Gestion des plafonds de préférences d'imposition",
+    "summary": "Comprenez les plafonds d'imposition pour optimiser vos revenus.",
+    "content": "<div><p>Pour optimiser votre imposition, il est important de comprendre les seuils et plafonds qui s'appliquent à votre situation. Nos outils peuvent vous aider.</p></div>"
+  },
+  {
+    "id": "tresorerie_impots_tmi_optimisation",
+    "category": "Fiscalité",
+    "type": "warning",
+    "title": "TMI et optimisation fiscale",
+    "summary": "Votre tranche marginale d'imposition nécessite une optimisation.",
+    "content": "<div><p>Avec un taux marginal d'imposition élevé, il est crucial d'optimiser vos déductions fiscales et de planifier vos revenus pour minimiser l'impact fiscal.</p></div>"
+  },
+  {
+    "id": "tresorerie_cpf_formations",
+    "category": "Social",
+    "type": "success",
+    "title": "Utiliser son CPF pour des formations",
+    "summary": "Formez-vous grâce à votre CPF.",
+    "content": "<div><p>Vous disposez de droits CPF qui peuvent être utilisés pour financer des formations professionnelles et développer vos compétences entrepreneuriales.</p></div>"
+  },
+  {
+    "id": "retraite_validation_membre_ii",
+    "category": "Retraite",
+    "type": "warning",
+    "title": "Le RDV à l'occasion de la retraite, ou \"EI\": Accompagner l'adhésion au \"EI\" (Entrepreneur Individuel) pour minimiser les cotisations et préparer la retraite",
+    "summary": "Préparez votre retraite avec le statut EI.",
+    "content": "<div><p>Le passage en Entrepreneur Individuel peut vous permettre d'optimiser vos cotisations retraite tout en conservant une structure simple.</p></div>"
+  },
+  {
+    "id": "retraite_validation_prelevements_personnel",
+    "category": "Retraite",
+    "type": "danger",
+    "title": "Risque trimestres retraite",
+    "summary": "Risque de ne pas valider suffisamment de trimestres pour votre retraite.",
+    "content": "<div><p>Avec un salaire mensuel inférieur à {{minimum_salary}} euros, vous risquez de ne pas valider tous vos trimestres de retraite cette année.</p></div>"
+  }
+]

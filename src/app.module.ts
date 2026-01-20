@@ -3,11 +3,13 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './modules/auth/auth.module';
-import { UsersModule } from './modules/users/users.module';
-import { OnboardingModule } from './modules/onboarding/onboarding.module';
-import { ChatsModule } from './modules/chats/chats.module';
-import { CompanyModule } from './modules/company/company.module';
+import { AuthModule } from './modules/auth';
+import { UsersModule } from './modules/users';
+import { OnboardingModule } from './modules/onboarding';
+import { ChatsModule } from './modules/chats';
+import { CompanyModule } from './modules/company';
+import { AuditsModule } from './modules/audits';
+import { AuditItemsModule } from './modules/audit-items';
 import databaseConfig from './database/config';
 
 @Module({
@@ -28,6 +30,8 @@ import databaseConfig from './database/config';
     OnboardingModule,
     ChatsModule,
     CompanyModule,
+    AuditsModule,
+    AuditItemsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -6,3 +6,5 @@ export * from './chat.entity';
 export * from './chat-message.entity';
 export * from './user-role.enum';
 export * from './chat-type.enum';
+export * from './audit.entity';
+export * from './audit-item.entity';
