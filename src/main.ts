@@ -8,6 +8,7 @@ import { AllExceptionsFilter } from './filters/http-exception.filter';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: ['error', 'warn', 'log', 'debug', 'verbose'],
+    rawBody: true, // Enable raw body for webhook signature verification
   });
 
   // Global exception filter for better error logging

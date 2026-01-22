@@ -12,8 +12,9 @@ import {
   ConflictException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { UsersService } from '../users/users.service';
+import { UsersService } from '../users';
 import { BrevoService } from '../brevo/brevo.service';
+import { StripeService } from '../stripe/stripe.service';
 import {
   ForgotPasswordDto,
   LoginDto,
@@ -37,6 +38,7 @@ export class AuthController {
     @Inject(forwardRef(() => UsersService))
     private userService: UsersService,
     private brevoService: BrevoService,
+    private stripeService: StripeService,
   ) {}
 
   @Post('register')
@@ -49,9 +51,16 @@ export class AuthController {
     }
 
     const hashedPassword = await this.authService.hashPassword(body.password);
+
+    // Create Stripe customer
+    const stripeCustomerId = await this.stripeService.createCustomer(
+      body.email,
+    );
+
     const user = await this.userService.create({
       email: body.email,
       password_hash: hashedPassword,
+      stripe_customer_id: stripeCustomerId,
     });
 
     await this.brevoService.createOrUpdateContact(body.email);

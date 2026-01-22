@@ -8,6 +8,7 @@ import { UsersModule } from './modules/users/users.module';
 import { OnboardingModule } from './modules/onboarding/onboarding.module';
 import { ChatsModule } from './modules/chats/chats.module';
 import { CompanyModule } from './modules/company/company.module';
+import { StripeModule } from './modules/stripe/stripe.module';
 import databaseConfig from './database/config';
 
 @Module({
@@ -28,6 +29,7 @@ import databaseConfig from './database/config';
     OnboardingModule,
     ChatsModule,
     CompanyModule,
+    StripeModule,
   ],
   controllers: [AppController],
   providers: [AppService],

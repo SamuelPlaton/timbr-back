@@ -21,7 +21,7 @@ export class UsersController {
   async getProfile(@Request() req) {
     const user = await this.usersService.findOneWithRelations(
       { id: req.user.id },
-      ['onboarding'],
+      ['onboarding', 'subscriptions'],
     );
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password_hash, ...result } = user;
