@@ -10,6 +10,7 @@ import { AuthApi } from './auth.api';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PasswordResetToken, RefreshToken } from '../../entities';
 import { BrevoModule } from '../brevo/brevo.module';
+import { StripeModule } from '../stripe/stripe.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { BrevoModule } from '../brevo/brevo.module';
     }),
     forwardRef(() => UsersModule),
     BrevoModule,
+    forwardRef(() => StripeModule),
   ],
   exports: [AuthApi, AuthService, JwtStrategy],
   providers: [AuthApi, AuthService, JwtStrategy],

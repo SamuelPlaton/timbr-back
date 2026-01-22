@@ -13,6 +13,7 @@ import {
 import { RefreshToken } from './refresh-token.entity';
 import { Onboarding } from './onboarding.entity';
 import { Chat } from './chat.entity';
+import { Subscription } from './subscription.entity';
 
 @Entity()
 export class User {
@@ -26,9 +27,15 @@ export class User {
   @Column()
   password_hash: string;
 
+  @Column({ nullable: true })
+  stripe_customer_id?: string;
+
   // Relationships
   @OneToOne(() => Onboarding, (onboarding) => onboarding.user)
   onboarding: Onboarding;
+
+  @OneToMany(() => Subscription, (subscription) => subscription.user)
+  subscriptions: Subscription[];
 
   @OneToMany(() => Chat, (chat) => chat.user)
   chats: Chat[];
