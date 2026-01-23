@@ -5,6 +5,11 @@ import * as crypto from 'crypto';
 import { AuthApi } from './auth.api';
 import { UsersApi } from '../users';
 import { PasswordResetToken, RefreshToken } from '../../entities';
+import { BrevoService } from '../brevo/brevo.service';
+import {
+  generateEmailVerificationCode,
+  verifyEmailVerificationCode,
+} from './email-verification.util';
 
 @Injectable()
 export class AuthService {
@@ -13,6 +18,7 @@ export class AuthService {
     private authApi: AuthApi,
     @Inject(forwardRef(() => UsersApi))
     private userApi: UsersApi,
+    private brevoService: BrevoService,
   ) {}
 
   async hashPassword(password: string): Promise<string> {
@@ -66,5 +72,34 @@ export class AuthService {
 
   async deletePasswordResetToken(id: string): Promise<void> {
     return this.authApi.deletePasswordResetToken(id);
+  }
+
+  async sendVerificationEmail(userId: string, email: string): Promise<void> {
+    const verificationCode = generateEmailVerificationCode(email, userId);
+    const verificationLink = `${process.env.FRONTEND_URL}/verify-email?id=${userId}&code=${verificationCode}`;
+
+    await this.brevoService.sendTransactionalEmail(email, 2, {
+      VALIDATE_ACCOUNT_LINK: verificationLink,
+    });
+  }
+
+  async verifyEmail(userId: string, code: string): Promise<boolean> {
+    const user = await this.userApi.findOneOrFail({ id: userId });
+
+    if (user.email_verified_at) {
+      // Email already verified
+      return true;
+    }
+
+    const isValid = verifyEmailVerificationCode(user.email, userId, code);
+
+    if (isValid) {
+      await this.userApi.update(user, {
+        email_verified_at: new Date(),
+      });
+      return true;
+    }
+
+    return false;
   }
 }

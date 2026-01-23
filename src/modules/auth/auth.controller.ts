@@ -10,11 +10,14 @@ import {
   UsePipes,
   ValidationPipe,
   ConflictException,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UsersService } from '../users';
 import { BrevoService } from '../brevo/brevo.service';
 import { StripeService } from '../stripe/stripe.service';
+import { JwtAuthGuard } from '../../guards';
 import {
   ForgotPasswordDto,
   LoginDto,
@@ -64,6 +67,9 @@ export class AuthController {
     });
 
     await this.brevoService.createOrUpdateContact(body.email);
+
+    // Send verification email
+    await this.authService.sendVerificationEmail(user.id, user.email);
 
     return {
       data: {
@@ -187,6 +193,22 @@ export class AuthController {
 
     return {
       message: 'Le mot de passe a été réinitialisé avec succès',
+    };
+  }
+
+  @Post('resend-verification')
+  @UseGuards(JwtAuthGuard)
+  async resendVerification(@Request() req) {
+    const user = await this.userService.findOneOrFail({ id: req.user.id });
+
+    if (user.email_verified_at) {
+      throw new BadRequestException('Votre email est déjà vérifié');
+    }
+
+    await this.authService.sendVerificationEmail(user.id, user.email);
+
+    return {
+      message: 'Email de vérification envoyé avec succès',
     };
   }
 }

@@ -54,6 +54,9 @@ export class User {
   @Column({ nullable: true, default: null })
   validated_at?: Date;
 
+  @Column({ nullable: true, default: null })
+  email_verified_at?: Date;
+
   @DeleteDateColumn({ nullable: true })
   deleted_at?: Date;
 }
