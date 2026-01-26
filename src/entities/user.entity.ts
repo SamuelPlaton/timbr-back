@@ -28,6 +28,12 @@ export class User {
   password_hash: string;
 
   @Column({ nullable: true })
+  first_name?: string;
+
+  @Column({ nullable: true })
+  last_name?: string;
+
+  @Column({ nullable: true })
   stripe_customer_id?: string;
 
   // Relationships

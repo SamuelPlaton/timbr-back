@@ -63,6 +63,8 @@ export class AuthController {
     const user = await this.userService.create({
       email: body.email,
       password_hash: hashedPassword,
+      first_name: body.first_name,
+      last_name: body.last_name,
       stripe_customer_id: stripeCustomerId,
     });
 
