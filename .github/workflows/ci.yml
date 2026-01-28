@@ -63,9 +63,15 @@ jobs:
       # Load the node dependencies from cache
       - name: Load node dependencies
         uses: actions/cache@v4
+        id: node-cache
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
+      # Fallback: install dependencies if cache miss
+      - name: Install dependencies (fallback)
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci
 
       # Cache the app build
       - name: Cache app build
@@ -98,9 +104,15 @@ jobs:
       # Load the node dependencies from cache
       - name: Load node dependencies
         uses: actions/cache@v4
+        id: node-cache
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
+      # Fallback: install dependencies if cache miss
+      - name: Install dependencies (fallback)
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci
 
       # Run ESLint
       - name: ESLint
@@ -142,9 +154,15 @@ jobs:
       # Load the node dependencies from cache
       - name: Load node dependencies
         uses: actions/cache@v4
+        id: node-cache
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
+      # Fallback: install dependencies if cache miss
+      - name: Install dependencies (fallback)
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci
 
       # Run Tests
       - name: Unit Tests
