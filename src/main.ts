@@ -1,9 +1,11 @@
+// IMPORTANT: Sentry must be imported before any other modules
+import './instrument';
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
-import { AllExceptionsFilter } from './filters/http-exception.filter';
+import { SentryExceptionFilter } from './filters/sentry-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -11,8 +13,7 @@ async function bootstrap() {
     rawBody: true, // Enable raw body for webhook signature verification
   });
 
-  // Global exception filter for better error logging
-  app.useGlobalFilters(new AllExceptionsFilter());
+  app.useGlobalFilters(new SentryExceptionFilter());
 
   // Enable cookie parsing
   app.use(cookieParser());
