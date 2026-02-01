@@ -88,4 +88,31 @@ export class BrevoService {
       // Don't throw error to prevent blocking the operation
     }
   }
+
+  async sendRawEmail(params: {
+    to: string;
+    from: { email: string; name?: string };
+    replyTo?: { email: string; name?: string };
+    subject: string;
+    htmlContent: string;
+  }): Promise<void> {
+    try {
+      const sendSmtpEmail: SendSmtpEmail = {
+        to: [{ email: params.to }],
+        sender: params.from,
+        replyTo: params.replyTo,
+        subject: params.subject,
+        htmlContent: params.htmlContent,
+      };
+
+      await this.emailApiInstance.sendTransacEmail(sendSmtpEmail);
+    } catch (error) {
+      this.logger.error('Error sending raw email:', {
+        to: params.to,
+        subject: params.subject,
+        error: error.message,
+      });
+      throw error;
+    }
+  }
 }
