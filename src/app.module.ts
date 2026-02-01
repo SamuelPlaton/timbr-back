@@ -11,6 +11,7 @@ import { OnboardingModule } from './modules/onboarding/onboarding.module';
 import { ChatsModule } from './modules/chats/chats.module';
 import { CompanyModule } from './modules/company/company.module';
 import { StripeModule } from './modules/stripe/stripe.module';
+import { ContactModule } from './modules/contact/contact.module';
 import databaseConfig from './database/config';
 
 @Module({
@@ -34,6 +35,7 @@ import databaseConfig from './database/config';
     ChatsModule,
     CompanyModule,
     StripeModule,
+    ContactModule,
   ],
   controllers: [AppController],
   providers: [
