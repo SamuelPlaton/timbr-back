@@ -23,6 +23,19 @@ export class SentryExceptionFilter implements ExceptionFilter {
       message = exception.getResponse();
     }
 
+    const resolvedMessage =
+      typeof message === 'string'
+        ? message
+        : (message as any).message || message;
+
+    console.error(
+      `[${request.method}] ${request.url} ${status} -`,
+      resolvedMessage,
+      ...(status >= 500 && exception instanceof Error
+        ? ['\n', exception.stack]
+        : []),
+    );
+
     // Only capture 5xx errors to Sentry (server errors, not client errors)
     if (status >= 500) {
       Sentry.captureException(exception, (scope) => {
@@ -48,10 +61,7 @@ export class SentryExceptionFilter implements ExceptionFilter {
       statusCode: status,
       timestamp: new Date().toISOString(),
       path: request.url,
-      message:
-        typeof message === 'string'
-          ? message
-          : (message as any).message || message,
+      message: resolvedMessage,
     });
   }
 }

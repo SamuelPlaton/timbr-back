@@ -2,6 +2,18 @@ import { Injectable } from '@nestjs/common';
 import OpenAI from 'openai';
 import { ChatTypeEnum } from '../../entities';
 
+type TextContent = { type: 'text'; text: string };
+type ImageContent = {
+  type: 'image_url';
+  image_url: { url: string };
+};
+type MessageContent = string | (TextContent | ImageContent)[];
+
+interface ChatMessageInput {
+  role: string;
+  content: MessageContent;
+}
+
 @Injectable()
 export class ChatGPTService {
   private openai: OpenAI;
@@ -12,9 +24,6 @@ export class ChatGPTService {
     });
   }
 
-  /**
-   * Get system prompt based on chat type
-   */
   private getSystemPrompt(type: ChatTypeEnum): string {
     const basePrompt =
       'Tu es un assistant expert en administration française pour les entreprises. ' +
@@ -41,28 +50,60 @@ export class ChatGPTService {
     }
   }
 
-  /**
-   * Send a message to ChatGPT and get a response
-   */
+  private buildUserContent(
+    message: string,
+    attachmentUrls?: string[],
+  ): MessageContent {
+    if (!attachmentUrls || attachmentUrls.length === 0) {
+      return message;
+    }
+
+    const content: (TextContent | ImageContent)[] = [
+      { type: 'text', text: message },
+    ];
+
+    for (const url of attachmentUrls) {
+      content.push({
+        type: 'image_url',
+        image_url: { url },
+      });
+    }
+
+    return content;
+  }
+
   async sendMessage(
     message: string,
     chatType: ChatTypeEnum,
-    conversationHistory: Array<{ role: string; content: string }> = [],
+    conversationHistory: ChatMessageInput[] = [],
+    attachmentUrls?: string[],
   ): Promise<{ content: string; token_cost: number }> {
+    const hasAttachments =
+      (attachmentUrls && attachmentUrls.length > 0) ||
+      conversationHistory.some(
+        (msg) =>
+          Array.isArray(msg.content) &&
+          msg.content.some((c) => c.type === 'image_url'),
+      );
+
     const messages = [
       {
-        role: 'system',
+        role: 'system' as const,
         content: this.getSystemPrompt(chatType),
       },
       ...conversationHistory,
       {
-        role: 'user',
-        content: message,
+        role: 'user' as const,
+        content: this.buildUserContent(message, attachmentUrls),
       },
     ];
 
+    const model = hasAttachments
+      ? 'gpt-4.1'
+      : process.env.OPENAI_MODEL || 'gpt-3.5-turbo';
+
     const completion = await this.openai.chat.completions.create({
-      model: process.env.OPENAI_MODEL || 'gpt-3.5-turbo',
+      model,
       messages: messages as any,
     });
 
@@ -72,9 +113,6 @@ export class ChatGPTService {
     };
   }
 
-  /**
-   * Generate a summary/title for a chat based on the first message
-   */
   async generateChatTitle(firstMessage: string): Promise<string> {
     const completion = await this.openai.chat.completions.create({
       model: process.env.OPENAI_MODEL || 'gpt-3.5-turbo',

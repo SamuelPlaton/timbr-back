@@ -11,7 +11,6 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     const req = context.switchToHttp().getRequest();
 
     // If access_token is in cookies and not in authorization header, add it
-    console.log('AUTH??', { cookies: req.cookies, headers: req.headers });
     if (req.cookies?.access_token && !req.headers.authorization) {
       req.headers.authorization = `Bearer ${req.cookies.access_token}`;
       console.log(

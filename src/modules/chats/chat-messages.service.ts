@@ -21,4 +21,11 @@ export class ChatMessagesService {
   async createMany(messages: Partial<ChatMessage>[]): Promise<ChatMessage[]> {
     return this.chatMessagesApi.createMany(messages);
   }
+
+  async update(
+    message: ChatMessage,
+    params: Partial<ChatMessage>,
+  ): Promise<ChatMessage> {
+    return this.chatMessagesApi.update(message, params);
+  }
 }

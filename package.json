@@ -25,6 +25,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.985.0",
     "@getbrevo/brevo": "^3.0.1",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^4.0.2",
@@ -46,6 +47,7 @@
     "openai": "^6.16.0",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
+    "pdf-to-img": "^5.0.0",
     "pg": "^8.16.3",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
@@ -59,6 +61,7 @@
     "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.2",
+    "@types/multer": "^2.0.0",
     "@types/node": "^20.3.1",
     "@types/passport-jwt": "^4.0.1",
     "@types/supertest": "^6.0.0",
