@@ -4,10 +4,12 @@ import {
   Column,
   CreateDateColumn,
   ManyToOne,
+  OneToMany,
   JoinColumn,
   Index,
 } from 'typeorm';
 import { Chat } from './chat.entity';
+import { ChatAttachment } from './chat-attachment.entity';
 
 @Entity()
 @Index(['chat', 'created_at'])
@@ -28,6 +30,11 @@ export class ChatMessage {
 
   @Column({ type: 'integer', default: 0 })
   token_cost: number;
+
+  @OneToMany(() => ChatAttachment, (attachment) => attachment.message, {
+    cascade: true,
+  })
+  attachments: ChatAttachment[];
 
   @Index()
   @CreateDateColumn()

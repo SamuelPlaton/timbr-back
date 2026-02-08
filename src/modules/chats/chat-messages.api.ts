@@ -19,6 +19,7 @@ export class ChatMessagesApi {
 
     const [data, total] = await this.repository.findAndCount({
       where: { chat: { id: chatId } },
+      relations: ['attachments'],
       order: { created_at: 'ASC' },
       skip,
       take: limit,
@@ -41,5 +42,13 @@ export class ChatMessagesApi {
   ): Promise<ChatMessage[]> {
     const chatMessages = this.repository.create(messages);
     return await this.repository.save(chatMessages);
+  }
+
+  public async update(
+    message: ChatMessage,
+    params: Partial<ChatMessage>,
+  ): Promise<ChatMessage> {
+    Object.assign(message, params);
+    return await this.repository.save(message);
   }
 }
