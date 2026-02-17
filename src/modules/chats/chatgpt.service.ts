@@ -100,7 +100,7 @@ export class ChatGPTService {
 
     const model = hasAttachments
       ? 'gpt-4.1'
-      : process.env.OPENAI_MODEL || 'gpt-3.5-turbo';
+      : process.env.OPENAI_MODEL || 'gpt-4.1-mini';
 
     const completion = await this.openai.chat.completions.create({
       model,
@@ -115,7 +115,7 @@ export class ChatGPTService {
 
   async generateChatTitle(firstMessage: string): Promise<string> {
     const completion = await this.openai.chat.completions.create({
-      model: process.env.OPENAI_MODEL || 'gpt-3.5-turbo',
+      model: process.env.OPENAI_MODEL || 'gpt-4.1-mini',
       messages: [
         {
           role: 'system',

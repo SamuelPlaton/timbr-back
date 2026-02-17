@@ -16,10 +16,10 @@ import {
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { ChatsService } from './chats.service';
-import { ChatMessagesService } from './chat-messages.service';
-import { ChatAttachmentsService } from './chat-attachments.service';
+import { ChatMessagesService } from '../chat-messages';
+import { ChatAttachmentsService } from '../chat-attachments';
 import { ChatGPTService } from './chatgpt.service';
-import { UsersService } from '../users';
+import { UsersService, TokenUsageService } from '../users';
 import { JwtAuthGuard } from '../../guards';
 import { CreateChatDto, PaginationQueryDto, SendMessageDto } from './chats.dto';
 import { multerConfig } from '../../config/multer.config';
@@ -33,6 +33,7 @@ export class ChatsController {
     private readonly chatAttachmentsService: ChatAttachmentsService,
     private readonly chatGPTService: ChatGPTService,
     private readonly usersService: UsersService,
+    private readonly tokenUsageService: TokenUsageService,
   ) {}
 
   @Get()
@@ -93,6 +94,10 @@ export class ChatsController {
     @UploadedFiles() files?: Express.Multer.File[],
   ) {
     const user = await this.usersService.findOneOrFail({ id: req.user.id });
+
+    // Check token limit before proceeding
+    await this.tokenUsageService.checkTokenLimit(user);
+
     const hasFiles = files && files.length > 0;
 
     // Generate title from first message
@@ -145,6 +150,12 @@ export class ChatsController {
       token_cost: response.token_cost,
     });
 
+    // Increment token usage
+    await this.tokenUsageService.incrementTokenUsage(
+      user.id,
+      response.token_cost,
+    );
+
     return {
       data: {
         chat,
@@ -173,6 +184,9 @@ export class ChatsController {
     if (!chat) {
       throw new NotFoundException('Chat non trouvé');
     }
+
+    // Check token limit before proceeding
+    await this.tokenUsageService.checkTokenLimit(user);
 
     // Upload attachments to S3 first so we have URLs for OpenAI
     let attachmentUrls: string[] = [];
@@ -243,6 +257,12 @@ export class ChatsController {
         token_cost: response.token_cost,
       },
     ]);
+
+    // Increment token usage
+    await this.tokenUsageService.incrementTokenUsage(
+      user.id,
+      response.token_cost,
+    );
 
     // Update chat's updated_at timestamp
     const updatedChat = await this.chatsService.update(chat, {});

@@ -15,7 +15,7 @@ export class Subscription {
   id: string;
 
   @Column()
-  name: string; // Plan name: "Offer A", "Offer B", "Offer C"
+  name: string; // Plan name: "Solo", "Boost", "Elite"
 
   @Column({
     type: 'enum',
