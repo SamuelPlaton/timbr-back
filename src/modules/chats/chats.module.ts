@@ -1,41 +1,23 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Chat, ChatMessage, ChatAttachment } from '../../entities';
+import { Chat } from '../../entities';
 import { ChatsApi } from './chats.api';
 import { ChatsService } from './chats.service';
-import { ChatMessagesApi } from './chat-messages.api';
-import { ChatMessagesService } from './chat-messages.service';
-import { ChatAttachmentsApi } from './chat-attachments.api';
-import { ChatAttachmentsService } from './chat-attachments.service';
 import { ChatGPTService } from './chatgpt.service';
 import { ChatsController } from './chats.controller';
 import { UsersModule } from '../users';
-import { S3Module } from '../s3/s3.module';
+import { ChatMessagesModule } from '../chat-messages';
+import { ChatAttachmentsModule } from '../chat-attachments';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Chat, ChatMessage, ChatAttachment]),
+    TypeOrmModule.forFeature([Chat]),
     UsersModule,
-    S3Module,
+    ChatMessagesModule,
+    ChatAttachmentsModule,
   ],
-  providers: [
-    ChatsApi,
-    ChatsService,
-    ChatMessagesApi,
-    ChatMessagesService,
-    ChatAttachmentsApi,
-    ChatAttachmentsService,
-    ChatGPTService,
-  ],
+  providers: [ChatsApi, ChatsService, ChatGPTService],
   controllers: [ChatsController],
-  exports: [
-    ChatsApi,
-    ChatsService,
-    ChatMessagesApi,
-    ChatMessagesService,
-    ChatAttachmentsApi,
-    ChatAttachmentsService,
-    ChatGPTService,
-  ],
+  exports: [ChatsApi, ChatsService, ChatGPTService],
 })
 export class ChatsModule {}

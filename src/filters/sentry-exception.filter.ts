@@ -58,6 +58,7 @@ export class SentryExceptionFilter implements ExceptionFilter {
     }
 
     response.status(status).json({
+      ...(typeof message === 'object' ? message : {}),
       statusCode: status,
       timestamp: new Date().toISOString(),
       path: request.url,

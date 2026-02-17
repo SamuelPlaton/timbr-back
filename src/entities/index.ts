@@ -7,3 +7,5 @@ export * from './chat-message.entity';
 export * from './chat-attachment.entity';
 export * from './user-role.enum';
 export * from './chat-type.enum';
+export * from './subscription.entity';
+export * from './subscription-status.enum';

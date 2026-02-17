@@ -36,6 +36,9 @@ export class User {
   @Column({ nullable: true })
   stripe_customer_id?: string;
 
+  @Column({ type: 'integer', default: 0 })
+  current_month_token_usage: number;
+
   // Relationships
   @OneToOne(() => Onboarding, (onboarding) => onboarding.user)
   onboarding: Onboarding;

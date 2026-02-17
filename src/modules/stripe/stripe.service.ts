@@ -29,6 +29,19 @@ export class StripeService {
     return customer.id;
   }
 
+  private readonly PLAN_KEY_TO_PRICE_ID: Record<string, string> = {
+    solo_monthly: process.env.STRIPE_SOLO_MONTHLY_PRICE_ID,
+    solo_yearly: process.env.STRIPE_SOLO_YEARLY_PRICE_ID,
+    boost_monthly: process.env.STRIPE_BOOST_MONTHLY_PRICE_ID,
+    boost_yearly: process.env.STRIPE_BOOST_YEARLY_PRICE_ID,
+    elite_monthly: process.env.STRIPE_ELITE_MONTHLY_PRICE_ID,
+    elite_yearly: process.env.STRIPE_ELITE_YEARLY_PRICE_ID,
+  };
+
+  resolvePriceId(planKey: string): string | null {
+    return this.PLAN_KEY_TO_PRICE_ID[planKey] || null;
+  }
+
   async createCheckoutSession(
     customerId: string,
     priceId: string,
@@ -151,11 +164,13 @@ export class StripeService {
   }
 
   private getPlanNameFromPriceId(priceId: string): string {
-    // Map price IDs to plan names
     const priceIdMap = {
-      [process.env.STRIPE_OFFER_A_PRICE_ID]: 'Offer A',
-      [process.env.STRIPE_OFFER_B_PRICE_ID]: 'Offer B',
-      [process.env.STRIPE_OFFER_C_PRICE_ID]: 'Offer C',
+      [process.env.STRIPE_SOLO_MONTHLY_PRICE_ID]: 'Solo',
+      [process.env.STRIPE_SOLO_YEARLY_PRICE_ID]: 'Solo',
+      [process.env.STRIPE_BOOST_MONTHLY_PRICE_ID]: 'Boost',
+      [process.env.STRIPE_BOOST_YEARLY_PRICE_ID]: 'Boost',
+      [process.env.STRIPE_ELITE_MONTHLY_PRICE_ID]: 'Elite',
+      [process.env.STRIPE_ELITE_YEARLY_PRICE_ID]: 'Elite',
     };
 
     return priceIdMap[priceId] || 'Unknown Plan';

@@ -26,7 +26,7 @@ export class StripeController {
   @UseGuards(JwtAuthGuard)
   async createCheckoutSession(
     @Request() req,
-    @Body('priceId') priceId: string,
+    @Body('planKey') planKey: string,
     @Body('successUrl') successUrl: string,
     @Body('cancelUrl') cancelUrl: string,
   ) {
@@ -34,6 +34,11 @@ export class StripeController {
 
     if (!user.stripe_customer_id) {
       throw new BadRequestException('User does not have a Stripe customer ID');
+    }
+
+    const priceId = this.stripeService.resolvePriceId(planKey);
+    if (!priceId) {
+      throw new BadRequestException(`Invalid plan key: ${planKey}`);
     }
 
     const url = await this.stripeService.createCheckoutSession(
@@ -146,9 +151,12 @@ export class StripeController {
   ): string {
     const priceId = subscription.items.data[0]?.price.id;
     const priceIdMap = {
-      [process.env.STRIPE_OFFER_A_PRICE_ID]: 'Offer A',
-      [process.env.STRIPE_OFFER_B_PRICE_ID]: 'Offer B',
-      [process.env.STRIPE_OFFER_C_PRICE_ID]: 'Offer C',
+      [process.env.STRIPE_SOLO_MONTHLY_PRICE_ID]: 'Solo',
+      [process.env.STRIPE_SOLO_YEARLY_PRICE_ID]: 'Solo',
+      [process.env.STRIPE_BOOST_MONTHLY_PRICE_ID]: 'Boost',
+      [process.env.STRIPE_BOOST_YEARLY_PRICE_ID]: 'Boost',
+      [process.env.STRIPE_ELITE_MONTHLY_PRICE_ID]: 'Elite',
+      [process.env.STRIPE_ELITE_YEARLY_PRICE_ID]: 'Elite',
     };
     return priceIdMap[priceId] || 'Unknown Plan';
   }
