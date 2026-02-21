@@ -76,6 +76,9 @@ export class AuditItem {
   })
   status: AuditItemStatus;
 
+  @Column({ type: 'smallint' })
+  priority: number;
+
   @Column({ type: 'jsonb', nullable: true })
   sources: AuditItemSource[];
 

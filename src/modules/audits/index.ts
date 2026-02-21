@@ -3,4 +3,4 @@ export * from './audits.service';
 export * from './audits.controller';
 export * from './audits.api';
 export * from './audits.dto';
-export * from './audit.generator';
+export * from './generators/audit.generator';
