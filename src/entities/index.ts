@@ -11,3 +11,4 @@ export * from './subscription.entity';
 export * from './subscription-status.enum';
 export * from './audit.entity';
 export * from './audit-item.entity';
+export * from './situation.enum';
