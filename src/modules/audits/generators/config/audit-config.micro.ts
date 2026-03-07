@@ -195,6 +195,46 @@ L'URSSAF accorde régulièrement des remises gracieuses sur les majorations de r
   },
 
   {
+    id: 'micro_urssaf_plateformes_ca_facture',
+    category: 'Fiscalité',
+    type: 'danger',
+    priority: 3,
+    title:
+      'Plateformes et intermédiaires : déclarez le montant facturé, pas ce que vous recevez',
+    summary:
+      "Si vous passez par des plateformes ou intermédiaires (Malt, Uber, Deliveroo, Fiverr, marketplaces...), vous devez déclarer à l'URSSAF le montant total de la facture client — et non le montant net reçu sur votre compte bancaire après commission de la plateforme. Cette erreur est l'une des plus fréquentes et peut entraîner un redressement URSSAF en cas de contrôle.",
+    content: `<b>La règle fondamentale</b><br>
+Votre chiffre d'affaires à déclarer à l'URSSAF correspond au <b>montant total facturé au client final</b>, avant toute déduction de commission, frais de service ou retenue par la plateforme.<br>
+<br>
+<b>Exemple concret</b><br>
+Vous réalisez une prestation à 1 000€ via une plateforme qui prend 10% de commission :<br>
+• Montant facturé au client : <b>1 000€</b><br>
+• Commission plateforme : 100€<br>
+• Montant reçu sur votre compte : 900€<br>
+• <b>Montant à déclarer à l'URSSAF : 1 000€</b> (pas 900€)<br>
+<br>
+<b>Pourquoi c'est important</b><br>
+• En micro-entreprise, votre CA est votre base de calcul pour les cotisations ET l'impôt<br>
+• Les commissions des plateformes ne sont <b>pas des charges déductibles</b> en micro (seul l'abattement forfaitaire s'applique)<br>
+• En cas de contrôle, l'URSSAF compare vos déclarations avec les données transmises par les plateformes (obligation de déclaration des plateformes depuis 2020)<br>
+• Un écart systématique entre vos déclarations et les données plateformes déclenche un redressement<br>
+<br>
+<b>Comment bien faire</b><br>
+• Conservez toutes vos factures émises (pas seulement les relevés de la plateforme)<br>
+• Tenez un registre de CA basé sur les montants facturés, pas sur les virements reçus<br>
+• Vérifiez chaque mois que votre CA déclaré correspond bien au total des factures émises<br>
+<br>
+<b>Astuce</b><br>
+Si les commissions de plateforme représentent une part importante de votre CA (> 15-20%), c'est un signal que le régime micro n'est peut-être plus optimal — en société, ces commissions seraient des charges déductibles.`,
+    sources: [
+      {
+        url: 'https://www.autoentrepreneur.urssaf.fr/portail/accueil/une-question/toutes-les-fiches-pratiques/determiner-mon-chiffre-daffaires.html',
+        title: "Déterminer son chiffre d'affaires — URSSAF Auto-Entrepreneur",
+      },
+    ],
+  },
+
+  {
     id: 'fiscalite_reductions_entreprise_orange',
     category: 'Fiscalité',
     type: 'warning',

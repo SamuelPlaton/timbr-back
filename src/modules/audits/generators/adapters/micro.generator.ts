@@ -109,6 +109,11 @@ export class MicroAuditGenerator extends BaseAuditGenerator {
     // (or monthly) URSSAF declarations are mandatory and frequently missed.
     items.push(this.createItem('fiscalite_urssaf_declaration'));
 
+    // Plateformes: educational — always shown. Many micro-entrepreneurs
+    // using platforms (Malt, Uber, etc.) mistakenly declare the net amount
+    // received instead of the full invoice amount.
+    items.push(this.createItem('micro_urssaf_plateformes_ca_facture'));
+
     // Abattement / frais réels: shown when declared professional expenses
     // may exceed the micro-enterprise flat-rate deduction (34% BNC, 50% BIC services,
     // 71% BIC goods). A frais réels switch via a société could yield a better outcome.

@@ -978,7 +978,7 @@ Les investisseurs (business angels, fonds de VC) préfèrent très largement inv
 • <b>Cession</b> : plus facile de céder les parts d'une SASU que d'une EURL<br>
 <br>
 <b>Quand passer à l'action ?</b><br>
-• Votre SaaS génère ses premiers revenus récurrents (MRR > 0)<br>
+• Votre SaaS génère ses premiers revenus récurrents (MRR > 1000)<br>
 • Vous envisagez une levée de fonds dans les 12-24 mois<br>
 • Vous souhaitez recruter et fidéliser des collaborateurs clés avec des BSPCE<br>
 <br>
