@@ -1,4 +1,4 @@
-# Formator API - Backend
+# Timbr API - Backend
 
 API backend pour l'aide à l'administration des entreprises françaises avec intégration ChatGPT.
 
@@ -108,6 +108,7 @@ Documentation Swagger sur `http://localhost:3001/api`
 ## Endpoints Principaux
 
 ### Authentification
+
 - `POST /auth/register` - Créer un compte
 - `POST /auth/login` - Se connecter
 - `POST /auth/refresh` - Rafraîchir le token
@@ -115,39 +116,48 @@ Documentation Swagger sur `http://localhost:3001/api`
 - `POST /auth/reset-password` - Réinitialiser le mot de passe
 
 ### Utilisateurs
+
 - `GET /users/me` - Profil utilisateur (protégé)
 - `PUT /users/me` - Mettre à jour le profil (protégé)
 
 ### Onboarding
+
 - `GET /onboarding` - Récupérer l'onboarding (protégé)
 - `POST /onboarding` - Créer/mettre à jour l'onboarding (protégé)
 - `PUT /onboarding` - Modifier l'onboarding (protégé)
 
 ### Chats
+
 - `GET /chats` - Liste des chats (protégé)
 - `POST /chats` - Créer un nouveau chat (protégé)
 - `POST /chats/:id/messages` - Envoyer un message (protégé)
 - `DELETE /chats/:id` - Supprimer un chat (protégé)
 
 ### Entreprises
+
 - `GET /company/search?q=SIREN` - Rechercher une entreprise (protégé)
 
 ## Architecture
 
 ### Authentification
+
 - JWT avec access token (15 min) et refresh token (7 jours)
 - Refresh tokens stockés en base de données
 - Protection contre les attaques par timing
 - Validation stricte du JWT_SECRET (minimum 32 caractères)
 
 ### Onboarding
+
 Les données sont stockées en JSON dans la table `onboarding`:
+
 - `situation`: "Futur Auto-Entrepreneur" | "Auto-Entrepreneur" | "SARL/SASU"
 - `interested_subjects`: ["VAT", "Aides", "Impôts", ...]
 - `company_information`: { siren, siret, company_name, address, ... }
 
 ### ChatGPT Integration
+
 Trois types de chat disponibles:
+
 - **fast**: Réponses courtes et directes
 - **complete**: Réponses détaillées et complètes
 - **pedagogue**: Explications pédagogiques étape par étape

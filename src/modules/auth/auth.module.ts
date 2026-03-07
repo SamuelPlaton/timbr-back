@@ -24,11 +24,11 @@ import { StripeModule } from '../stripe/stripe.module';
       }),
       inject: [ConfigService],
     }),
-    forwardRef(() => UsersModule),
+    UsersModule,
     BrevoModule,
     forwardRef(() => StripeModule),
   ],
-  exports: [AuthApi, AuthService, JwtStrategy],
+  exports: [AuthApi, AuthService],
   providers: [AuthApi, AuthService, JwtStrategy],
   controllers: [AuthController],
 })
