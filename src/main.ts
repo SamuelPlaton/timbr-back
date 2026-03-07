@@ -35,7 +35,7 @@ async function bootstrap() {
 
   // Swagger documentation
   const config = new DocumentBuilder()
-    .setTitle('Formator API')
+    .setTitle('Timbr API')
     .setDescription(
       "API pour l'aide à l'administration des entreprises françaises",
     )

@@ -8,8 +8,6 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { User } from './user.entity';
-import { CompanyInformation } from '../types/company-information.type';
-
 @Entity()
 export class Onboarding {
   @PrimaryGeneratedColumn('uuid')
@@ -28,8 +26,10 @@ export class Onboarding {
   interested_subjects: string[]; // ["VAT", "Aides", "Impôts", ...]
 
   // Étape 3: Informations de l'entreprise (stocké en JSON)
+  // Raw situation-specific fields stored as JSONB. The `situation` discriminant
+  // lives in its own column above and is merged at audit-generation time.
   @Column({ type: 'jsonb' })
-  company_information: CompanyInformation;
+  company_information: Record<string, any>;
 
   @Column({ default: false })
   completed: boolean;

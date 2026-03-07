@@ -1,47 +1,8 @@
 import type { AuditConfigItem } from '../adapters/base.generator';
 
-const config: AuditConfigItem[] = [
-  {
-    id: 'social_sas_sasu_micro_entreprise_avertissement',
-    category: 'Social',
-    type: 'warning',
-    priority: 1,
-    title: 'Votre CA dépasse le seuil où la SASU devient plus avantageuse',
-    summary:
-      "Avec un chiffre d'affaires estimé qui dépasse {{threshold}}€, la comparaison entre micro-entreprise et SASU devient financièrement significative. En micro, vos charges sociales portent sur l'intégralité de votre CA même si vous avez des frais professionnels élevés. En SASU, elles ne portent que sur le salaire que vous vous versez, ce qui peut générer une économie substantielle dès maintenant. Une simulation personnalisée s'impose.",
-    content: `<b>Pourquoi le calcul change à partir de {{threshold}}€ de CA</b><br>
-En micro-entreprise, vous payez vos cotisations sociales sur la totalité de votre CA (12,3% BIC services, 21,2% BNC) même si vous avez des charges professionnelles importantes. Le régime ne tient aucun compte de vos frais réels.<br>
-<br>
-En SASU, vous ne payez des cotisations sociales que sur le <b>salaire brut que vous vous versez</b>. Le reste du CA peut rester dans la société pour couvrir vos frais, être mis en réserve ou être distribué en dividendes à flat tax 30%.<br>
-<br>
-<b>Comparaison indicative à {{threshold}}€ de CA (BNC)</b><br>
-• Micro-entreprise : cotisations ≈ 16 400€<br>
-• SASU avec salaire brut de 36 000€ : cotisations ≈ 27 000€, mais le reste du CA finance vos frais déductibles et votre trésorerie<br>
-• Le gain net dépend de vos frais réels — avec 20 000€ de frais professionnels, la SASU devient souvent plus avantageuse<br>
-<br>
-<b>Autres avantages de la SASU à ce niveau de CA</b><br>
-• Protection sociale complète (assimilé-salarié) : meilleure retraite, prévoyance, maladie<br>
-• Possibilité de déduire tous vos frais professionnels réels<br>
-• Combinaison salaire + dividendes pour optimiser votre revenu net<br>
-• Pas de plafond de CA<br>
-<br>
-Votre conseiller Timbr peut simuler précisément le gain annuel selon votre situation.`,
-    sources: [
-      {
-        url: 'https://bpifrance-creation.fr/encyclopedie/structures-juridiques/choix-du-statut-generalites/criteres-choix-structure-juridique',
-        title: 'Critères de choix de structure juridique — BPI France Création',
-      },
-      {
-        url: 'https://www.shine.fr/blog/sasu-sarl/',
-        title: 'SASU vs SARL — Shine',
-      },
-      {
-        url: 'https://www.legalstart.fr/fiches-pratiques/statut-entreprise/sasu-ou-sarl/',
-        title: 'SASU ou SARL — Legalstart',
-      },
-    ],
-  },
+// TODO: IMPROVE
 
+const config: AuditConfigItem[] = [
   {
     id: 'social_sas_sasu_protection_sociale',
     category: 'Social',
@@ -200,27 +161,6 @@ En tant qu'assimilé-salarié, vous validez un trimestre de retraite pour chaque
 Chaque année complète (4 trimestres) rapproche votre départ à la retraite à taux plein. Une année incomplète crée une décote de 1,25% par trimestre manquant sur votre pension de base.<br>
 <br>
 Votre conseiller Timbr peut vous aider à ajuster votre salaire pour optimiser vos droits retraite sans sur-cotiser.`,
-    sources: [],
-  },
-
-  {
-    id: 'retraite_validation_membre_ii',
-    category: 'Retraite',
-    type: 'warning',
-    priority: 4,
-    title:
-      "Statut EI : anticipez l'adhésion pour optimiser vos cotisations retraite",
-    summary:
-      "Le statut d'Entrepreneur Individuel peut dans certains cas vous permettre de mieux piloter vos cotisations retraite tout en conservant une structure simple. Ce point mérite une attention particulière si vous envisagez une évolution de votre structure juridique dans les prochaines années.",
-    content: `<b>Entrepreneurs Individuels et retraite</b><br>
-En EI (Entrepreneur Individuel), depuis la réforme de 2022, votre patrimoine professionnel est automatiquement séparé de votre patrimoine personnel. Vos cotisations retraite (base + complémentaire SSI) sont calculées sur votre bénéfice net, avec des taux progressifs.<br>
-<br>
-<b>Points à vérifier</b><br>
-• Vos cotisations minimales retraite SSI s'appliquent même sans bénéfice<br>
-• L'option pour l'impôt sur les sociétés (IS) en EI est disponible depuis 2022, ce qui peut modifier votre assiette de cotisations<br>
-• Le passage EI → SASU ou EURL reste possible à tout moment<br>
-<br>
-Consultez votre conseiller Timbr pour analyser la pertinence de ce statut selon votre situation.`,
     sources: [],
   },
 
@@ -454,43 +394,6 @@ Votre conseiller Timbr peut vous aider à faire le bon choix selon votre profil 
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23569',
         title: 'Déduction de la TVA — Service-Public.fr',
-      },
-    ],
-  },
-
-  {
-    id: 'tva_risque_credibilite',
-    category: 'TVA',
-    type: 'warning',
-    priority: 2,
-    title: 'Sans numéro de TVA, votre crédibilité B2B peut être compromise',
-    summary:
-      "À partir d'un CA supérieur à 20 000€, travailler sans TVA peut créer des frictions avec certains clients professionnels qui attendent de récupérer leur TVA déductible. Sans TVA déclarée, vous pouvez également paraître moins structuré ou moins professionnel aux yeux des acheteurs B2B, des grands groupes et des donneurs d'ordres publics. Évaluer votre positionnement B2B vs B2C est essentiel pour décider.",
-    content: `<b>Pourquoi les clients professionnels préfèrent les fournisseurs assujettis à la TVA</b><br>
-Les entreprises assujetties à la TVA récupèrent la TVA sur leurs achats (TVA déductible). Si vous ne facturez pas de TVA, votre client ne peut rien récupérer — ce qui revient à lui faire payer votre prestation plus cher en valeur nette par rapport à un concurrent assujetti.<br>
-<br>
-<b>Secteurs où l'absence de TVA est particulièrement pénalisante</b><br>
-• Services informatiques et ESN<br>
-• Conseil et management<br>
-• Communication et marketing<br>
-• Sous-traitance industrielle<br>
-• Prestataires pour grandes entreprises ou collectivités publiques<br>
-<br>
-<b>Où l'absence de TVA peut être un avantage</b><br>
-• Prestations directes aux particuliers (B2C)<br>
-• Petits artisans dont la clientèle est locale et non-assujettie<br>
-• Activités de formation (exonérées de TVA sous conditions)<br>
-<br>
-<b>Notre recommandation</b><br>
-Si votre CA dépasse 20 000€ et que vous travaillez principalement en B2B, optez volontairement pour l'assujettissement à la TVA. La récupération de TVA sur vos achats compense souvent l'effort administratif supplémentaire.`,
-    sources: [
-      {
-        url: 'https://intracommunautaire-tva.fr/',
-        title: 'Numéro de TVA intracommunautaire — Intracommunautaire-TVA.fr',
-      },
-      {
-        url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F21746',
-        title: 'Franchise en base de TVA — Service-Public.fr',
       },
     ],
   },
@@ -795,6 +698,336 @@ Contrairement à la SASU, les dividendes SARL sont soumis à des cotisations soc
       {
         url: 'https://www.shine.fr/blog/sasu-sarl/',
         title: 'SASU vs SARL — Shine',
+      },
+    ],
+  },
+  {
+    id: 'societe_acre_eligibilite',
+    category: 'Social',
+    type: 'success',
+    priority: 2,
+    title: 'ACRE : réduisez de 50% vos charges sociales la première année',
+    summary:
+      "L'ACRE réduit de moitié vos cotisations sociales pendant les 12 premiers mois suivant la création de votre société. En société, cette aide n'est pas automatique — vous devez en faire la demande auprès de l'URSSAF dans un délai strict de 45 jours après l'immatriculation. Passé ce délai, le bénéfice de l'ACRE est définitivement perdu.",
+    content: `<b>Ce qu'apporte l'ACRE en société</b><br>
+L'ACRE réduit de 50% toutes vos cotisations sociales pendant 12 mois à compter de la date d'immatriculation de votre société. En SASU (assimilé-salarié), cela s'applique aux cotisations patronales et salariales sur votre salaire. En EURL/SARL (TNS), cela s'applique à vos cotisations SSI.<br>
+<br>
+<b>Conditions d'éligibilité</b><br>
+• Ne pas avoir bénéficié de l'ACRE dans les 3 années précédentes<br>
+• Remplir au moins un des critères : demandeur d'emploi, bénéficiaire RSA/ASS, moins de 26 ans, créateur en QPV, repreneur d'entreprise en difficulté<br>
+<br>
+<b>Procédure — délai de 45 jours impératif</b><br>
+Contrairement à la micro-entreprise où l'ACRE est automatique, en société vous devez :<br>
+• Remplir le formulaire ACRE (disponible sur le site URSSAF)<br>
+• Le soumettre dans les <b>45 jours suivant l'immatriculation</b> de votre société<br>
+• Ce délai est non prolongeable — aucune exception possible<br>
+<br>
+<b>Exemple d'économie</b><br>
+Pour un salaire brut annuel de 36 000€ en SASU : cotisations normales ≈ 27 000€ / avec ACRE ≈ 13 500€ → <b>13 500€ d'économie la première année</b>.<br>
+<br>
+Votre conseiller Timbr peut vérifier votre éligibilité et vous accompagner dans la démarche.`,
+    sources: [
+      {
+        url: 'https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html',
+        title: "L'essentiel de l'ACRE — URSSAF",
+      },
+    ],
+  },
+
+  {
+    id: 'retraite_eurl_sarl_explication_trimestres',
+    category: 'Retraite',
+    type: 'information',
+    priority: 3,
+    title: 'Retraite TNS : comment vos trimestres sont calculés en EURL/SARL',
+    summary:
+      "En tant que gérant TNS, vos trimestres de retraite sont validés en fonction de vos revenus nets déclarés — pas de votre chiffre d'affaires. Le mécanisme est différent de celui des assimilés-salariés en SASU. Comprendre ce calcul est essentiel pour éviter de sous-cotiser sans le savoir et accumuler des lacunes dans votre carrière retraite.",
+    content: `<b>Calcul des trimestres en régime TNS (SSI)</b><br>
+En tant que gérant majoritaire EURL/SARL, vous cotisez à la Sécurité Sociale des Indépendants (SSI). Vos trimestres sont validés en fonction de votre <b>revenu net déclaré</b> (rémunération de gérance après cotisations).<br>
+<br>
+<b>Seuils de validation (base SMIC 2024)</b><br>
+• 1 trimestre : revenus nets annuels ≥ 1 747€<br>
+• 2 trimestres : ≥ 3 494€<br>
+• 3 trimestres : ≥ 5 241€<br>
+• 4 trimestres : ≥ <b>6 988€</b> (soit ≈ 582€/mois minimum)<br>
+<br>
+<b>Particularité TNS : les cotisations minimales</b><br>
+Même sans rémunération, le régime TNS prévoit des cotisations minimales obligatoires (environ 1 100€/an). Ces cotisations minimales permettent de valider <b>3 trimestres</b> de retraite de base — mais pas 4.<br>
+<br>
+<b>Retraite complémentaire</b><br>
+Contrairement aux assimilés-salariés (AGIRC-ARRCO), votre retraite complémentaire passe par le régime complémentaire des indépendants (RCI). Les taux de cotisation et les droits acquis sont généralement moins favorables — d'où l'intérêt d'un PER ou contrat Madelin en complément.<br>
+<br>
+Votre conseiller Timbr peut simuler votre projection retraite en fonction de votre rémunération actuelle.`,
+    sources: [],
+  },
+
+  {
+    id: 'retraite_eurl_sarl_risque_trimestres',
+    category: 'Retraite',
+    type: 'danger',
+    priority: 1,
+    title:
+      'Risque retraite : votre rémunération ne suffit pas à valider 4 trimestres',
+    summary:
+      'Avec une rémunération mensuelle inférieure à {{minimum_salary}}€, vous ne validez pas 4 trimestres de retraite par an. En TNS, même les cotisations minimales obligatoires ne couvrent que 3 trimestres. Chaque trimestre manquant crée une lacune définitive dans votre carrière retraite et peut retarder votre départ à taux plein.',
+    content: `<b>Pourquoi votre rémunération actuelle est insuffisante</b><br>
+Pour valider 4 trimestres de retraite par an en régime TNS, votre revenu net annuel doit atteindre au minimum <b>6 988€</b> (soit environ <b>{{minimum_salary}}€ bruts par mois</b>).<br>
+<br>
+Avec votre rémunération actuelle, vous risquez de ne valider que 3 trimestres (via les cotisations minimales) voire moins si vous ne vous versez aucune rémunération.<br>
+<br>
+<b>Conséquences à long terme</b><br>
+• Chaque trimestre manquant retarde de 3 mois le départ à la retraite à taux plein<br>
+• Chaque trimestre manquant génère une décote de 1,25% sur votre pension de base<br>
+• Sur 5 ans de sous-cotisation : jusqu'à 10% de moins sur votre retraite mensuelle<br>
+<br>
+<b>Solutions possibles</b><br>
+• Augmenter votre rémunération de gérance au-dessus de {{minimum_salary}}€/mois<br>
+• Utiliser un contrat Madelin pour compléter vos droits retraite de manière fiscalement avantageuse<br>
+• Racheter des trimestres manquants ultérieurement (option coûteuse mais disponible)`,
+    sources: [],
+  },
+
+  {
+    id: 'societe_per_dirigeant_eurl',
+    category: 'Retraite',
+    type: 'success',
+    priority: 3,
+    title:
+      'PER et contrat Madelin : un double levier fiscal pour les gérants TNS',
+    summary:
+      "En tant que gérant TNS d'EURL ou SARL, vous avez accès à des plafonds de déduction retraite plus élevés que les assimilés-salariés grâce au contrat Madelin. Combiné au PER, ce dispositif peut vous permettre de déduire jusqu'à 76 000€ de votre revenu imposable pour les hauts revenus — tout en constituant un capital retraite significatif.",
+    content: `<b>Le PER pour les gérants TNS — plafonds majorés</b><br>
+<br>
+<b>Plafond de déduction Madelin / PER TNS</b><br>
+Votre plafond de déduction est calculé ainsi :<br>
+• 10% du bénéfice imposable (plafonné à 8 PASS)<br>
+• + 15% de la fraction du bénéfice entre 1 et 8 PASS<br>
+• Plafond total jusqu'à environ <b>76 000€</b> pour les hauts revenus TNS<br>
+<br>
+C'est significativement plus élevé que le plafond des assimilés-salariés (37 094€ max en 2024).<br>
+<br>
+<b>Exemple de gain fiscal concret</b><br>
+Rémunération de gérance nette de 50 000€ → TMI à 30% :<br>
+• Versement PER de 5 000€ → réduction d'IR : 5 000 × 30% = <b>1 500€ économisés cette année</b><br>
+• Votre effort d'épargne réel est de seulement 3 500€<br>
+<br>
+<b>Avantage supplémentaire du contrat Madelin</b><br>
+Les cotisations Madelin (retraite, prévoyance, mutuelle) sont déductibles du bénéfice imposable de la société si celle-ci est à l'IS, ou de votre revenu BIC/BNC si elle est à l'IR. C'est un double avantage : réduction d'impôt + constitution d'une épargne retraite.<br>
+<br>
+<b>Règles à retenir</b><br>
+• Fonds bloqués jusqu'à la retraite (sauf accidents de la vie)<br>
+• Les plafonds non utilisés des 3 années précédentes sont récupérables<br>
+• Consultez votre espace impots.gouv.fr pour connaître votre plafond disponible`,
+    sources: [
+      {
+        url: 'https://www.impots.gouv.fr/particulier/le-plan-depargne-retraite',
+        title: "Plan d'Épargne Retraite — Impôts.gouv.fr",
+      },
+    ],
+  },
+
+  {
+    id: 'societe_choix_is_ir',
+    category: 'Fiscalité',
+    type: 'information',
+    priority: 3,
+    title: 'IS ou IR : quel régime fiscal pour votre société ?',
+    summary:
+      "Le choix entre l'impôt sur les sociétés (IS) et l'impôt sur le revenu (IR) détermine comment vos bénéfices sont taxés et comment vous pouvez optimiser votre rémunération. En SASU, l'IS est le régime par défaut avec une option IR possible pendant 5 ans. En EURL, vous avez le choix entre les deux dès la création. Ce choix a des conséquences directes sur votre trésorerie, votre fiscalité personnelle et vos possibilités d'optimisation.",
+    content: `<b>Option 1 — Impôt sur les Sociétés (IS)</b><br>
+Le bénéfice est imposé au niveau de la société :<br>
+• <b>15%</b> sur les premiers 42 500€ de bénéfice<br>
+• <b>25%</b> au-delà<br>
+Votre rémunération de dirigeant est déductible du bénéfice. Les dividendes distribués sont ensuite soumis à la flat tax de 30% (ou au barème progressif sur option).<br>
+<br>
+<b>Avantages de l'IS</b><br>
+• Taux réduit de 15% très avantageux sous 42 500€ de bénéfice<br>
+• Possibilité de piloter votre rémunération (salaire + dividendes)<br>
+• Bénéfice non distribué = trésorerie dans la société, imposée à taux réduit<br>
+• Frais professionnels intégralement déductibles<br>
+<br>
+<b>Option 2 — Impôt sur le Revenu (IR)</b><br>
+Le bénéfice de la société est directement intégré à votre déclaration d'IR personnelle, comme si vous étiez entrepreneur individuel. Pas de distinction salaire/dividendes.<br>
+<br>
+<b>Avantages de l'IR</b><br>
+• Si votre TMI est inférieure à 15% : l'IR peut être plus avantageux que l'IS<br>
+• Les déficits de la société sont imputables sur votre revenu global (utile les premières années)<br>
+• Simplicité : un seul impôt, pas de double imposition bénéfice + dividendes<br>
+<br>
+<b>Guide de décision rapide</b><br>
+• Bénéfice < 30 000€ et TMI ≤ 11% → IR potentiellement plus avantageux<br>
+• Bénéfice > 42 500€ → IS quasi systématiquement plus intéressant<br>
+• Premières années déficitaires → IR pour imputer le déficit sur vos autres revenus<br>
+• Besoin de laisser de la trésorerie dans la société → IS<br>
+<br>
+<b>Important</b><br>
+En SASU, l'option IR est limitée à <b>5 exercices</b> et irrévocable après activation. En EURL, le passage IS → IR est possible mais le retour IR → IS est définitif. Simulez les deux options avec votre conseiller Timbr avant de choisir.`,
+    sources: [
+      {
+        url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36006',
+        title: 'Fiscalité de la SAS — Service-Public.fr',
+      },
+      {
+        url: 'https://www.dougs.fr/blog/eurl-is-ou-ir/',
+        title: 'EURL : IS ou IR ? — Dougs',
+      },
+    ],
+  },
+  {
+    id: 'societe_compte_titre_entreprise',
+    category: 'Fiscalité',
+    type: 'success',
+    priority: 3,
+    title:
+      'Compte-titres entreprise : faites fructifier votre trésorerie excédentaire',
+    summary:
+      "Votre société dispose de trésorerie dormante ? Un compte-titres ordinaire (CTO) au nom de la société permet de placer vos excédents sur des supports financiers (ETF, obligations, actions) tout en bénéficiant de la fiscalité avantageuse de l'IS sur les plus-values. C'est une alternative performante aux comptes à terme bancaires dont les rendements restent faibles.",
+    content: `<b>Pourquoi un CTO pour votre société ?</b><br>
+Lorsque votre société accumule de la trésorerie (bénéfices non distribués, provisions), laisser cet argent dormir sur un compte courant à 0% est un coût d'opportunité réel. Un compte-titres au nom de la société permet d'investir ces fonds sur les marchés financiers.<br>
+<br>
+<b>Fiscalité avantageuse via l'IS</b><br>
+• Les plus-values réalisées par la société sont imposées à l'IS : <b>15% jusqu'à 42 500€</b>, 25% au-delà<br>
+• C'est souvent plus avantageux que la flat tax de 30% applicable aux placements personnels<br>
+• Les dividendes perçus par la société bénéficient du régime mère-fille si la participation dépasse 5% (exonération quasi-totale)<br>
+<br>
+<b>Supports d'investissement adaptés</b><br>
+• <b>ETF (trackers)</b> : diversification automatique, frais réduits, idéal pour le long terme<br>
+• <b>Obligations et fonds monétaires</b> : rendement modéré mais risque faible, adapté à la trésorerie court terme<br>
+• <b>Actions individuelles</b> : plus risqué mais potentiellement plus rentable sur le long terme<br>
+<br>
+<b>Points de vigilance</b><br>
+• La comptabilisation des placements financiers nécessite un suivi comptable rigoureux (plus-values latentes, provisions pour dépréciation)<br>
+• Les moins-values sont déductibles du résultat imposable de la société<br>
+• Privilégiez une stratégie prudente et diversifiée — la trésorerie d'entreprise ne doit pas être exposée à un risque excessif<br>
+<br>
+<b>Conseil pratique</b><br>
+Ouvrez un CTO auprès d'un courtier en ligne proposant des comptes pour personnes morales (Boursobank, Saxo, Interactive Brokers). Les frais sont significativement inférieurs aux offres bancaires traditionnelles.`,
+    sources: [
+      {
+        url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36006',
+        title: 'Fiscalité de la SAS — Service-Public.fr',
+      },
+    ],
+  },
+
+  {
+    id: 'societe_holding_investissement',
+    category: 'Fiscalité',
+    type: 'success',
+    priority: 2,
+    title:
+      'Holding et montage patrimonial : structurez votre croissance à long terme',
+    summary:
+      "Avec un chiffre d'affaires estimé supérieur à 80 000€, la question d'une structure holding devient pertinente. Une holding vous permet de réinvestir vos bénéfices dans l'immobilier (SCI), dans d'autres entreprises ou dans des placements financiers, tout en bénéficiant du régime mère-fille et d'une fiscalité optimisée sur les flux entre sociétés.",
+    content: `<b>Qu'est-ce qu'une holding et pourquoi vous concerne-t-elle ?</b><br>
+Une holding est une société dont l'objet principal est de détenir des parts dans d'autres sociétés. Elle se place "au-dessus" de votre société opérationnelle et capte les bénéfices via des dividendes ou des conventions de management fees.<br>
+<br>
+<b>Avantages fiscaux du régime mère-fille</b><br>
+• Les dividendes remontés de la filiale vers la holding sont <b>exonérés d'IS à 95%</b> (seule une quote-part de 5% pour frais et charges est imposée)<br>
+• Concrètement : sur 100 000€ de dividendes, seuls 5 000€ sont soumis à l'IS → <b>750€ d'impôt au lieu de 30 000€</b> en flat tax personnelle<br>
+• La holding dispose ainsi de liquidités quasi nettes pour réinvestir<br>
+<br>
+<b>Réinvestissement via une SCI</b><br>
+La holding peut créer une SCI pour acquérir des biens immobiliers (bureaux, locaux commerciaux, immobilier locatif). Les loyers perçus constituent un revenu complémentaire, et l'amortissement du bien réduit l'IS de la SCI à l'IS.<br>
+<br>
+<b>Prise de participation dans d'autres entreprises</b><br>
+La holding peut investir dans des startups, reprendre des entreprises ou diversifier vos sources de revenus. Les plus-values de cession de titres détenus depuis plus de 2 ans bénéficient d'une exonération partielle.<br>
+<br>
+<b>Quand envisager ce montage ?</b><br>
+• CA stable > 80 000€ avec bénéfice récurrent à réinvestir<br>
+• Volonté de constituer un patrimoine professionnel et immobilier<br>
+• Projet de cession future de la société opérationnelle (la holding facilite la transmission)<br>
+• Besoin de structurer plusieurs activités sous un même groupe<br>
+<br>
+<b>Coût et complexité</b><br>
+La création d'une holding implique des frais de constitution (≈ 1 500€), des obligations comptables supplémentaires et une gestion juridique plus complexe. Ce montage se justifie à partir d'un certain niveau de bénéfice récurrent — votre conseiller Timbr peut évaluer la pertinence pour votre situation.`,
+    sources: [
+      {
+        url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36006',
+        title: 'Fiscalité de la SAS — Service-Public.fr',
+      },
+      {
+        url: 'https://www.dougs.fr/blog/eurl-is-ou-ir/',
+        title: 'EURL : IS ou IR ? — Dougs',
+      },
+    ],
+  },
+
+  {
+    id: 'societe_holding_saas_eurl',
+    category: 'Fiscalité',
+    type: 'information',
+    priority: 3,
+    title:
+      'Projet SaaS ou tech : pourquoi une holding SASU peut être stratégique',
+    summary:
+      "Vous êtes en EURL ou SARL et développez un projet technologique ou SaaS ? Si ce projet prend de l'ampleur, une holding SASU au-dessus de votre structure opérationnelle peut devenir un levier puissant : accès facilité aux investisseurs, régime social plus protecteur, optimisation des flux de dividendes via le régime mère-fille, et structuration propre pour une éventuelle levée de fonds ou cession.",
+    content: `<b>Pourquoi la SASU est privilégiée pour les projets tech</b><br>
+Les investisseurs (business angels, fonds de VC) préfèrent très largement investir dans des SAS/SASU. La raison : les statuts de SAS sont beaucoup plus souples pour organiser les pactes d'actionnaires, les clauses de sortie, les BSA/BSPCE et les tours de table.<br>
+<br>
+<b>Le montage holding SASU + EURL opérationnelle</b><br>
+• Votre EURL continue à gérer l'activité opérationnelle courante (prestations, conseil...)<br>
+• Vous créez une <b>holding SASU</b> qui détient les parts de l'EURL et porte le projet SaaS<br>
+• Les bénéfices de l'EURL remontent vers la holding via le <b>régime mère-fille</b> (quasi-exonération d'IS)<br>
+• La holding réinvestit ces fonds dans le développement du SaaS<br>
+<br>
+<b>Avantages concrets</b><br>
+• <b>BSPCE</b> : la SASU permet d'émettre des bons de souscription de parts de créateur d'entreprise — un outil essentiel pour attirer des talents sans les payer cash immédiatement<br>
+• <b>Levée de fonds</b> : les investisseurs entrent au capital de la holding SASU, pas de l'EURL opérationnelle<br>
+• <b>Protection</b> : votre activité opérationnelle est isolée du risque du projet SaaS<br>
+• <b>Cession</b> : plus facile de céder les parts d'une SASU que d'une EURL<br>
+<br>
+<b>Quand passer à l'action ?</b><br>
+• Votre SaaS génère ses premiers revenus récurrents (MRR > 0)<br>
+• Vous envisagez une levée de fonds dans les 12-24 mois<br>
+• Vous souhaitez recruter et fidéliser des collaborateurs clés avec des BSPCE<br>
+<br>
+Ce montage nécessite un accompagnement juridique et fiscal — votre conseiller Timbr peut vous orienter vers les bons experts.`,
+    sources: [
+      {
+        url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36006',
+        title: 'Fiscalité de la SAS — Service-Public.fr',
+      },
+    ],
+  },
+
+  {
+    id: 'societe_mecenat_competences',
+    category: 'Fiscalité',
+    type: 'success',
+    priority: 3,
+    title:
+      'Mécénat de compétences : réduisez votre IS tout en soutenant une cause',
+    summary:
+      "Le mécénat de compétences permet à votre société de mettre gratuitement à disposition ses compétences au profit d'associations d'intérêt général, et de bénéficier en échange d'une réduction d'impôt sur les sociétés de 60% du coût de la prestation (plafonné à 20 000€ ou 5‰ du CA HT). C'est un dispositif méconnu des dirigeants de petites sociétés, souvent associé aux grandes entreprises mais parfaitement accessible à toutes les tailles de société.",
+    content: `<b>Qu'est-ce que le mécénat de compétences ?</b><br>
+C'est la mise à disposition gratuite de votre savoir-faire professionnel au profit d'un organisme d'intérêt général (association loi 1901, fondation reconnue d'utilité publique, etc.). Concrètement : vous réalisez une prestation bénévole pour une association, et votre société valorise cette prestation comme un don en nature.<br>
+<br>
+<b>Réduction d'IS : 60% du coût</b><br>
+• La société valorise le temps passé (salaire chargé du dirigeant ou du salarié) ou le coût de la prestation équivalente<br>
+• <b>Réduction d'IS = 60% du montant valorisé</b><br>
+• Plafond : le plus élevé entre <b>20 000€</b> et <b>5‰ du CA HT annuel</b><br>
+• L'excédent est reportable sur les 5 exercices suivants<br>
+<br>
+<b>Exemple concret</b><br>
+Vous consacrez 2 jours par mois à accompagner bénévolement une association sur votre domaine d'expertise. Coût valorisé : 500€/jour × 24 jours = <b>12 000€/an</b>. Réduction d'IS : 12 000 × 60% = <b>7 200€ d'économie d'impôt</b>.<br>
+<br>
+<b>Conditions à respecter</b><br>
+• L'organisme bénéficiaire doit être d'intérêt général (pas de contrepartie commerciale pour votre société)<br>
+• La prestation doit être valorisée à son coût réel (pas de surévaluation)<br>
+• Un reçu fiscal doit être délivré par l'organisme bénéficiaire<br>
+• La prestation doit être documentée (convention, relevé d'heures, livrables)<br>
+<br>
+<b>Au-delà de la fiscalité</b><br>
+Le mécénat de compétences renforce votre image d'entreprise engagée, développe votre réseau et peut constituer un levier de communication valorisant pour votre marque.`,
+    sources: [
+      {
+        url: 'https://www.economie.gouv.fr/entreprises/mecenat-entreprise',
+        title: "Mécénat d'entreprise — Economie.gouv.fr",
+      },
+      {
+        url: 'https://www.associations.gouv.fr/le-mecenat.html',
+        title: 'Le mécénat — Associations.gouv.fr',
       },
     ],
   },

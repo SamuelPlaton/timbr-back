@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { AuditsApi } from './audits.api';
 import { Audit } from '../../entities';
-import { AuditGenerator } from './audit.generator';
+import { AuditGenerator } from './generators/audit.generator';
+import { CompanyInformation } from '../../types/company-information.type';
 import { User } from '../../entities';
 import { OnboardingService } from '../onboarding';
 
@@ -35,11 +36,12 @@ export class AuditsService {
       throw new Error('Onboarding data not found');
     }
 
-    // Create snapshot of company_information
+    // Merge the situation discriminant (separate column) with the raw JSONB blob
+    // to form the typed CompanyInformation used by the audit generator.
     const companyInformation = {
       situation: onboarding.situation,
       ...onboarding.company_information,
-    };
+    } as CompanyInformation;
 
     // Generate audit items based on company information
     const auditItems = this.auditGenerator.generate(companyInformation);

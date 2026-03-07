@@ -1,4 +1,4 @@
-import { forwardRef, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -24,11 +24,11 @@ import { StripeModule } from '../stripe/stripe.module';
       }),
       inject: [ConfigService],
     }),
-    forwardRef(() => UsersModule),
+    UsersModule,
     BrevoModule,
     forwardRef(() => StripeModule),
   ],
-  exports: [AuthApi, AuthService, JwtStrategy],
+  exports: [AuthApi, AuthService],
   providers: [AuthApi, AuthService, JwtStrategy],
   controllers: [AuthController],
 })

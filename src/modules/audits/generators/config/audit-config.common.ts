@@ -1,5 +1,7 @@
 import type { AuditConfigItem } from '../adapters/base.generator';
 
+// TODO: IMPROVE
+
 const config: AuditConfigItem[] = [
   {
     id: 'tresorerie_assurances_placements',
@@ -13,7 +15,7 @@ const config: AuditConfigItem[] = [
     content: `Plusieurs outils permettent d'optimiser votre trésorerie tout en préparant l'avenir :<br>
 <br>
 <b>Plan d'Épargne Retraite (PER)</b><br>
-Les versements volontaires sont déductibles de votre revenu imposable (jusqu'à 10% du PASS, soit environ 4 637€ en 2024 pour les salariés, davantage pour les TNS). Si votre TMI est à 30%, chaque 1 000€ versé génère 300€ d'économie d'IR immédiate. Les fonds sont bloqués jusqu'à la retraite sauf accidents de la vie.<br>
+Les versements volontaires sont déductibles de votre revenu imposable (jusqu'à 10% du PASS, soit environ 4 637€ en 2024 pour les salariés, davantage pour les TNS). Si votre TMI (Tranche marginale d'Imposition) est à 30%, chaque 1 000€ versé génère 300€ d'économie d'IR immédiate. Les fonds sont bloqués jusqu'à la retraite sauf accidents de la vie.<br>
 <br>
 <b>Assurance-vie</b><br>
 Souple et disponible à tout moment, l'assurance-vie offre une fiscalité avantageuse après 8 ans (abattement annuel de 4 600€ pour un célibataire, 9 200€ pour un couple). Elle est idéale pour votre épargne de précaution à moyen terme et peut servir de complément retraite.<br>
@@ -61,21 +63,20 @@ Le premier exercice ne peut excéder 24 mois au total. Une clôture décalée pe
     priority: 4,
     title: 'Connaissez vos plafonds fiscaux pour optimiser chaque euro',
     summary:
-      'Chaque entrepreneur dispose de plafonds fiscaux et sociaux spécifiques qui, bien utilisés, permettent de réduire significativement la charge fiscale globale du foyer. Ces leviers sont trop souvent découverts tardivement, après avoir laissé des économies substantielles sur la table. Les connaître dès maintenant vous donne un avantage concret sur votre fiscalité annuelle.',
-    content: `Voici les principaux plafonds qui s'appliquent à votre situation d'entrepreneur :<br>
+      "En tant qu'entrepreneur, l'État vous donne accès à des plafonds de déduction que la plupart des gens ne connaissent pas. Bien utilisés, ils peuvent vous faire économiser plusieurs centaines voire milliers d'euros d'impôts par an — légalement. Le problème : ils ont une date limite et s'évaporent si vous ne les utilisez pas avant le 31 décembre.",
+    content: `Voici les 3 leviers les plus concrets pour réduire votre impôt en tant qu'entrepreneur :<br>
 <br>
-<b>Plafond PER (Plan d'Épargne Retraite)</b><br>
-Déduction possible jusqu'à 10% de vos revenus professionnels nets (8x PASS maximum, soit 37 094€ en 2024 pour les salariés). Les plafonds non utilisés sont cumulables et reportables sur les 3 années suivantes — vérifiez votre plafond disponible dans votre espace impots.gouv.fr.<br>
+<b>1. Le PER (Plan Épargne Retraite) — le plus puissant</b><br>
+Chaque euro que vous versez sur un PER est <b>déduit de votre revenu imposable</b>. Concrètement : si vous êtes imposé à 30%, verser 3 000€ sur votre PER vous coûte réellement 2 100€ — l'État finance les 900€ restants via l'économie d'impôt. Plafond : jusqu'à 10% de vos revenus professionnels. Les droits non utilisés sont reportables 3 ans.<br>
 <br>
-<b>Plafond de la Sécurité Sociale (PASS)</b><br>
-Fixé à 46 368€ en 2024, le PASS est la référence de calcul pour vos cotisations retraite, votre prévoyance et de nombreux dispositifs d'épargne. Le maîtriser vous aide à comprendre vos bulletins de cotisation.<br>
+<b>2. Les dons aux associations — rapide et sous-estimé</b><br>
+Un don de 100€ à une association reconnue d'utilité publique vous coûte <b>34€ nets</b> (réduction d'IR de 66%). Pour certaines associations (aide aux personnes en difficulté), la réduction monte à 75%. Plafond : 20% de votre revenu imposable.<br>
 <br>
-<b>Abattements spécifiques</b><br>
-• Frais professionnels forfaitaires : 10% du salaire net en IR (plafonné à 13 522€ en 2024)<br>
-• Dons aux associations : réduction IR de 66% à 75% du montant donné<br>
-• Déficit foncier : jusqu'à 10 700€ déductibles de votre revenu global<br>
+<b>3. Les frais déductibles — vérifiez que vous ne manquez rien</b><br>
+En société, toutes vos dépenses professionnelles réelles (matériel, logiciels, déplacements, formation...) réduisent votre bénéfice imposable. En micro-entreprise, c'est l'abattement forfaitaire qui s'applique — vous ne pouvez pas déduire les frais réels, ce qui peut justifier un changement de structure à partir d'un certain niveau de charges.<br>
 <br>
-Votre conseiller Timbr peut analyser votre situation et identifier les plafonds que vous n'utilisez pas encore.`,
+<b>À faire avant le 31 décembre</b><br>
+Ces plafonds sont annuels. Ce que vous n'utilisez pas cette année (sauf PER) est perdu. Faites le point sur votre situation dès maintenant avec votre conseiller Timbr.`,
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23267',
@@ -93,7 +94,7 @@ Votre conseiller Timbr peut analyser votre situation et identifier les plafonds 
       'Tranche marginale élevée : chaque euro non optimisé est un euro perdu',
     summary:
       "Votre revenu fiscal de référence vous place dans une tranche marginale d'imposition à 30% ou plus, ce qui signifie que chaque euro de revenu supplémentaire est fortement taxé par l'État. À ce niveau d'imposition, des stratégies d'optimisation concrètes permettent de récupérer plusieurs centaines voire milliers d'euros par an. Agir avant la fin de l'année fiscale est essentiel pour maximiser l'impact de ces leviers.",
-    content: `Votre TMI élevé rend certaines stratégies particulièrement efficaces et rentables :<br>
+    content: `Votre TMI (Tranche marginale d'imposition) élevé rend certaines stratégies particulièrement efficaces et rentables :<br>
 <br>
 <b>Plan d'Épargne Retraite (PER) — levier n°1</b><br>
 C'est le dispositif le plus puissant à votre niveau d'imposition. Chaque euro versé réduit directement votre revenu imposable. Exemple : à 41% de TMI, un versement de 5 000€ sur votre PER génère <b>2 050€ d'économie fiscale immédiate</b> — tout en préparant votre retraite.<br>
@@ -116,21 +117,20 @@ Si vous avez des revenus locatifs, les travaux de rénovation génèrent un déf
     priority: 5,
     title: 'CPF : vos droits à la formation accumulés, pensez à les utiliser',
     summary:
-      'Votre Compte Personnel de Formation accumule des droits chaque année que vous pouvez utiliser pour financer des formations professionnelles, des certifications, un bilan de compétences ou une VAE. Ces droits sont personnels, portables quel que soit votre statut, et ne disparaissent pas si vous changez de structure. Investir dans vos compétences est souvent le meilleur retour sur investissement pour un entrepreneur.',
-    content: `Le CPF est alimenté chaque année à hauteur de <b>500€ par an</b> (800€ pour les travailleurs peu qualifiés), dans la limite de 5 000€ cumulés (8 000€ pour les peu qualifiés). En tant qu'entrepreneur indépendant ou salarié, ces droits sont actifs et consultables dès maintenant.<br>
+      "Votre CPF accumule des droits chaque année, et ils vous appartiennent quoi qu'il arrive — changement de statut, création d'entreprise, reconversion. En tant qu'entrepreneur, vous pouvez les utiliser pour financer des formations qui améliorent directement votre activité ou votre employabilité. Beaucoup d'indépendants ont des centaines voire des milliers d'euros disponibles sans le savoir.",
+    content: `Le CPF est crédité de <b>500€ par an</b> (plafonné à 5 000€ cumulés). Vérifiez votre solde sur <b>moncompteformation.gouv.fr</b> — vous avez peut-être plus que vous ne pensez si vous étiez salarié avant.<br>
 <br>
-<b>Formations éligibles au CPF</b><br>
-• Formations certifiantes et diplômantes (comptabilité, management, langues, digital, data...)<br>
-• Bilan de compétences (jusqu'à 2 000€ financés intégralement)<br>
-• Validation des Acquis de l'Expérience (VAE)<br>
-• Permis de conduire professionnel<br>
-• Création et reprise d'entreprise (accompagnement BGUE)<br>
+<b>Exemples concrets utiles pour un entrepreneur</b><br>
+• <b>Permis moto (A ou A2)</b> — si vous vous déplacez chez des clients, le permis moto est éligible au CPF et peut vous faire gagner un temps considérable en ville<br>
+• <b>TOEIC / TOEFL / anglais professionnel</b> — certifications de langue entièrement finançables, valorisées sur les missions B2B et les appels d'offres internationaux<br>
+• <b>Coaching professionnel certifié</b> — accompagnement au développement de votre activité, gestion du stress, leadership : certains programmes sont éligibles CPF<br>
+• <b>Certifications métier</b> (Google, Microsoft, AWS, gestion de projet PMP/Prince2, comptabilité...) — renforcent votre crédibilité et peuvent débloquer de nouvelles missions ou des tarifs plus élevés<br>
+• <b>Bilan de compétences</b> — jusqu'à 2 000€ financés à 100%, utile si vous hésitez sur l'orientation de votre activité<br>
 <br>
-<b>Comment accéder à vos droits</b><br>
-Rendez-vous sur <b>moncompteformation.gouv.fr</b> avec votre numéro de sécurité sociale. Consultez votre solde et recherchez des formations directement éligibles à 100% sur CPF.<br>
-<br>
-<b>Astuce</b><br>
-Planifiez vos formations en début d'année pour bénéficier des droits fraîchement crédités. En cas de solde insuffisant, un co-financement est possible avec votre OPCO, votre Région, ou un reste à charge personnel.`,
+<b>Astuces pratiques</b><br>
+• Les droits CPF se cumulent d'une année sur l'autre — si vous n'avez jamais utilisé votre CPF, vous avez peut-être plusieurs milliers d'euros disponibles dès maintenant<br>
+• En cas de solde insuffisant, un co-financement est possible avec votre OPCO, votre Région, ou un reste à charge personnel<br>
+• Méfiez-vous des arnaques : ne donnez jamais votre numéro de sécurité sociale par téléphone à des démarcheurs CPF`,
     sources: [
       {
         url: 'https://www.moncompteformation.gouv.fr',
@@ -146,11 +146,11 @@ Planifiez vos formations en début d'année pour bénéficier des droits fraîch
     priority: 2,
     title: 'Mentions obligatoires sur vos factures : êtes-vous en conformité ?',
     summary:
-      "Chaque facture émise par {{company_name}} doit comporter un ensemble de mentions légales précisément définies par le Code de Commerce et le Code Général des Impôts. L'absence d'une seule mention peut entraîner des amendes lors d'un contrôle fiscal et des litiges avec vos clients. La conformité de vos factures est aussi un signal de professionnalisme qui renforce la confiance de vos partenaires et clients.",
-    content: `Voici les mentions obligatoires que chaque facture de <b>{{company_name}}</b> doit impérativement contenir :<br>
+      "Chaque facture émise doit comporter un ensemble de mentions légales précisément définies par le Code de Commerce et le Code Général des Impôts. L'absence d'une seule mention peut entraîner des amendes lors d'un contrôle fiscal et des litiges avec vos clients. La conformité de vos factures est aussi un signal de professionnalisme qui renforce la confiance de vos partenaires et clients.",
+    content: `Voici les mentions obligatoires que chaque facture doit impérativement contenir :<br>
 <br>
 <b>Identification de l'émetteur</b><br>
-• Numéro SIRET : <b>{{siret}}</b><br>
+• Numéro SIREN : <b>{{siren}}</b><br>
 • Dénomination sociale complète<br>
 • Adresse du siège social<br>
 • Forme juridique et montant du capital social (si société)<br>
@@ -183,30 +183,32 @@ Planifiez vos formations en début d'année pour bénéficier des droits fraîch
   },
 
   {
-    id: 'common_rc_pro_couverture',
+    id: 'common_protection_sociale',
     category: 'Social',
     type: 'warning',
     priority: 2,
-    title: 'RC Pro : êtes-vous couvert contre les risques de votre activité ?',
+    title:
+      "RC Pro, prévoyance et mutuelle : votre protection en tant qu'indépendant",
     summary:
-      "La Responsabilité Civile Professionnelle vous protège contre les conséquences financières des dommages causés à des tiers dans le cadre de votre activité — erreur de conseil, oubli, retard ou accident. Sans cette couverture, vous seriez personnellement responsable sur l'ensemble de votre patrimoine. Pour certaines professions, elle est une obligation légale qui conditionne le droit d'exercer.",
-    content: `La RC Pro est <b>légalement obligatoire</b> pour les activités suivantes :<br>
-• Professions du bâtiment : artisans, architectes, maîtres d'œuvre (avec garantie décennale)<br>
-• Professions médicales et paramédicales : médecins, infirmiers, kinés, ostéopathes...<br>
-• Avocats, experts-comptables, commissaires aux comptes, notaires<br>
-• Agents immobiliers et administrateurs de biens<br>
-• Courtiers en assurance et conseillers en investissements financiers<br>
+      "En quittant le salariat — ou en ne l'ayant jamais connu — vous perdez les protections financées par un employeur : mutuelle collective, prévoyance, couverture des accidents du travail. En tant qu'indépendant, tout repose sur vous. Un arrêt maladie d'un mois sans prévoyance peut représenter plusieurs milliers d'euros de revenus perdus. La bonne nouvelle : des solutions existent, et elles sont souvent moins chères que ce qu'on imagine.",
+    content: `<b>1. RC Pro — vérifiez votre obligation avant votre premier client</b><br>
+La Responsabilité Civile Professionnelle couvre les dommages causés à des tiers dans le cadre de votre activité (erreur de conseil, livrable défectueux, accident chez un client). Elle est <b>légalement obligatoire</b> pour :<br>
+• Bâtiment : artisans, architectes, maîtres d'œuvre (+ garantie décennale)<br>
+• Médical et paramédical : médecins, infirmiers, kinés, ostéopathes...<br>
+• Professions juridiques et financières : avocats, experts-comptables, notaires<br>
+• Agents immobiliers, courtiers en assurance, conseillers financiers<br>
+Pour toutes les autres activités, elle est <b>fortement recommandée</b> — un seul incident non couvert peut engager l'ensemble de votre patrimoine personnel.<br>
+Coût : 150€ à 500€/an pour un consultant ou développeur, 500€ à 3 000€/an pour le BTP.<br>
 <br>
-<b>Pour toutes les autres activités, elle est vivement recommandée</b><br>
-En cas de dommage causé à un client (livrable défectueux, conseil inadapté, retard préjudiciable, accident chez le client), vous êtes personnellement engagé si vous n'êtes pas assuré. La RC Pro couvre les frais juridiques de défense et l'indemnisation des dommages.<br>
+<b>2. Prévoyance / maintien des revenus — le risque le plus sous-estimé</b><br>
+En cas d'arrêt maladie ou d'accident, la Sécurité Sociale des Indépendants verse des indemnités journalières très limitées : environ <b>20€/jour</b> pour un micro-entrepreneur, avec un délai de carence de 3 jours (7 jours pour les professions libérales). C'est insuffisant pour couvrir vos charges fixes. Une prévoyance complémentaire couvre la différence entre vos revenus habituels et les indemnités légales. Elle devient indispensable dès que vous générez plus de 2 000€/mois de revenus.<br>
+Coût : 30€ à 80€/mois selon le niveau de couverture et votre âge.<br>
 <br>
-<b>Coûts indicatifs annuels</b><br>
-• Consultant / développeur / créatif : 150€ à 500€/an<br>
-• Coach / formateur : 200€ à 600€/an<br>
-• BTP artisan : 500€ à 3 000€/an selon volume de travaux<br>
+<b>3. Mutuelle santé TNS — à mettre en place avant votre premier jour</b><br>
+Sans employeur, vous devez souscrire une complémentaire santé individuelle (contrat «Madelin» ou TNS). Ces contrats sont généralement plus coûteux que les contrats collectifs d'entreprise, mais les cotisations sont déductibles de votre revenu imposable si vous êtes en société. Comptez entre 80€ et 200€/mois selon votre profil.<br>
 <br>
-<b>Comment choisir</b><br>
-Comparez au moins 3 devis en précisant votre secteur d'activité exact, votre CA prévisionnel et la nature de vos interventions (sur site client, à distance, avec manipulation de matériel tiers...).`,
+<b>Où comparer</b><br>
+Des comparateurs en ligne (Hiscox, AXA Pro, April, Wemind, Alan) proposent des devis instantanés pour la RC Pro et la mutuelle. Pour la prévoyance, faites simuler votre couverture par votre conseiller Timbr.`,
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23442',
@@ -224,27 +226,24 @@ Comparez au moins 3 devis en précisant votre secteur d'activité exact, votre C
     category: 'Fiscalité',
     type: 'success',
     priority: 3,
-    title:
-      "CFE : vous bénéficiez de l'exonération totale pour votre première année",
+    title: 'CFE : la taxe que personne ne vous explique avant de se lancer',
     summary:
-      "Bonne nouvelle : l'année de création de votre entreprise ({{creation_date}}), vous êtes totalement exonéré de Cotisation Foncière des Entreprises. Cette taxe locale annuelle, souvent oubliée par les nouveaux entrepreneurs, peut représenter plusieurs centaines voire milliers d'euros selon votre commune. Profitez de cette première année pour constituer une réserve, car la CFE sera due dès votre deuxième exercice.",
-    content: `Votre entreprise créée le <b>{{creation_date}}</b> bénéficie de l'<b>exonération totale de CFE pour l'année en cours</b>.<br>
+      "La Cotisation Foncière des Entreprises est un impôt local que toutes les entreprises doivent payer chaque année — sauf la première. Que vous soyez en train de vous lancer ou tout juste immatriculé, c'est le bon moment pour comprendre ce qui vous attend et éviter la mauvaise surprise à la fin de l'année 2.",
+    content: `<b>Qu'est-ce que la CFE ?</b><br>
+La CFE est un impôt local annuel dû par toutes les entreprises — micro-entrepreneurs inclus — à partir de la <b>deuxième année d'activité</b>. Elle est calculée sur la valeur locative des locaux utilisés pour votre activité (ou un montant minimum si vous travaillez depuis chez vous).<br>
 <br>
-<b>Qu'est-ce que la CFE ?</b><br>
-La Cotisation Foncière des Entreprises est un impôt local dû annuellement par toutes les entreprises — micro-entrepreneurs inclus — à partir de la deuxième année d'activité. Son montant est calculé sur la valeur locative cadastrale des locaux utilisés pour votre activité.<br>
+<b>La bonne nouvelle : l'année de création, vous en êtes exonéré</b><br>
+Quelle que soit votre structure, votre première année complète d'activité est toujours exonérée de CFE. C'est automatique — mais vous devez quand même <b>déclarer votre activité avant le 31 décembre</b> de l'année de création via votre espace professionnel sur impots.gouv.fr pour en bénéficier.<br>
 <br>
-<b>Montants indicatifs selon les communes</b><br>
+<b>Montants à prévoir dès l'année 2</b><br>
 • Petite commune (< 5 000 hab.) : 200€ à 500€/an<br>
 • Ville moyenne : 400€ à 1 200€/an<br>
 • Grande ville (Paris, Lyon, Marseille) : 800€ à 2 500€/an et plus<br>
 <br>
-<b>Ce que vous devez faire maintenant</b><br>
-• Vérifier que votre immatriculation est bien enregistrée auprès du service des impôts des entreprises (SIE) de votre commune<br>
-• Si vous travaillez depuis votre domicile, une cotisation minimum s'appliquera dès la deuxième année<br>
-• Déclarez votre activité avant le <b>31 décembre</b> de cette année via l'espace professionnel sur impots.gouv.fr<br>
-<br>
-<b>À prévoir dès maintenant</b><br>
-Provisionnez la CFE dans votre budget mensuel dès votre deuxième année. Vous recevrez votre avis d'imposition en automne avec un paiement exigible en décembre.`,
+<b>Ce qu'il faut faire maintenant</b><br>
+• Si vous êtes en cours de création : notez-le dans votre budget dès l'année 2<br>
+• Si vous venez de vous immatriculer : vérifiez que votre enregistrement est bien visible sur votre espace impots.gouv.fr<br>
+• Dans tous les cas : provisionnez ce montant mensuellement pour ne pas être surpris en décembre`,
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23547',

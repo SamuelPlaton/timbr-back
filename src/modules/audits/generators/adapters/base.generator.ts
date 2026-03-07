@@ -3,7 +3,7 @@ import {
   AuditItemCategory,
   AuditItemType,
 } from '../../../../entities';
-import { CompanyInformation } from '../../../../types/company-information.type';
+import { AuditContext } from '../audit-context.type';
 
 export interface AuditConfigItem {
   id: string;
@@ -23,7 +23,7 @@ export abstract class BaseAuditGenerator {
    */
   protected abstract readonly config: AuditConfigItem[];
 
-  abstract generate(companyInfo: CompanyInformation): Partial<AuditItem>[];
+  abstract generate(ctx: AuditContext): Partial<AuditItem>[];
 
   protected createItem(
     configId: string,
@@ -36,15 +36,20 @@ export abstract class BaseAuditGenerator {
     }
 
     let content = configItem.content;
+    let title = configItem.title;
+    let summary = configItem.summary;
     Object.keys(variables).forEach((key) => {
       const regex = new RegExp(`{{${key}}}`, 'g');
-      content = content.replace(regex, String(variables[key]));
+      const value = String(variables[key]);
+      content = content.replace(regex, value);
+      title = title.replace(regex, value);
+      summary = summary.replace(regex, value);
     });
 
     return {
       type: configItem.type as AuditItemType,
-      title: configItem.title,
-      summary: configItem.summary,
+      title,
+      summary,
       content,
       category: configItem.category as AuditItemCategory,
       priority: configItem.priority,

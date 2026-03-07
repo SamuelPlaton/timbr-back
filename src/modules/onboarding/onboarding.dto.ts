@@ -18,15 +18,7 @@ export class CreateOnboardingDto {
 
   @IsObject()
   @IsNotEmpty()
-  company_information: {
-    siren?: string;
-    siret?: string;
-    company_name?: string;
-    legal_form?: string;
-    address?: string;
-    creation_date?: string;
-    [key: string]: any;
-  };
+  company_information: Record<string, any>;
 
   @IsBoolean()
   @IsOptional()
@@ -44,15 +36,7 @@ export class UpdateOnboardingDto {
 
   @IsObject()
   @IsOptional()
-  company_information?: {
-    siren?: string;
-    siret?: string;
-    company_name?: string;
-    legal_form?: string;
-    address?: string;
-    creation_date?: string;
-    [key: string]: any;
-  };
+  company_information?: Record<string, any>;
 
   @IsBoolean()
   @IsOptional()
