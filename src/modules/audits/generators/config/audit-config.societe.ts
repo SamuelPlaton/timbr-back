@@ -5,12 +5,12 @@ import type { AuditConfigItem } from '../adapters/base.generator';
 const config: AuditConfigItem[] = [
   {
     id: 'social_sas_sasu_protection_sociale',
-    category: 'Social',
+    category: 'fiscalite',
     type: 'information',
     priority: 3,
     title: "SASU/SAS : votre statut d'assimilé-salarié, un atout majeur",
     summary:
-      "En tant que président de SASU ou SAS, vous bénéficiez du statut d'assimilé-salarié, qui vous confère une protection sociale quasi-équivalente à celle d'un cadre du secteur privé. Ce statut est fondamentalement différent du régime TNS des gérants EURL/SARL, et constitue l'un des principaux avantages de la SASU pour ceux qui valorisent la protection. Votre niveau de protection dépend directement du salaire que vous vous versez.",
+      "En tant que président de SASU/SAS, votre statut d'assimilé-salarié vous confère une protection sociale quasi-équivalente à celle d'un cadre. Ce statut diffère du régime TNS des gérants EURL/SARL et votre niveau de protection dépend directement du salaire que vous vous versez.",
     content: `<b>Ce que couvre votre statut d'assimilé-salarié en SASU</b><br>
 <br>
 <b>Assurance maladie-maternité</b><br>
@@ -30,19 +30,20 @@ Les cotisations sociales d'un assimilé-salarié représentent environ 75% du sa
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36215',
-        title: 'Fiscalité de la SASU — Service-Public.fr',
+        title: 'Fiscalité de la SASU',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'social_rapport_estimation_revenus',
-    category: 'Social',
+    category: 'fiscalite',
     type: 'information',
     priority: 4,
     title: 'Estimation de vos revenus et charges sociales annuels',
     summary:
-      "Avec un salaire mensuel brut de {{monthly_salary}}€, votre revenu brut annuel estimé s'élève à {{estimated_revenue}}€. Ce niveau de rémunération détermine directement le montant de vos cotisations sociales, votre protection sociale et le nombre de trimestres de retraite que vous validez chaque année. Comprendre ces mécanismes vous permet de piloter votre rémunération avec précision.",
+      'Avec {{monthly_salary}}€ brut/mois, votre revenu annuel est de {{estimated_revenue}}€. Ce niveau détermine vos cotisations, protection sociale et trimestres de retraite. Comprendre ces mécanismes permet de piloter votre rémunération avec précision.',
     content: `<b>Récapitulatif de votre situation avec un salaire de {{monthly_salary}}€/mois brut</b><br>
 <br>
 <b>Revenus annuels estimés</b><br>
@@ -63,19 +64,20 @@ Si votre société génère plus de bénéfice que votre salaire, envisagez de c
     sources: [
       {
         url: 'https://abby.fr/blog/connaitre-le-taux-de-cotisations-sociales-urssaf-auto-entrepreneur/',
-        title: 'Taux de cotisations sociales — Abby',
+        title: 'Taux de cotisations sociales',
+        website_name: 'Abby',
       },
     ],
   },
 
   {
     id: 'social_sasu_dividendes',
-    category: 'Social',
+    category: 'optimisation',
     type: 'success',
     priority: 2,
     title: 'Dividendes SASU : optimisez votre rémunération avec la flat tax',
     summary:
-      "En SASU, vous pouvez distribuer une partie des bénéfices de votre société sous forme de dividendes soumis à la flat tax de 30%, sans cotisations sociales supplémentaires. C'est l'un des leviers d'optimisation les plus puissants disponibles pour les dirigeants de SASU une fois que l'entreprise génère un bénéfice significatif. La combinaison d'un salaire raisonnable et de dividendes permet souvent d'atteindre un revenu net supérieur à un salaire seul.",
+      "En SASU, vous pouvez distribuer des dividendes soumis à la flat tax de 30%, sans cotisations sociales supplémentaires. C'est un levier d'optimisation majeur dès que l'entreprise génère un bénéfice significatif. Combiner salaire raisonnable et dividendes permet souvent un revenu net supérieur.",
     content: `<b>Fonctionnement des dividendes en SASU</b><br>
 Après paiement de l'IS (15% jusqu'à 42 500€ de bénéfice, 25% au-delà), le bénéfice net peut être distribué en dividendes. Ces dividendes sont soumis au <b>Prélèvement Forfaitaire Unique (PFU) de 30%</b> :<br>
 • 12,8% d'impôt sur le revenu<br>
@@ -98,19 +100,20 @@ Votre conseiller Timbr peut simuler le mix salaire/dividendes optimal selon votr
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F32963',
-        title: 'Dividendes SARL/SASU — Service-Public.fr',
+        title: 'Dividendes SARL/SASU',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'retraite_sasu_declaration_arebasee',
-    category: 'Retraite',
+    category: 'optimisation',
     type: 'warning',
     priority: 2,
     title: "Droits ARE : vérifiez votre calcul avant d'immatriculer votre SASU",
     summary:
-      "Si vous avez des droits ARE ouverts ou à ouvrir (salariat précédent), la date d'immatriculation de votre SASU peut affecter le démarrage et le montant de vos allocations. Une erreur de timing peut vous faire perdre plusieurs mois d'allocation ou réduire vos droits. Il est indispensable de consulter Pôle Emploi avant toute décision pour sécuriser votre plan de financement de lancement.",
+      "Si vous avez des droits ARE (salariat précédent), la date d'immatriculation de votre SASU peut affecter vos allocations. Une erreur de timing peut vous faire perdre des mois d'allocation. Consultez Pôle Emploi avant toute décision pour sécuriser votre financement de lancement.",
     content: `<b>Comment l'ouverture d'une SASU interagit avec vos droits ARE</b><br>
 La création d'une société ne suspend pas automatiquement vos droits ARE — vous pouvez continuer à percevoir des allocations sous conditions. Mais la date d'immatriculation et le moment de votre inscription à Pôle Emploi sont déterminants.<br>
 <br>
@@ -129,20 +132,21 @@ Prenez rendez-vous avec un conseiller Pôle Emploi et votre conseiller Timbr <b>
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F15252',
-        title: 'ARCE vs ARE — Service-Public.fr',
+        title: 'ARCE vs ARE',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'retraite_sasu_explication_trimestres',
-    category: 'Retraite',
+    category: 'optimisation',
     type: 'information',
     priority: 3,
     title:
       'Retraite SASU : avec {{monthly_salary}}€/mois, vous validez {{quarters}} trimestre(s) cette année',
     summary:
-      "En SASU, vos trimestres de retraite sont déterminés par votre salaire brut mensuel et non par votre chiffre d'affaires. Avec votre salaire actuel de {{monthly_salary}}€ brut par mois, vous validez {{quarters}} trimestre(s) de retraite sur l'année en cours. Chaque trimestre manquant aujourd'hui se traduit par une décote sur votre future pension — comprendre ce mécanisme est essentiel pour piloter votre rémunération.",
+      'En SASU, vos trimestres retraite dépendent du salaire brut, pas du CA. Avec {{monthly_salary}}€/mois, vous validez {{quarters}} trimestre(s). Chaque trimestre manquant entraîne une décote sur votre pension — essentiel pour piloter votre rémunération.',
     content: `<b>Comment sont calculés vos trimestres de retraite en SASU</b><br>
 En tant qu'assimilé-salarié, vous validez un trimestre de retraite pour chaque <b>1 747€ bruts gagnés sur la période du trimestre</b> (SMIC × 150h en 2024). Vous ne pouvez pas valider plus de 4 trimestres par an, quel que soit votre salaire.<br>
 <br>
@@ -166,12 +170,12 @@ Votre conseiller Timbr peut vous aider à ajuster votre salaire pour optimiser v
 
   {
     id: 'retraite_validation_prelevements_personnel',
-    category: 'Retraite',
+    category: 'optimisation',
     type: 'danger',
     priority: 1,
     title: 'Risque retraite : votre salaire actuel ne valide aucun trimestre',
     summary:
-      'Avec un salaire mensuel brut inférieur à {{minimum_salary}}€, votre rémunération actuelle ne suffit pas à valider un seul trimestre de retraite par trimestre civil. Chaque année passée sans trimestres validés crée une lacune définitive dans votre carrière retraite et peut retarder votre départ à taux plein ou réduire le montant de votre pension. Corriger cette situation est possible avec un ajustement modéré de votre salaire.',
+      'Avec un salaire sous {{minimum_salary}}€/mois, vous ne validez aucun trimestre de retraite. Chaque année sans trimestres crée une lacune définitive pouvant retarder votre retraite à taux plein ou réduire votre pension. Un ajustement modéré suffit.',
     content: `<b>Pourquoi votre salaire actuel est insuffisant</b><br>
 Pour valider 1 trimestre de retraite, vous devez percevoir un salaire brut d'au moins <b>1 747€ sur la période du trimestre</b> (SMIC × 150h en 2024). Cela représente environ <b>{{minimum_salary}}€ bruts par mois</b>.<br>
 <br>
@@ -192,13 +196,13 @@ Si vous ne souhaitez pas augmenter votre salaire (pour optimiser votre IS), envi
 
   {
     id: 'demission_are_chomage',
-    category: 'Démission',
+    category: 'aides',
     type: 'success',
     priority: 2,
     title:
       'Démission légitime : vous pourriez avoir droit aux allocations chômage',
     summary:
-      "Depuis la loi Avenir Professionnel de novembre 2018, certaines démissions d'un CDI peuvent ouvrir droit aux allocations chômage (ARE) si elles sont motivées par un projet de création ou reprise d'entreprise. Ce droit n'est pas automatique et nécessite une validation préalable de votre projet par une commission régionale. Ne quittez pas votre emploi avant d'avoir fait valider votre éligibilité — c'est une condition non négociable.",
+      "Depuis 2018, certaines démissions d'un CDI peuvent ouvrir droit à l'ARE si motivées par un projet de création d'entreprise. Ce droit nécessite une validation préalable par une commission régionale. Ne quittez pas votre emploi avant d'avoir fait valider votre éligibilité.",
     content: `<b>Conditions pour bénéficier de l'ARE après démission légitime</b><br>
 • Avoir travaillé en CDI chez le même employeur pendant au moins <b>5 ans consécutifs</b><br>
 • Démissionner pour créer ou reprendre une entreprise<br>
@@ -219,20 +223,21 @@ La démission sans validation CPIR préalable ne donne droit à aucune ARE — a
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F15252',
-        title: 'ARCE vs ARE — Service-Public.fr',
+        title: 'ARCE vs ARE',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'demission_sasu_conseil_versement',
-    category: 'Démission',
+    category: 'aides',
     type: 'information',
     priority: 2,
     title:
       'SASU : maintenez un salaire minimum pour ne pas perdre vos droits sociaux',
     summary:
-      "En SASU, vous êtes entièrement libre de décider de votre niveau de rémunération — y compris de ne pas vous verser de salaire. Cependant, l'absence prolongée de rémunération a des conséquences directes sur votre protection sociale, vos droits retraite et votre couverture maladie. Maintenir un salaire minimum est souvent la décision la plus équilibrée pour préserver vos droits sans sur-impacter votre trésorerie.",
+      "En SASU, vous êtes libre de fixer votre rémunération, y compris à zéro. Mais l'absence prolongée de salaire impacte votre protection sociale, retraite et couverture maladie. Un salaire minimum est souvent le meilleur compromis pour préserver vos droits sans trop impacter la trésorerie.",
     content: `<b>Ce que vous perdez sans salaire en SASU</b><br>
 • <b>Trimestres retraite</b> : aucune cotisation = aucun trimestre validé (minimum 582€/mois pour en valider 4 par an)<br>
 • <b>Assurance maladie</b> : maintenue pendant 12 mois après le dernier salaire, puis suspendue<br>
@@ -251,20 +256,21 @@ Le versement d'un salaire SASU réduit vos allocations mensuelles proportionnell
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36215',
-        title: 'Fiscalité de la SASU — Service-Public.fr',
+        title: 'Fiscalité de la SASU',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'are_chomage_optimisation_arebasee',
-    category: 'ARE',
+    category: 'aides',
     type: 'information',
     priority: 1,
     title:
       'ARE ou ARCE : quelle option maximise votre trésorerie de lancement ?',
     summary:
-      "Si vous avez des droits ARE, deux options s'offrent à vous lors de la création de votre société : l'ARE mensuelle (maintien progressif des allocations pendant votre activité) ou l'ARCE (versement en capital de 60% de vos droits restants). Ce choix est définitif et peut représenter plusieurs dizaines de milliers d'euros de différence selon votre profil. L'ARE est généralement recommandée pour les lancements progressifs, l'ARCE pour ceux qui ont besoin d'un capital initial.",
+      "Avec des droits ARE, deux options à la création : l'ARE mensuelle (maintien progressif) ou l'ARCE (capital de 60% des droits). Ce choix définitif peut représenter des dizaines de milliers d'euros de différence. ARE pour les lancements progressifs, ARCE pour un besoin de capital initial.",
     content: `<b>Option 1 — ARE (maintien mensuel)</b><br>
 Vos allocations sont maintenues et réduites proportionnellement à vos revenus mensuels de dirigeant. La formule Pôle Emploi est : <b>Allocation mensuelle = droits quotidiens × jours – (revenu mensuel × 70%)</b>.<br>
 <br>
@@ -290,19 +296,20 @@ Ce choix est <b>irrévocable</b>. Prenez rendez-vous avec votre conseiller Timbr
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F15252',
-        title: 'ARCE vs ARE — Service-Public.fr',
+        title: 'ARCE vs ARE',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'are_chomage_conseil_expert',
-    category: 'ARE',
+    category: 'aides',
     type: 'success',
     priority: 2,
     title: "SASU et ARE : maîtrisez l'interaction pour maximiser vos revenus",
     summary:
-      "En SASU, chaque mois où vous percevez un salaire réduit votre ARE proportionnellement selon une formule Pôle Emploi complexe. À l'inverse, un salaire trop faible en SASU peut ne pas suffire à couvrir vos besoins tout en faisant partiellement disparaître votre ARE. Trouver le bon équilibre entre salaire SASU et maintien ARE est un exercice d'optimisation qui mérite un accompagnement expert.",
+      "En SASU, votre salaire réduit votre ARE proportionnellement selon une formule Pôle Emploi complexe. Un salaire trop faible peut ne pas couvrir vos besoins tout en réduisant votre ARE. Trouver le bon équilibre salaire/ARE est un exercice d'optimisation nécessitant un accompagnement expert.",
     content: `<b>Comment le salaire SASU affecte votre ARE mensuellement</b><br>
 La formule Pôle Emploi pour calculer votre ARE mensuelle réduite est :<br>
 • ARE journalière brute × nombre de jours du mois – (revenus nets SASU du mois × 70%)<br>
@@ -322,20 +329,21 @@ Faites simuler votre situation par votre conseiller Timbr avant de fixer votre s
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F15252',
-        title: 'ARCE vs ARE — Service-Public.fr',
+        title: 'ARCE vs ARE',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'age_maintenir_are',
-    category: 'AGE',
+    category: 'aides',
     type: 'success',
     priority: 2,
     title:
       'AGE : conservez votre ARE pendant le développement de votre société',
     summary:
-      "Le dispositif d'Aide à la Gestion de l'Entreprise (AGE) vous permet de continuer à percevoir vos allocations chômage tout en développant votre société. C'est l'un des leviers de trésorerie les plus puissants pour les premières années d'une SASU — il peut vous apporter plusieurs centaines à plusieurs milliers d'euros par mois en complément de votre salaire. La condition est de vous être inscrit à Pôle Emploi avant la date d'immatriculation de votre société.",
+      "L'AGE vous permet de percevoir vos allocations chômage tout en développant votre société. Ce levier de trésorerie peut apporter des centaines à des milliers d'euros/mois en complément de votre salaire. Condition : être inscrit à Pôle Emploi avant l'immatriculation de votre société.",
     content: `<b>Comment fonctionne l'AGE (maintien ARE)</b><br>
 L'AGE n'est pas un dispositif séparé : c'est simplement la possibilité de continuer à percevoir des allocations ARE pendant que vous gérez votre société. Votre ARE mensuelle est réduite proportionnellement à vos revenus de dirigeant, mais elle ne s'arrête pas.<br>
 <br>
@@ -356,19 +364,20 @@ Si vous optez pour l'ARCE (capital immédiat), l'AGE n'est plus disponible. Ces 
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F15252',
-        title: 'ARCE vs ARE — Service-Public.fr',
+        title: 'ARCE vs ARE',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'tva_choix_regime_micro',
-    category: 'TVA',
+    category: 'tva',
     type: 'information',
     priority: 3,
     title: 'Franchise en base de TVA : une option de simplicité à évaluer',
     summary:
-      "Votre chiffre d'affaires estimé est sous le seuil de la franchise en base de TVA, ce qui vous donne la possibilité de rester non-assujetti à la TVA. Ce régime simplifie considérablement votre gestion administrative mais présente des inconvénients pour les activités B2B et vous prive de la récupération de la TVA sur vos achats professionnels. Le choix de rester ou non sous ce régime dépend avant tout de votre clientèle cible.",
+      'Votre CA est sous le seuil de franchise TVA, vous permettant de rester non-assujetti. Ce régime simplifie la gestion mais présente des inconvénients en B2B et vous prive de récupérer la TVA sur vos achats. Le choix dépend de votre clientèle cible.',
     content: `<b>Ce que signifie la franchise en base de TVA</b><br>
 En dessous de 36 800€ de CA annuel (seuil 2024 pour les services), vous n'avez pas à collecter la TVA sur vos factures. Vous mentionnez simplement «TVA non applicable, article 293B du CGI» sur chaque facture. Vous ne récupérez pas non plus la TVA sur vos achats.<br>
 <br>
@@ -389,23 +398,25 @@ Votre conseiller Timbr peut vous aider à faire le bon choix selon votre profil 
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F21746',
-        title: 'Franchise en base de TVA — Service-Public.fr',
+        title: 'Franchise en base de TVA',
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23569',
-        title: 'Déduction de la TVA — Service-Public.fr',
+        title: 'Déduction de la TVA',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'tva_sasu_sasu_conseil_expert',
-    category: 'TVA',
+    category: 'tva',
     type: 'success',
     priority: 3,
     title: 'Régime TVA : choisissez la formule adaptée à votre activité',
     summary:
-      "Pour votre SASU, le choix du régime TVA optimal dépend de votre niveau de CA, de la nature de votre activité et de votre profil clients. Trois régimes existent, avec des implications très différentes en termes d'obligations déclaratives et de trésorerie. Un mauvais choix de régime peut entraîner des crédits TVA bloqués ou des acomptes trop importants — prenez le temps de choisir avec un accompagnement expert.",
+      'Le régime TVA de votre SASU dépend de votre CA, activité et profil clients. Trois régimes existent avec des implications différentes en obligations et trésorerie. Un mauvais choix peut entraîner des crédits bloqués ou des acomptes excessifs.',
     content: `<b>Les 3 régimes TVA disponibles pour votre SASU</b><br>
 <br>
 <b>1. Franchise en base</b><br>
@@ -425,24 +436,26 @@ Nos experts-comptables partenaires peuvent analyser votre situation et vous reco
     sources: [
       {
         url: 'https://www.impots.gouv.fr/sites/default/files/media/3_Documentation/fiches_focus/declarer_payer_tva.pdf',
-        title: 'Déclarer et payer la TVA — Impôts.gouv.fr',
+        title: 'Déclarer et payer la TVA',
+        website_name: 'Impôts.gouv.fr',
       },
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23569',
-        title: 'Déduction de la TVA — Service-Public.fr',
+        title: 'Déduction de la TVA',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'societe_frais_deductibles',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'success',
     priority: 2,
     title:
       "Frais professionnels déductibles : réduisez votre IS dès aujourd'hui",
     summary:
-      "Contrairement à la micro-entreprise, votre société peut déduire l'ensemble de ses frais professionnels réels de son bénéfice avant calcul de l'impôt sur les sociétés. Chaque euro de frais professionnel déductible réduit directement votre IS — soit 15% de réduction pour les bénéfices sous 42 500€, soit 25% au-delà. C'est l'un des leviers d'optimisation les plus puissants et les plus accessibles pour les dirigeants de société.",
+      "Votre société peut déduire tous ses frais professionnels réels avant calcul de l'IS. Chaque euro déductible réduit votre IS de 15% (bénéfices sous 42 500€) ou 25% au-delà. C'est l'un des leviers d'optimisation les plus puissants et accessibles pour les dirigeants de société.",
     content: `<b>Catégories de frais déductibles à connaître</b><br>
 <br>
 <b>Véhicule professionnel</b><br>
@@ -468,23 +481,25 @@ Utilisez une carte bancaire professionnelle dédiée pour toutes vos dépenses p
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36006',
-        title: 'Fiscalité de la SAS — Service-Public.fr',
+        title: 'Fiscalité de la SAS',
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36215',
-        title: 'Fiscalité de la SASU — Service-Public.fr',
+        title: 'Fiscalité de la SASU',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'societe_compte_courant_associe',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'information',
     priority: 3,
     title: "Compte courant d'associé : financez votre société intelligemment",
     summary:
-      "Le compte courant d'associé (CCA) est un outil de financement interne méconnu qui permet à l'associé de prêter des fonds à sa société de manière souple et fiscalement optimisée. Contrairement à une augmentation de capital, le CCA est remboursable à tout moment et peut générer des intérêts déductibles de l'IS. C'est souvent la première solution à explorer avant de solliciter un crédit bancaire.",
+      "Le compte courant d'associé (CCA) permet de prêter des fonds à votre société de manière souple et fiscalement optimisée. Contrairement à une augmentation de capital, il est remboursable à tout moment et peut générer des intérêts déductibles de l'IS. À explorer avant un crédit bancaire.",
     content: `<b>Qu'est-ce qu'un compte courant d'associé ?</b><br>
 Le CCA est une créance de l'associé sur sa société : vous prêtez de l'argent à votre société, qui vous le rembourse quand sa trésorerie le permet. C'est plus souple qu'une augmentation de capital car les fonds peuvent être retirés à tout moment (sauf convention de blocage).<br>
 <br>
@@ -506,20 +521,21 @@ Le CCA est une créance de l'associé sur sa société : vous prêtez de l'argen
     sources: [
       {
         url: 'https://www.dougs.fr/blog/eurl-is-ou-ir/',
-        title: 'EURL : IS ou IR ? — Dougs',
+        title: 'EURL : IS ou IR ?',
+        website_name: 'Dougs',
       },
     ],
   },
 
   {
     id: 'societe_cfe_cotisation',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'warning',
     priority: 2,
     title:
       "CFE : provisionnez cette taxe annuelle dans votre budget d'exploitation",
     summary:
-      "Votre société est redevable de la Cotisation Foncière des Entreprises chaque année à partir de sa deuxième année d'exercice. Contrairement à une micro-entreprise, les montants peuvent être plus élevés pour une société, notamment si votre siège est dans une grande ville. Cette charge est déductible de votre IS mais doit impérativement figurer dans vos provisions mensuelles pour éviter tout problème de trésorerie en fin d'année.",
+      "La CFE est due chaque année dès la deuxième année d'exercice. Les montants peuvent être élevés pour une société, surtout en grande ville. Cette charge est déductible de l'IS mais doit figurer dans vos provisions mensuelles pour éviter tout problème de trésorerie en fin d'année.",
     content: `<b>Comment est calculée la CFE de votre société</b><br>
 La CFE est basée sur la valeur locative des locaux utilisés par votre société (siège social, bureaux, entrepôts). Si votre société est domiciliée chez vous, une base minimale s'applique selon votre commune et votre CA.<br>
 <br>
@@ -540,20 +556,21 @@ La CFE est basée sur la valeur locative des locaux utilisés par votre sociét�
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23547',
-        title: 'Cotisation Foncière des Entreprises — Service-Public.fr',
+        title: 'Cotisation Foncière des Entreprises',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'societe_liasse_fiscale_comptes',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'warning',
     priority: 2,
     title:
       'Dépôt des comptes annuels : une obligation légale aux sanctions lourdes',
     summary:
-      "Toute société commerciale (SASU, SAS, EURL, SARL) est légalement tenue de déposer ses comptes annuels au greffe du Tribunal de Commerce dans les 6 mois suivant la clôture de l'exercice. Cette obligation est souvent négligée par les jeunes entrepreneurs — les sanctions peuvent aller jusqu'à 1 500€ par exercice non déposé et entacher durablement la réputation de votre société auprès des partenaires bancaires et commerciaux.",
+      "Toute société commerciale doit déposer ses comptes annuels au greffe dans les 6 mois suivant la clôture. Souvent négligée, cette obligation expose à des amendes jusqu'à 1 500€ par exercice non déposé et peut entacher la réputation de votre société auprès des partenaires.",
     content: `<b>Que devez-vous déposer et quand ?</b><br>
 Dans les <b>6 mois suivant la date de clôture</b> de votre exercice comptable, vous devez déposer au greffe du Tribunal de Commerce :<br>
 • Le bilan (actif et passif)<br>
@@ -577,22 +594,24 @@ Les petites sociétés peuvent demander la confidentialité totale ou partielle 
       {
         url: 'https://www.inpi.fr/decouvrir-inpi/formalites-dentreprises/guichet-unique-formalites-dentreprises-et-registre-national-entreprises',
         title: 'Guichet unique INPI — formalités entreprises',
+        website_name: 'INPI',
       },
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36215',
-        title: 'Fiscalité de la SASU — Service-Public.fr',
+        title: 'Fiscalité de la SASU',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'societe_optimisation_remuneration',
-    category: 'Social',
+    category: 'optimisation',
     type: 'success',
     priority: 2,
     title: 'Optimisation salaire / dividendes : trouvez votre mix idéal',
     summary:
-      "En tant que dirigeant de société, vous avez deux leviers pour vous rémunérer — le salaire et les dividendes — dont la combinaison optimale dépend de votre situation fiscale personnelle, du taux d'IS de votre société et de vos besoins en protection sociale. Une mauvaise répartition peut vous coûter plusieurs milliers d'euros d'impôts inutiles chaque année. Cette optimisation est à revoir annuellement avec votre conseiller.",
+      "Vous avez deux leviers de rémunération — salaire et dividendes — dont le mix optimal dépend de votre situation fiscale, du taux d'IS et de vos besoins en protection sociale. Une mauvaise répartition peut coûter des milliers d'euros d'impôts inutiles par an. À revoir annuellement.",
     content: `<b>Les deux leviers de rémunération en SASU</b><br>
 <br>
 <b>Salaire brut</b><br>
@@ -617,24 +636,26 @@ Si votre TMI est inférieur à 30%, l'option pour le barème progressif sur les 
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F32963',
-        title: 'Dividendes SARL/SASU — Service-Public.fr',
+        title: 'Dividendes SARL/SASU',
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://www.dougs.fr/blog/eurl-is-ou-ir/',
-        title: 'EURL : IS ou IR ? — Dougs',
+        title: 'EURL : IS ou IR ?',
+        website_name: 'Dougs',
       },
     ],
   },
 
   {
     id: 'societe_per_dirigeant',
-    category: 'Retraite',
+    category: 'optimisation',
     type: 'success',
     priority: 3,
     title:
       'PER dirigeant : réduisez votre IR personnel tout en préparant votre retraite',
     summary:
-      "En tant que dirigeant salarié de SASU, vos versements sur un Plan d'Épargne Retraite sont déductibles de votre revenu imposable à l'IR jusqu'à 10% de votre rémunération nette (plafonnés à 37 094€ en 2024). À votre niveau de revenu, ce levier peut générer plusieurs milliers d'euros d'économies fiscales annuelles. Pour les gérants TNS (EURL/SARL), le contrat Madelin offre des conditions encore plus avantageuses.",
+      "Vos versements PER sont déductibles de votre revenu imposable jusqu'à 10% de votre rémunération nette (max 37 094€ en 2024). Ce levier peut générer des milliers d'euros d'économies fiscales par an. Pour les gérants TNS, le contrat Madelin offre des conditions encore plus avantageuses.",
     content: `<b>Plafonds de déduction PER pour les dirigeants</b><br>
 <br>
 <b>Dirigeant assimilé-salarié (SASU/SAS)</b><br>
@@ -660,20 +681,21 @@ Vous percevez 60 000€ bruts (assimilé-salarié) → TMI à 30% :<br>
     sources: [
       {
         url: 'https://www.impots.gouv.fr/particulier/le-plan-depargne-retraite',
-        title: "Plan d'Épargne Retraite — Impôts.gouv.fr",
+        title: "Plan d'Épargne Retraite",
+        website_name: 'Impôts.gouv.fr',
       },
     ],
   },
 
   {
     id: 'societe_eurl_sarl_statut_tns',
-    category: 'Social',
+    category: 'fiscalite',
     type: 'information',
     priority: 3,
     title:
       'Gérant EURL/SARL : votre statut TNS et ses différences avec la SASU',
     summary:
-      "En tant que gérant majoritaire d'EURL ou de SARL, vous relevez du statut de Travailleur Non Salarié (TNS) affilié à la Sécurité Sociale des Indépendants. Ce régime est fondamentalement différent du statut d'assimilé-salarié de la SASU — les charges sont plus faibles, mais la protection est moindre sur plusieurs points essentiels. Comprendre ces différences est crucial pour piloter votre rémunération et votre couverture sociale.",
+      "En tant que gérant majoritaire d'EURL/SARL, vous relevez du statut TNS affilié à la SSI. Ce régime diffère du statut assimilé-salarié SASU : charges plus faibles mais protection moindre. Comprendre ces différences est crucial pour piloter votre rémunération et couverture sociale.",
     content: `<b>Le régime TNS en EURL/SARL</b><br>
 Le gérant majoritaire cotise à la SSI (Sécurité Sociale des Indépendants) sur la base de sa rémunération nette. Le taux global de cotisations est d'environ <b>44% du net</b> (vs ~75% pour l'assimilé-salarié en SASU) — un avantage considérable en termes de charges immédiates.<br>
 <br>
@@ -693,17 +715,19 @@ Contrairement à la SASU, les dividendes SARL sont soumis à des cotisations soc
     sources: [
       {
         url: 'https://www.legalstart.fr/fiches-pratiques/statut-entreprise/sasu-ou-sarl/',
-        title: 'SASU ou SARL — Legalstart',
+        title: 'SASU ou SARL',
+        website_name: 'Legalstart',
       },
       {
         url: 'https://www.shine.fr/blog/sasu-sarl/',
-        title: 'SASU vs SARL — Shine',
+        title: 'SASU vs SARL',
+        website_name: 'Shine',
       },
     ],
   },
   {
     id: 'societe_acre_eligibilite',
-    category: 'Social',
+    category: 'aides',
     type: 'success',
     priority: 2,
     title: 'ACRE : réduisez de 50% vos charges sociales la première année',
@@ -729,19 +753,20 @@ Votre conseiller Timbr peut vérifier votre éligibilité et vous accompagner da
     sources: [
       {
         url: 'https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html',
-        title: "L'essentiel de l'ACRE — URSSAF",
+        title: "L'essentiel de l'ACRE",
+        website_name: 'URSSAF',
       },
     ],
   },
 
   {
     id: 'retraite_eurl_sarl_explication_trimestres',
-    category: 'Retraite',
+    category: 'optimisation',
     type: 'information',
     priority: 3,
     title: 'Retraite TNS : comment vos trimestres sont calculés en EURL/SARL',
     summary:
-      "En tant que gérant TNS, vos trimestres de retraite sont validés en fonction de vos revenus nets déclarés — pas de votre chiffre d'affaires. Le mécanisme est différent de celui des assimilés-salariés en SASU. Comprendre ce calcul est essentiel pour éviter de sous-cotiser sans le savoir et accumuler des lacunes dans votre carrière retraite.",
+      'En tant que gérant TNS, vos trimestres de retraite dépendent de vos revenus nets — pas du CA. Le mécanisme diffère de la SASU. Comprendre ce calcul est essentiel pour éviter de sous-cotiser et accumuler des lacunes dans votre carrière retraite.',
     content: `<b>Calcul des trimestres en régime TNS (SSI)</b><br>
 En tant que gérant majoritaire EURL/SARL, vous cotisez à la Sécurité Sociale des Indépendants (SSI). Vos trimestres sont validés en fonction de votre <b>revenu net déclaré</b> (rémunération de gérance après cotisations).<br>
 <br>
@@ -763,13 +788,13 @@ Votre conseiller Timbr peut simuler votre projection retraite en fonction de vot
 
   {
     id: 'retraite_eurl_sarl_risque_trimestres',
-    category: 'Retraite',
+    category: 'optimisation',
     type: 'danger',
     priority: 1,
     title:
       'Risque retraite : votre rémunération ne suffit pas à valider 4 trimestres',
     summary:
-      'Avec une rémunération mensuelle inférieure à {{minimum_salary}}€, vous ne validez pas 4 trimestres de retraite par an. En TNS, même les cotisations minimales obligatoires ne couvrent que 3 trimestres. Chaque trimestre manquant crée une lacune définitive dans votre carrière retraite et peut retarder votre départ à taux plein.',
+      'Sous {{minimum_salary}}€/mois de rémunération, vous ne validez pas 4 trimestres par an. En TNS, les cotisations minimales ne couvrent que 3 trimestres. Chaque trimestre manquant crée une lacune définitive et peut retarder votre départ à taux plein.',
     content: `<b>Pourquoi votre rémunération actuelle est insuffisante</b><br>
 Pour valider 4 trimestres de retraite par an en régime TNS, votre revenu net annuel doit atteindre au minimum <b>6 988€</b> (soit environ <b>{{minimum_salary}}€ bruts par mois</b>).<br>
 <br>
@@ -789,7 +814,7 @@ Avec votre rémunération actuelle, vous risquez de ne valider que 3 trimestres 
 
   {
     id: 'societe_per_dirigeant_eurl',
-    category: 'Retraite',
+    category: 'optimisation',
     type: 'success',
     priority: 3,
     title:
@@ -821,19 +846,20 @@ Les cotisations Madelin (retraite, prévoyance, mutuelle) sont déductibles du b
     sources: [
       {
         url: 'https://www.impots.gouv.fr/particulier/le-plan-depargne-retraite',
-        title: "Plan d'Épargne Retraite — Impôts.gouv.fr",
+        title: "Plan d'Épargne Retraite",
+        website_name: 'Impôts.gouv.fr',
       },
     ],
   },
 
   {
     id: 'societe_choix_is_ir',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'information',
     priority: 3,
     title: 'IS ou IR : quel régime fiscal pour votre société ?',
     summary:
-      "Le choix entre l'impôt sur les sociétés (IS) et l'impôt sur le revenu (IR) détermine comment vos bénéfices sont taxés et comment vous pouvez optimiser votre rémunération. En SASU, l'IS est le régime par défaut avec une option IR possible pendant 5 ans. En EURL, vous avez le choix entre les deux dès la création. Ce choix a des conséquences directes sur votre trésorerie, votre fiscalité personnelle et vos possibilités d'optimisation.",
+      "Le choix IS vs IR détermine comment vos bénéfices sont taxés et votre capacité d'optimisation. En SASU, l'IS est par défaut avec option IR sur 5 ans. En EURL, le choix existe dès la création. Ce choix impacte directement trésorerie, fiscalité personnelle et optimisation.",
     content: `<b>Option 1 — Impôt sur les Sociétés (IS)</b><br>
 Le bénéfice est imposé au niveau de la société :<br>
 • <b>15%</b> sur les premiers 42 500€ de bénéfice<br>
@@ -865,23 +891,25 @@ En SASU, l'option IR est limitée à <b>5 exercices</b> et irrévocable après a
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36006',
-        title: 'Fiscalité de la SAS — Service-Public.fr',
+        title: 'Fiscalité de la SAS',
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://www.dougs.fr/blog/eurl-is-ou-ir/',
-        title: 'EURL : IS ou IR ? — Dougs',
+        title: 'EURL : IS ou IR ?',
+        website_name: 'Dougs',
       },
     ],
   },
   {
     id: 'societe_compte_titre_entreprise',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'success',
     priority: 3,
     title:
       'Compte-titres entreprise : faites fructifier votre trésorerie excédentaire',
     summary:
-      "Votre société dispose de trésorerie dormante ? Un compte-titres ordinaire (CTO) au nom de la société permet de placer vos excédents sur des supports financiers (ETF, obligations, actions) tout en bénéficiant de la fiscalité avantageuse de l'IS sur les plus-values. C'est une alternative performante aux comptes à terme bancaires dont les rendements restent faibles.",
+      "Trésorerie dormante ? Un CTO au nom de la société permet de placer vos excédents (ETF, obligations, actions) en bénéficiant de la fiscalité avantageuse de l'IS sur les plus-values. Une alternative performante aux comptes à terme bancaires dont les rendements restent faibles.",
     content: `<b>Pourquoi un CTO pour votre société ?</b><br>
 Lorsque votre société accumule de la trésorerie (bénéfices non distribués, provisions), laisser cet argent dormir sur un compte courant à 0% est un coût d'opportunité réel. Un compte-titres au nom de la société permet d'investir ces fonds sur les marchés financiers.<br>
 <br>
@@ -905,14 +933,15 @@ Ouvrez un CTO auprès d'un courtier en ligne proposant des comptes pour personne
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36006',
-        title: 'Fiscalité de la SAS — Service-Public.fr',
+        title: 'Fiscalité de la SAS',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'societe_holding_investissement',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'success',
     priority: 2,
     title:
@@ -944,18 +973,20 @@ La création d'une holding implique des frais de constitution (≈ 1 500€), de
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36006',
-        title: 'Fiscalité de la SAS — Service-Public.fr',
+        title: 'Fiscalité de la SAS',
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://www.dougs.fr/blog/eurl-is-ou-ir/',
-        title: 'EURL : IS ou IR ? — Dougs',
+        title: 'EURL : IS ou IR ?',
+        website_name: 'Dougs',
       },
     ],
   },
 
   {
     id: 'societe_holding_saas_eurl',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'information',
     priority: 3,
     title:
@@ -986,14 +1017,15 @@ Ce montage nécessite un accompagnement juridique et fiscal — votre conseiller
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36006',
-        title: 'Fiscalité de la SAS — Service-Public.fr',
+        title: 'Fiscalité de la SAS',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'societe_mecenat_competences',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'success',
     priority: 3,
     title:
@@ -1023,11 +1055,13 @@ Le mécénat de compétences renforce votre image d'entreprise engagée, dévelo
     sources: [
       {
         url: 'https://www.economie.gouv.fr/entreprises/mecenat-entreprise',
-        title: "Mécénat d'entreprise — Economie.gouv.fr",
+        title: "Mécénat d'entreprise",
+        website_name: 'Economie.gouv.fr',
       },
       {
         url: 'https://www.associations.gouv.fr/le-mecenat.html',
-        title: 'Le mécénat — Associations.gouv.fr',
+        title: 'Le mécénat',
+        website_name: 'Associations.gouv.fr',
       },
     ],
   },

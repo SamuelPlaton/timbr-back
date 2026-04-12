@@ -2,6 +2,7 @@ import {
   Controller,
   Get,
   Post,
+  Body,
   Param,
   UseGuards,
   Request,
@@ -9,7 +10,9 @@ import {
 } from '@nestjs/common';
 import { AuditsService } from './audits.service';
 import { UsersService } from '../users';
-import { JwtAuthGuard } from '../../guards';
+import { JwtAuthGuard, FeatureGuard, RequireFeature } from '../../guards';
+import { Feature } from '../../config/subscription.config';
+import { GenerateAuditDto } from './audits.dto';
 
 @Controller('audits')
 @UseGuards(JwtAuthGuard)
@@ -45,9 +48,18 @@ export class AuditsController {
   }
 
   @Post()
-  async generateAudit(@Request() req) {
+  @UseGuards(FeatureGuard)
+  @RequireFeature(Feature.AUDIT_ACCESS)
+  async generateAudit(@Request() req, @Body() body: GenerateAuditDto) {
     const user = await this.usersService.findOneOrFail({ id: req.user.id });
-    const audit = await this.auditsService.generateAudit(user);
+
+    // Check monthly audit limit (beyond feature access)
+    await this.auditsService.checkAuditEligibility(user.id);
+
+    const audit = await this.auditsService.generateAudit(
+      user,
+      body.company_information,
+    );
 
     return { data: audit };
   }

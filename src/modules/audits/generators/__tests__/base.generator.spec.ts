@@ -16,7 +16,13 @@ class TestGenerator extends BaseAuditGenerator {
       title: 'Test title',
       summary: 'Test summary',
       content: 'Test content',
-      sources: [{ url: 'https://example.com', title: 'Example' }],
+      sources: [
+        {
+          url: 'https://example.com',
+          title: 'Example',
+          website_name: 'Example',
+        },
+      ],
     },
     {
       id: 'template_card',

@@ -13,7 +13,7 @@ export interface AuditConfigItem {
   summary: string;
   content: string;
   priority: number;
-  sources?: Array<{ url: string; title: string }>;
+  sources?: Array<{ url: string; title: string; website_name: string }>;
 }
 
 export abstract class BaseAuditGenerator {

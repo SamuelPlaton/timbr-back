@@ -5,13 +5,13 @@ import type { AuditConfigItem } from '../adapters/base.generator';
 const config: AuditConfigItem[] = [
   {
     id: 'tresorerie_assurances_placements',
-    category: 'Fiscalité',
+    category: 'optimisation',
     type: 'information',
     priority: 4,
     title:
       "Placements et assurances : optimisez votre trésorerie d'entrepreneur",
     summary:
-      "En tant qu'entrepreneur, vous n'avez plus d'employeur pour financer votre épargne retraite ou votre couverture santé — vous devez construire ces protections vous-même. Il existe des solutions adaptées aux indépendants qui combinent avantage fiscal immédiat et constitution d'un capital à long terme. Bien utilisées, elles peuvent représenter plusieurs milliers d'euros d'économies fiscales annuelles.",
+      "Sans employeur, vous devez construire vos protections (retraite, santé) vous-même. Des solutions adaptées aux indépendants combinent avantage fiscal immédiat et capital long terme, représentant potentiellement plusieurs milliers d'euros d'économies fiscales par an.",
     content: `Plusieurs outils permettent d'optimiser votre trésorerie tout en préparant l'avenir :<br>
 <br>
 <b>Plan d'Épargne Retraite (PER)</b><br>
@@ -27,19 +27,20 @@ Votre conseiller Timbr peut vous aider à choisir la combinaison optimale selon 
     sources: [
       {
         url: 'https://www.impots.gouv.fr/particulier/le-plan-depargne-retraite',
-        title: "Plan d'Épargne Retraite — Impôts.gouv.fr",
+        title: "Plan d'Épargne Retraite",
+        website_name: 'Impôts.gouv.fr',
       },
     ],
   },
 
   {
     id: 'tresorerie_impots_reduction_date_cloture',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'warning',
     priority: 3,
     title: "Date de clôture non standard : anticipez l'impact fiscal",
     summary:
-      "Votre exercice comptable ne se clôture pas au 31 décembre, ce qui peut créer un premier exercice court ou décalé avec des implications fiscales spécifiques. Cette configuration mérite une attention particulière pour en maximiser les avantages et éviter les mauvaises surprises. La durée d'un exercice peut varier entre 6 et 18 mois lors de la création d'une société.",
+      'Votre exercice ne se clôture pas au 31 décembre, créant un premier exercice court ou décalé avec des implications fiscales spécifiques. Cette configuration mérite attention pour maximiser les avantages et éviter les mauvaises surprises.',
     content: `Votre date de clôture comptable est fixée au <b>{{closing_date}}</b>, différente du 31 décembre standard.<br>
 <br>
 <b>Impact d'un premier exercice court</b><br>
@@ -58,12 +59,12 @@ Le premier exercice ne peut excéder 24 mois au total. Une clôture décalée pe
 
   {
     id: 'tresorerie_impots_plafonds_preferences',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'information',
     priority: 4,
     title: 'Connaissez vos plafonds fiscaux pour optimiser chaque euro',
     summary:
-      "En tant qu'entrepreneur, l'État vous donne accès à des plafonds de déduction que la plupart des gens ne connaissent pas. Bien utilisés, ils peuvent vous faire économiser plusieurs centaines voire milliers d'euros d'impôts par an — légalement. Le problème : ils ont une date limite et s'évaporent si vous ne les utilisez pas avant le 31 décembre.",
+      "L'État vous donne accès à des plafonds de déduction méconnus pouvant vous faire économiser des centaines voire milliers d'euros d'impôts par an. Le problème : ils ont une date limite et s'évaporent si vous ne les utilisez pas avant le 31 décembre.",
     content: `Voici les 3 leviers les plus concrets pour réduire votre impôt en tant qu'entrepreneur :<br>
 <br>
 <b>1. Le PER (Plan Épargne Retraite) — le plus puissant</b><br>
@@ -80,20 +81,21 @@ Ces plafonds sont annuels. Ce que vous n'utilisez pas cette année (sauf PER) es
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23267',
-        title: 'Impôts et abattements — Service-Public.fr',
+        title: 'Impôts et abattements',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'tresorerie_impots_tmi_optimisation',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'warning',
     priority: 2,
     title:
       'Tranche marginale élevée : chaque euro non optimisé est un euro perdu',
     summary:
-      "Votre revenu fiscal de référence vous place dans une tranche marginale d'imposition à 30% ou plus, ce qui signifie que chaque euro de revenu supplémentaire est fortement taxé par l'État. À ce niveau d'imposition, des stratégies d'optimisation concrètes permettent de récupérer plusieurs centaines voire milliers d'euros par an. Agir avant la fin de l'année fiscale est essentiel pour maximiser l'impact de ces leviers.",
+      "Votre revenu fiscal vous place dans une tranche marginale à 30% ou plus : chaque euro supplémentaire est fortement taxé. Des stratégies d'optimisation permettent de récupérer plusieurs centaines voire milliers d'euros par an. Agir avant la fin de l'année fiscale est essentiel.",
     content: `Votre TMI (Tranche marginale d'imposition) élevé rend certaines stratégies particulièrement efficaces et rentables :<br>
 <br>
 <b>Plan d'Épargne Retraite (PER) — levier n°1</b><br>
@@ -112,12 +114,12 @@ Si vous avez des revenus locatifs, les travaux de rénovation génèrent un déf
 
   {
     id: 'tresorerie_cpf_formations',
-    category: 'Social',
+    category: 'autre',
     type: 'success',
     priority: 5,
     title: 'CPF : vos droits à la formation accumulés, pensez à les utiliser',
     summary:
-      "Votre CPF accumule des droits chaque année, et ils vous appartiennent quoi qu'il arrive — changement de statut, création d'entreprise, reconversion. En tant qu'entrepreneur, vous pouvez les utiliser pour financer des formations qui améliorent directement votre activité ou votre employabilité. Beaucoup d'indépendants ont des centaines voire des milliers d'euros disponibles sans le savoir.",
+      "Votre CPF accumule des droits chaque année, quoi qu'il arrive. En tant qu'entrepreneur, vous pouvez les utiliser pour financer des formations améliorant votre activité ou employabilité. Beaucoup d'indépendants ont des centaines voire milliers d'euros disponibles sans le savoir.",
     content: `Le CPF est crédité de <b>500€ par an</b> (plafonné à 5 000€ cumulés). Vérifiez votre solde sur <b>moncompteformation.gouv.fr</b> — vous avez peut-être plus que vous ne pensez si vous étiez salarié avant.<br>
 <br>
 <b>Exemples concrets utiles pour un entrepreneur</b><br>
@@ -135,18 +137,19 @@ Si vous avez des revenus locatifs, les travaux de rénovation génèrent un déf
       {
         url: 'https://www.moncompteformation.gouv.fr',
         title: 'Mon Compte Formation',
+        website_name: 'Mon Compte Formation',
       },
     ],
   },
 
   {
     id: 'common_facturation_conforme',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'warning',
     priority: 2,
     title: 'Mentions obligatoires sur vos factures : êtes-vous en conformité ?',
     summary:
-      "Chaque facture émise doit comporter un ensemble de mentions légales précisément définies par le Code de Commerce et le Code Général des Impôts. L'absence d'une seule mention peut entraîner des amendes lors d'un contrôle fiscal et des litiges avec vos clients. La conformité de vos factures est aussi un signal de professionnalisme qui renforce la confiance de vos partenaires et clients.",
+      "Chaque facture doit comporter des mentions légales définies par le Code de Commerce et le CGI. L'absence d'une seule mention peut entraîner des amendes en cas de contrôle fiscal. La conformité de vos factures renforce aussi la confiance de vos partenaires et clients.",
     content: `Voici les mentions obligatoires que chaque facture doit impérativement contenir :<br>
 <br>
 <b>Identification de l'émetteur</b><br>
@@ -177,20 +180,21 @@ Si vous avez des revenus locatifs, les travaux de rénovation génèrent un déf
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F31808',
-        title: 'Mentions obligatoires sur les factures — Service-Public.fr',
+        title: 'Mentions obligatoires sur les factures',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'common_protection_sociale',
-    category: 'Social',
+    category: 'services',
     type: 'warning',
     priority: 2,
     title:
       "RC Pro, prévoyance et mutuelle : votre protection en tant qu'indépendant",
     summary:
-      "En quittant le salariat — ou en ne l'ayant jamais connu — vous perdez les protections financées par un employeur : mutuelle collective, prévoyance, couverture des accidents du travail. En tant qu'indépendant, tout repose sur vous. Un arrêt maladie d'un mois sans prévoyance peut représenter plusieurs milliers d'euros de revenus perdus. La bonne nouvelle : des solutions existent, et elles sont souvent moins chères que ce qu'on imagine.",
+      "Sans employeur, vous perdez mutuelle collective, prévoyance et couverture accidents du travail. Un arrêt maladie d'un mois sans prévoyance peut représenter des milliers d'euros perdus. La bonne nouvelle : des solutions existent, souvent moins chères que ce qu'on imagine.",
     content: `<b>1. RC Pro — vérifiez votre obligation avant votre premier client</b><br>
 La Responsabilité Civile Professionnelle couvre les dommages causés à des tiers dans le cadre de votre activité (erreur de conseil, livrable défectueux, accident chez un client). Elle est <b>légalement obligatoire</b> pour :<br>
 • Bâtiment : artisans, architectes, maîtres d'œuvre (+ garantie décennale)<br>
@@ -212,23 +216,25 @@ Des comparateurs en ligne (Hiscox, AXA Pro, April, Wemind, Alan) proposent des d
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23442',
-        title: 'Assurance RC Pro — Service-Public.fr',
+        title: 'Assurance RC Pro',
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://talks.freelancerepublik.com/wemind-ou-alan-quelle-mutuelle-pour-les-freelances/',
-        title: 'Mutuelles & assurances pour freelances — Freelance Republik',
+        title: 'Mutuelles & assurances pour freelances',
+        website_name: 'Freelance Republik',
       },
     ],
   },
 
   {
     id: 'common_cfe_premiere_annee',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'success',
     priority: 3,
     title: 'CFE : la taxe que personne ne vous explique avant de se lancer',
     summary:
-      "La Cotisation Foncière des Entreprises est un impôt local que toutes les entreprises doivent payer chaque année — sauf la première. Que vous soyez en train de vous lancer ou tout juste immatriculé, c'est le bon moment pour comprendre ce qui vous attend et éviter la mauvaise surprise à la fin de l'année 2.",
+      "La CFE est un impôt local que toutes les entreprises paient chaque année — sauf la première. Que vous soyez en train de vous lancer ou tout juste immatriculé, c'est le bon moment pour comprendre ce qui vous attend et éviter la mauvaise surprise en année 2.",
     content: `<b>Qu'est-ce que la CFE ?</b><br>
 La CFE est un impôt local annuel dû par toutes les entreprises — micro-entrepreneurs inclus — à partir de la <b>deuxième année d'activité</b>. Elle est calculée sur la valeur locative des locaux utilisés pour votre activité (ou un montant minimum si vous travaillez depuis chez vous).<br>
 <br>
@@ -247,7 +253,8 @@ Quelle que soit votre structure, votre première année complète d'activité es
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23547',
-        title: 'Cotisation Foncière des Entreprises — Service-Public.fr',
+        title: 'Cotisation Foncière des Entreprises',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
