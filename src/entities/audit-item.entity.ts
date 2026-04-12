@@ -17,15 +17,12 @@ export enum AuditItemType {
 }
 
 export enum AuditItemCategory {
-  TNS = 'TNS',
-  FISCALITE = 'Fiscalité',
-  SOCIAL = 'Social',
-  SIMULATION = 'Simulation',
-  RETRAITE = 'Retraite',
-  DEMISSION = 'Démission',
-  ARE = 'ARE',
-  AGE = 'AGE',
-  TVA = 'TVA',
+  TVA = 'tva',
+  FISCALITE = 'fiscalite',
+  OPTIMISATION = 'optimisation',
+  AIDES = 'aides',
+  SERVICES = 'services',
+  AUTRE = 'autre',
 }
 
 export enum AuditItemStatus {
@@ -37,6 +34,7 @@ export enum AuditItemStatus {
 export interface AuditItemSource {
   url: string;
   title: string;
+  website_name: string;
 }
 
 @Entity()

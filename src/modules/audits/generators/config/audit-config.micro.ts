@@ -5,7 +5,7 @@ import type { AuditConfigItem } from '../adapters/base.generator';
 const config: AuditConfigItem[] = [
   {
     id: 'tns_tva_guide_accre',
-    category: 'TNS',
+    category: 'aides',
     type: 'information',
     priority: 3,
     title:
@@ -38,25 +38,26 @@ La demande doit être déposée via l'URSSAF lors de votre immatriculation ou da
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F11677',
-        title:
-          "ACRE : aide aux créateurs et repreneurs d'entreprise — Service-Public.fr",
+        title: "ACRE : aide aux créateurs et repreneurs d'entreprise",
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html',
-        title: "L'essentiel du statut auto-entrepreneur — URSSAF",
+        title: "L'essentiel du statut auto-entrepreneur",
+        website_name: 'URSSAF',
       },
     ],
   },
 
   {
     id: 'fiscalite_prelevements_liberatoires_danger',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'danger',
     priority: 2,
     title:
       'Versement libératoire inaccessible : déclarez vos revenus au barème progressif',
     summary:
-      "Votre revenu fiscal de référence N-2 dépasse le seuil de 27 478€ par part fiscale, ce qui vous empêche d'opter pour le versement libératoire de l'impôt sur le revenu. Vous ne pouvez donc pas simplifier le paiement de votre IR en l'intégrant à vos déclarations URSSAF. Cette situation nécessite une gestion prévisionnelle rigoureuse pour éviter une régularisation fiscale importante en fin d'année.",
+      "Votre RFR N-2 dépasse 27 478€ par part fiscale, vous empêchant d'opter pour le versement libératoire de l'IR. Vous ne pouvez pas intégrer l'impôt à vos déclarations URSSAF. Une gestion prévisionnelle rigoureuse est nécessaire pour éviter une régularisation importante en fin d'année.",
     content: `<b>Impact sur votre fiscalité quotidienne</b><br>
 Sans accès au versement libératoire, vos revenus d'entrepreneur s'ajoutent à vos autres revenus du foyer et sont imposés au barème progressif de l'IR. L'abattement forfaitaire de votre régime micro s'applique automatiquement (34% BNC, 50% BIC services, 71% BIC ventes), mais le taux d'imposition final dépend de l'ensemble de vos revenus.<br>
 <br>
@@ -73,24 +74,26 @@ Sans accès au versement libératoire, vos revenus d'entrepreneur s'ajoutent à 
     sources: [
       {
         url: 'https://www.impots.gouv.fr/professionnel/le-versement-liberatoire',
-        title: "Versement libératoire de l'IR — Impôts.gouv.fr",
+        title: "Versement libératoire de l'IR",
+        website_name: 'Impôts.gouv.fr',
       },
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23267',
-        title: 'Impôts et abattements — Service-Public.fr',
+        title: 'Impôts et abattements',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'fiscalite_prelevements_acces_eligible',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'success',
     priority: 3,
     title:
       'Versement libératoire : vous êtes éligible — activez-le avant le 30 septembre',
     summary:
-      "Votre revenu fiscal de référence N-2, ramené à votre nombre de parts fiscales, est inférieur au plafond de 28 797€. Vous pouvez opter pour le versement libératoire de l'impôt sur le revenu, un régime qui intègre votre IR directement dans vos cotisations URSSAF à un taux fixe. Résultat : plus de régularisation fiscale en fin d'année, une trésorerie prévisible et, selon votre CA, une économie potentiellement significative.",
+      "Votre RFR N-2 par part fiscale est inférieur au plafond de 28 797€. Vous pouvez opter pour le versement libératoire de l'IR, intégrant l'impôt dans vos cotisations URSSAF à taux fixe. Résultat : trésorerie prévisible, pas de régularisation et une économie potentielle significative.",
     content: `<b>Ce que ça change concrètement</b><br>
 Au lieu de déclarer vos revenus micro au barème progressif de l'IR en fin d'année, vous payez votre impôt en même temps que vos cotisations URSSAF, à chaque déclaration de CA. Le taux est fixe et calculé sur votre chiffre d'affaires brut :<br>
 • <b>1%</b> pour les ventes de marchandises (BIC achat-revente)<br>
@@ -117,18 +120,20 @@ Si votre RFR dépasse le plafond dans les années suivantes, vous perdez automat
     sources: [
       {
         url: 'https://www.impots.gouv.fr/professionnel/le-versement-liberatoire',
-        title: "Versement libératoire de l'IR — Impôts.gouv.fr",
+        title: "Versement libératoire de l'IR",
+        website_name: 'Impôts.gouv.fr',
       },
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36244',
-        title: "Fiscalité de l'auto-entrepreneur — Service-Public.fr",
+        title: "Fiscalité de l'auto-entrepreneur",
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'fiscalite_prelevements_calcul_gains',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'success',
     priority: 4,
     title: 'Votre gain estimé avec le versement libératoire : {{savings}}€/an',
@@ -150,19 +155,20 @@ Cette estimation utilise uniquement votre CA et la tranche à 11%. Elle ne tient
     sources: [
       {
         url: 'https://www.impots.gouv.fr/professionnel/le-versement-liberatoire',
-        title: "Versement libératoire de l'IR — Impôts.gouv.fr",
+        title: "Versement libératoire de l'IR",
+        website_name: 'Impôts.gouv.fr',
       },
     ],
   },
 
   {
     id: 'fiscalite_urssaf_declaration',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'warning',
     priority: 2,
     title: 'Déclarations URSSAF : respectez vos échéances même à CA zéro',
     summary:
-      "En tant que micro-entrepreneur, vous êtes tenu de déclarer votre chiffre d'affaires à l'URSSAF à chaque période — mensuelle ou trimestrielle — même si vous n'avez encaissé aucun euro. Tout retard ou oubli entraîne des pénalités automatiques et peut avoir des conséquences sur vos droits sociaux. C'est l'une des obligations les plus fréquemment négligées par les nouveaux entrepreneurs.",
+      "Vous devez déclarer votre CA à l'URSSAF chaque période (mensuelle ou trimestrielle), même à zéro euro. Tout retard ou oubli entraîne des pénalités automatiques et peut impacter vos droits sociaux. C'est l'une des obligations les plus négligées par les nouveaux entrepreneurs.",
     content: `<b>Vos obligations de déclaration URSSAF</b><br>
 Vous devez déclarer votre CA à l'URSSAF selon la fréquence choisie lors de votre immatriculation :<br>
 • <b>Mensuelle</b> : déclaration avant le dernier jour de chaque mois<br>
@@ -185,24 +191,26 @@ L'URSSAF accorde régulièrement des remises gracieuses sur les majorations de r
     sources: [
       {
         url: 'https://www.autoentrepreneur.urssaf.fr/portail/accueil/une-question/toutes-les-fiches-pratiques/determiner-mon-chiffre-daffaires.html',
-        title: "Déterminer son chiffre d'affaires — URSSAF Auto-Entrepreneur",
+        title: "Déterminer son chiffre d'affaires",
+        website_name: 'URSSAF Auto-Entrepreneur',
       },
       {
         url: 'https://abby.fr/blog/connaitre-le-taux-de-cotisations-sociales-urssaf-auto-entrepreneur/',
-        title: 'Taux de cotisations URSSAF auto-entrepreneur — Abby',
+        title: 'Taux de cotisations URSSAF auto-entrepreneur',
+        website_name: 'Abby',
       },
     ],
   },
 
   {
     id: 'micro_urssaf_plateformes_ca_facture',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'danger',
     priority: 3,
     title:
       'Plateformes et intermédiaires : déclarez le montant facturé, pas ce que vous recevez',
     summary:
-      "Si vous passez par des plateformes ou intermédiaires (Malt, Uber, Deliveroo, Fiverr, marketplaces...), vous devez déclarer à l'URSSAF le montant total de la facture client — et non le montant net reçu sur votre compte bancaire après commission de la plateforme. Cette erreur est l'une des plus fréquentes et peut entraîner un redressement URSSAF en cas de contrôle.",
+      "Si vous passez par des plateformes (Malt, Uber, Fiverr...), déclarez à l'URSSAF le montant total facturé au client — pas le net reçu après commission. Cette erreur fréquente peut entraîner un redressement URSSAF en cas de contrôle.",
     content: `<b>La règle fondamentale</b><br>
 Votre chiffre d'affaires à déclarer à l'URSSAF correspond au <b>montant total facturé au client final</b>, avant toute déduction de commission, frais de service ou retenue par la plateforme.<br>
 <br>
@@ -229,20 +237,21 @@ Si les commissions de plateforme représentent une part importante de votre CA (
     sources: [
       {
         url: 'https://www.autoentrepreneur.urssaf.fr/portail/accueil/une-question/toutes-les-fiches-pratiques/determiner-mon-chiffre-daffaires.html',
-        title: "Déterminer son chiffre d'affaires — URSSAF Auto-Entrepreneur",
+        title: "Déterminer son chiffre d'affaires",
+        website_name: 'URSSAF Auto-Entrepreneur',
       },
     ],
   },
 
   {
     id: 'fiscalite_reductions_entreprise_orange',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'warning',
     priority: 2,
     title:
       "Vos frais réels dépassent probablement l'abattement forfaitaire du régime micro",
     summary:
-      "En micro-entreprise, l'administration applique un abattement forfaitaire sur votre CA pour calculer votre revenu imposable — mais cet abattement ne reflète pas forcément vos frais réels. Avec des charges professionnelles estimées à {{professional_expenses}}€, vous pourriez bénéficier d'une meilleure fiscalité en passant à un régime où vos frais sont déductibles réellement. C'est souvent le premier signal pour envisager une transition vers une structure en société.",
+      "L'abattement forfaitaire micro ne reflète pas forcément vos frais réels. Avec des charges estimées à {{professional_expenses}}€, un régime de déduction réelle pourrait être fiscalement plus avantageux. C'est souvent le premier signal pour envisager une transition vers une société.",
     content: `<b>L'abattement forfaitaire en micro-entreprise</b><br>
 Le régime micro applique automatiquement un abattement sur votre CA pour estimer vos charges :<br>
 • <b>34%</b> pour les professions libérales (BNC)<br>
@@ -260,28 +269,31 @@ Faites réaliser une simulation comparative micro vs société par votre conseil
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23267',
-        title: 'Impôts et abattements — Service-Public.fr',
+        title: 'Impôts et abattements',
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://lamicrobyflo.fr/abattement-forfaitaire-micro-entreprise/',
-        title: 'Abattement forfaitaire micro-entreprise — LaMicroByFlo',
+        title: 'Abattement forfaitaire micro-entreprise',
+        website_name: 'LaMicroByFlo',
       },
       {
         url: 'https://www.l-expert-comptable.com/a/37794-tva-et-auto-entrepreneur.html',
-        title: "TVA et déduction de frais — L'Expert-Comptable.com",
+        title: 'TVA et déduction de frais',
+        website_name: "L'Expert-Comptable.com",
       },
     ],
   },
 
   {
     id: 'fiscalite_plafonds_cotisations',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'danger',
     priority: 1,
     title:
       'Alerte : votre CA de {{ca}}€ approche du plafond de {{ca_threshold}}€',
     summary:
-      "Avec un CA de {{ca}}€, vous avez dépassé 85% du plafond annuel de {{ca_threshold}}€ de la micro-entreprise. Au-delà de ce seuil sur deux années consécutives, vous basculez automatiquement vers le régime réel — une transition aux obligations bien plus lourdes qu'il faut anticiper maintenant.",
+      'Avec {{ca}}€ de CA, vous dépassez 85% du plafond de {{ca_threshold}}€ de la micro-entreprise. Au-delà de ce seuil deux années de suite, vous basculez vers le régime réel — une transition aux obligations plus lourdes à anticiper dès maintenant.',
     content: `<b>Votre situation</b><br>
 Votre CA de <b>{{ca}}€</b> représente plus de 85% du plafond de <b>{{ca_threshold}}€</b>. Vous entrez dans la zone d'alerte — un CA similaire l'année prochaine déclencherait le changement de régime obligatoire.<br>
 <br>
@@ -305,24 +317,26 @@ Le dépassement du plafond est toléré sur une année. Si votre CA dépasse le 
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36244',
-        title: "Fiscalité de l'auto-entrepreneur — Service-Public.fr",
+        title: "Fiscalité de l'auto-entrepreneur",
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F32353',
-        title: 'Passage du régime micro au régime réel — Service-Public.fr',
+        title: 'Passage du régime micro au régime réel',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'micro_seuil_tva_franchise',
-    category: 'TVA',
+    category: 'tva',
     type: 'warning',
     priority: 3,
     title:
       'TVA franchise : votre CA de {{ca}}€ — il vous reste {{ca_restant}}€ avant le seuil',
     summary:
-      'Le seuil de franchise en base de TVA ({{tva_seuil_base}}€) est indépendant du plafond de la micro-entreprise. Dépasser ce seuil sans le savoir expose à des redressements — et la règle sur le moment exact où vous devez basculer est bien plus piégeuse que vous ne le pensez.',
+      'Le seuil de franchise TVA ({{tva_seuil_base}}€) est indépendant du plafond micro. Dépasser ce seuil sans le savoir expose à des redressements — et la règle sur le moment exact du basculement est bien plus piégeuse que vous ne le pensez.',
     content: `<b>Votre position actuelle</b><br>
 CA déclaré cette année : <b>{{ca}}€</b><br>
 Seuil de franchise en base : <b>{{tva_seuil_base}}€</b><br>
@@ -349,24 +363,26 @@ Vous pouvez rester micro-entrepreneur (CA < {{tva_seuil_majore}}€ selon activi
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F21746',
-        title: 'Franchise en base de TVA — Service-Public.fr',
+        title: 'Franchise en base de TVA',
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://www.impots.gouv.fr/professionnel/la-tva',
-        title: 'La TVA — Impôts.gouv.fr',
+        title: 'La TVA',
+        website_name: 'Impôts.gouv.fr',
       },
     ],
   },
 
   {
     id: 'simulation_micro_entreprise_status',
-    category: 'Simulation',
+    category: 'fiscalite',
     type: 'success',
     priority: 4,
     title:
       'Votre statut micro-entrepreneur est parfaitement adapté à votre activité',
     summary:
-      "Votre chiffre d'affaires actuel est bien inférieur aux plafonds de la micro-entreprise, ce qui confirme que ce statut est la structure optimale pour vous aujourd'hui. Vous bénéficiez de la comptabilité la plus allégée du marché, de cotisations strictement proportionnelles à vos encaissements et d'une grande liberté de fonctionnement. Continuez à suivre l'évolution de votre CA pour anticiper sereinement une éventuelle transition.",
+      "Votre CA est bien inférieur aux plafonds micro, confirmant que ce statut est optimal pour vous. Comptabilité allégée, cotisations proportionnelles à vos encaissements et grande liberté de fonctionnement. Suivez l'évolution de votre CA pour anticiper une éventuelle transition.",
     content: `Votre niveau de CA vous permet de profiter pleinement des avantages du régime micro :<br>
 <br>
 <b>Avantages que vous utilisez</b><br>
@@ -386,24 +402,26 @@ Effectuez une révision de votre structure au moins une fois par an, notamment s
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36244',
-        title: "Fiscalité de l'auto-entrepreneur — Service-Public.fr",
+        title: "Fiscalité de l'auto-entrepreneur",
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html',
-        title: "L'essentiel du statut auto-entrepreneur — URSSAF",
+        title: "L'essentiel du statut auto-entrepreneur",
+        website_name: 'URSSAF',
       },
     ],
   },
 
   {
     id: 'micro_transition_vers_societe',
-    category: 'Simulation',
+    category: 'fiscalite',
     type: 'warning',
     priority: 1,
     title:
       'Avec {{ca}}€ de CA, la comparaison micro vs SASU/EURL devient sérieuse',
     summary:
-      'En micro-entreprise, vous payez {{cotisations_micro}}€ de cotisations sociales sur votre CA de {{ca}}€ — calculées sur le CA brut, peu importe vos frais réels. En SASU ou EURL, les charges ne portent que sur le salaire que vous vous versez, le reste restant dans la société. À votre niveau de CA, la simulation peut révéler un avantage net significatif.',
+      'En micro, vous payez {{cotisations_micro}}€ de cotisations sur {{ca}}€ de CA brut, sans déduire vos frais. En SASU/EURL, les charges portent sur votre salaire uniquement. À votre niveau de CA, une simulation peut révéler un avantage net significatif.',
     content: `<b>Le problème fondamental de la micro à votre CA</b><br>
 En micro-entreprise, vos cotisations sont calculées sur la totalité de votre CA au taux de <b>{{cotisation_rate_display}}%</b>, soit <b>{{cotisations_micro}}€</b> cette année. Ce montant est dû même si vous avez des frais professionnels importants — la micro ne tient pas compte de vos charges réelles.<br>
 <br>
@@ -423,28 +441,31 @@ Votre conseiller Timbr peut réaliser une simulation complète micro vs SASU/EUR
     sources: [
       {
         url: 'https://bpifrance-creation.fr/encyclopedie/structures-juridiques/choix-du-statut-generalites/criteres-choix-structure-juridique',
-        title: 'Critères de choix de structure juridique — BPI France Création',
+        title: 'Critères de choix de structure juridique',
+        website_name: 'BPI France Création',
       },
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F32353',
-        title: 'Passage du régime micro au régime réel — Service-Public.fr',
+        title: 'Passage du régime micro au régime réel',
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://www.shine.fr/blog/sasu-sarl/',
-        title: 'SASU vs SARL — Shine',
+        title: 'SASU vs SARL',
+        website_name: 'Shine',
       },
     ],
   },
 
   {
     id: 'micro_retraite_zero_ca_risque',
-    category: 'Retraite',
+    category: 'optimisation',
     type: 'danger',
     priority: 2,
     title:
       'Attention : pas de CA déclaré signifie pas de trimestres de retraite',
     summary:
-      'Votre CA de {{ca}}€ est en dessous du minimum de {{retraite_min_ca}}€ nécessaire pour valider des trimestres de retraite cette année. En micro-entreprise, pas de CA = pas de cotisations = pas de trimestres — un angle mort que beaucoup de micro-entrepreneurs découvrent trop tard.',
+      'Votre CA de {{ca}}€ est sous le minimum de {{retraite_min_ca}}€ pour valider des trimestres de retraite. En micro, pas de CA = pas de cotisations = pas de trimestres — un angle mort que beaucoup découvrent trop tard.',
     content: `<b>Votre situation</b><br>
 Votre CA déclaré de <b>{{ca}}€</b> est inférieur au seuil minimum de <b>{{retraite_min_ca}}€</b> nécessaire pour valider les 4 trimestres de retraite annuels. Sans atteindre ce seuil, vous ne cotisez pas suffisamment pour valider des trimestres cette année.<br>
 <br>
@@ -465,24 +486,26 @@ Si votre CA est structurellement faible, envisagez une SASU avec un salaire mini
     sources: [
       {
         url: 'https://abby.fr/blog/connaitre-le-taux-de-cotisations-sociales-urssaf-auto-entrepreneur/',
-        title: 'Taux de cotisations URSSAF auto-entrepreneur — Abby',
+        title: 'Taux de cotisations URSSAF auto-entrepreneur',
+        website_name: 'Abby',
       },
       {
         url: 'https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html',
-        title: "L'essentiel du statut auto-entrepreneur — URSSAF",
+        title: "L'essentiel du statut auto-entrepreneur",
+        website_name: 'URSSAF',
       },
     ],
   },
 
   {
     id: 'micro_per_epargne_retraite',
-    category: 'Retraite',
+    category: 'optimisation',
     type: 'success',
     priority: 3,
     title:
       'PER : réduisez votre IR maintenant tout en préparant votre retraite',
     summary:
-      "Le Plan d'Épargne Retraite est accessible aux micro-entrepreneurs et offre un double avantage : réduire votre impôt sur le revenu de l'année en cours tout en constituant une épargne retraite complémentaire indispensable. Vos versements sont déductibles de votre revenu global imposable, indépendamment de l'abattement forfaitaire de la micro-entreprise. À votre niveau d'imposition, ce levier peut générer plusieurs centaines d'euros d'économies annuelles.",
+      "Le PER est accessible aux micro-entrepreneurs avec un double avantage : réduire votre IR de l'année en cours tout en constituant une épargne retraite. Vos versements sont déductibles du revenu global, indépendamment de l'abattement forfaitaire micro. Un levier d'économies fiscales significatif.",
     content: `<b>Comment fonctionne le PER pour un micro-entrepreneur</b><br>
 Les versements volontaires sur un PER sont déductibles de votre revenu global (et non de votre CA micro), dans la limite de :<br>
 • <b>10% du PASS de l'année précédente</b>, soit environ 4 637€ en 2024<br>
@@ -504,19 +527,20 @@ En micro-entreprise, vos cotisations retraite sont proportionnelles au CA décla
     sources: [
       {
         url: 'https://www.impots.gouv.fr/particulier/le-plan-depargne-retraite',
-        title: "Plan d'Épargne Retraite — Impôts.gouv.fr",
+        title: "Plan d'Épargne Retraite",
+        website_name: 'Impôts.gouv.fr',
       },
     ],
   },
 
   {
     id: 'micro_cfe_cotisation_annuelle',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'warning',
     priority: 3,
     title: 'CFE : provisionnez cette taxe annuelle dès votre deuxième année',
     summary:
-      "La Cotisation Foncière des Entreprises est due chaque année par tous les micro-entrepreneurs à partir de la deuxième année d'activité, même si votre chiffre d'affaires est nul. Son montant varie de quelques centaines à plusieurs milliers d'euros selon votre commune et votre CA. C'est l'une des charges les plus souvent oubliées dans les plans de trésorerie des indépendants.",
+      "La CFE est due chaque année par tous les micro-entrepreneurs dès la deuxième année, même à CA nul. Son montant varie de quelques centaines à plusieurs milliers d'euros selon votre commune. C'est l'une des charges les plus souvent oubliées par les indépendants.",
     content: `<b>Comment est calculée la CFE</b><br>
 La CFE est un impôt local basé sur la valeur locative cadastrale de vos locaux professionnels. Si vous exercez depuis votre domicile, une cotisation minimum est tout de même appliquée par votre commune.<br>
 <br>
@@ -537,20 +561,21 @@ Pour un micro-entrepreneur avec un CA modéré :<br>
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23547',
-        title: 'Cotisation Foncière des Entreprises — Service-Public.fr',
+        title: 'Cotisation Foncière des Entreprises',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'micro_compte_bancaire_dedie',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'information',
     priority: 4,
     title:
       'Compte bancaire dédié : une obligation progressive, une bonne pratique immédiate',
     summary:
-      "En micro-entreprise, un compte bancaire dédié à votre activité professionnelle devient légalement obligatoire après 2 années consécutives de chiffre d'affaires supérieur à 10 000€. Même en deçà de ce seuil, ouvrir un compte dédié dès le départ simplifie considérablement votre comptabilité, sécurise vos déclarations fiscales et renforce votre crédibilité professionnelle. C'est une bonne pratique que tout comptable vous recommandera.",
+      "Un compte bancaire dédié devient obligatoire après 2 ans de CA supérieur à 10 000€. Même en deçà, l'ouvrir dès le départ simplifie votre comptabilité, sécurise vos déclarations fiscales et renforce votre crédibilité professionnelle. Une bonne pratique recommandée par tout comptable.",
     content: `<b>L'obligation légale</b><br>
 Depuis 2018, tout micro-entrepreneur dont le CA dépasse 10 000€ <b>pendant deux années consécutives</b> est tenu d'ouvrir un compte bancaire dédié exclusivement à son activité professionnelle. Ce compte peut être un compte courant classique — il n'est pas obligatoirement un «compte pro» payant.<br>
 <br>
@@ -570,13 +595,14 @@ Pièce d'identité, justificatif de domicile et votre attestation d'immatriculat
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F35991',
-        title: 'Compte bancaire professionnel — Service-Public.fr',
+        title: 'Compte bancaire professionnel',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
   {
     id: 'micro_abattement_explication',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'information',
     priority: 4,
     title:
@@ -606,7 +632,8 @@ Si vos frais professionnels réels dépassent le montant de l'abattement (par ex
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36244',
-        title: "Fiscalité de l'auto-entrepreneur — Service-Public.fr",
+        title: "Fiscalité de l'auto-entrepreneur",
+        website_name: 'Service-Public.fr',
       },
     ],
   },

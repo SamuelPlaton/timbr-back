@@ -36,4 +36,16 @@ export class AuditsApi {
     const audit = this.repository.create(params);
     return await this.repository.save(audit);
   }
+
+  public async countUserAuditsThisMonth(userId: string): Promise<number> {
+    const startOfMonth = new Date();
+    startOfMonth.setDate(1);
+    startOfMonth.setHours(0, 0, 0, 0);
+
+    return this.repository
+      .createQueryBuilder('audit')
+      .where('audit.user_id = :userId', { userId })
+      .andWhere('audit.created_at >= :startOfMonth', { startOfMonth })
+      .getCount();
+  }
 }

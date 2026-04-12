@@ -5,13 +5,13 @@ import type { AuditConfigItem } from '../adapters/base.generator';
 const config: AuditConfigItem[] = [
   {
     id: 'futur_rfr_changement_regime',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'warning',
     priority: 2,
     title:
       'Votre RFR dépasse le plafond : vous ne pourrez pas opter pour le versement libératoire',
     summary:
-      "Votre revenu fiscal de référence de l'année N-2 dépasse le plafond de {{rfr_threshold}}€ par part fiscale, ce qui vous prive de l'option du versement libératoire de l'impôt sur le revenu. Ce régime simplifié — très apprécié pour sa prévisibilité — intègre le paiement de l'IR directement dans vos cotisations URSSAF à un taux fixe sur le CA. Sans cette option, vous devrez gérer votre IR séparément via le barème progressif et anticiper les régularisations.",
+      "Votre RFR N-2 dépasse le plafond de {{rfr_threshold}}€ par part fiscale, vous privant du versement libératoire de l'IR — un régime qui intègre l'impôt dans vos cotisations URSSAF à taux fixe. Vous devrez gérer votre IR au barème progressif et anticiper les régularisations.",
     content: `<b>Pourquoi cette limitation s'applique à votre situation</b><br>
 Le versement libératoire est réservé aux foyers dont le revenu fiscal de référence N-2 ne dépasse pas <b>{{rfr_threshold}}€ par part fiscale</b>. Ce seuil s'applique au niveau du foyer fiscal — pas uniquement à vos revenus d'activité. Il est possible qu'une année plus faible en N-2 vous rende éligible à l'avenir.<br>
 <br>
@@ -29,24 +29,26 @@ Si votre RFR diminue dans les prochaines années (changement de situation famili
     sources: [
       {
         url: 'https://www.impots.gouv.fr/professionnel/le-versement-liberatoire',
-        title: "Versement libératoire de l'IR — Impôts.gouv.fr",
+        title: "Versement libératoire de l'IR",
+        website_name: 'Impôts.gouv.fr',
       },
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36244',
-        title: "Fiscalité de l'auto-entrepreneur — Service-Public.fr",
+        title: "Fiscalité de l'auto-entrepreneur",
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'futur_prelevementliberatoire_eligible',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'success',
     priority: 3,
     title:
       'Versement libératoire : vous êtes éligible à ce régime fiscal simplifié',
     summary:
-      "Votre revenu fiscal de référence N-2, ramené à votre nombre de parts fiscales, est inférieur au plafond de {{rfr_threshold}}€. Vous pourrez donc opter pour le versement libératoire de l'impôt sur le revenu dès votre lancement en micro-entreprise — un régime qui simplifie radicalement votre fiscalité en intégrant l'IR directement dans vos cotisations URSSAF à un taux fixe sur votre CA.",
+      "Votre RFR N-2 par part fiscale est inférieur au plafond de {{rfr_threshold}}€. Vous pourrez opter pour le versement libératoire de l'IR dès votre lancement en micro-entreprise, un régime qui simplifie votre fiscalité en intégrant l'impôt dans vos cotisations URSSAF à taux fixe.",
     content: `<b>Ce que le versement libératoire change concrètement</b><br>
 Au lieu de déclarer vos revenus d'entrepreneur au barème progressif de l'IR en fin d'année, vous payez votre impôt en même temps que vos cotisations URSSAF, à chaque déclaration de CA. Le taux est fixe et calculé sur votre chiffre d'affaires brut :<br>
 • <b>1%</b> pour les ventes de marchandises (BIC achat-revente)<br>
@@ -78,24 +80,26 @@ Si votre RFR dépasse le plafond dans les années suivantes, vous perdez automat
     sources: [
       {
         url: 'https://www.impots.gouv.fr/professionnel/le-versement-liberatoire',
-        title: "Versement libératoire de l'IR — Impôts.gouv.fr",
+        title: "Versement libératoire de l'IR",
+        website_name: 'Impôts.gouv.fr',
       },
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36244',
-        title: "Fiscalité de l'auto-entrepreneur — Service-Public.fr",
+        title: "Fiscalité de l'auto-entrepreneur",
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'futur_optimisation_arebasee',
-    category: 'ARE',
+    category: 'aides',
     type: 'success',
     priority: 1,
     title:
       'ARE ou ARCE : choisissez la meilleure option avant de quitter votre emploi',
     summary:
-      "En tant que futur créateur d'entreprise issu du salariat, vous pouvez bénéficier des allocations chômage lors de votre lancement — une aide qui peut représenter plusieurs milliers d'euros par mois selon votre salaire actuel. Le choix entre l'ARE mensuelle (maintien progressif) et l'ARCE (capital immédiat à 60%) est l'une des décisions financières les plus importantes de votre lancement. Ce choix est définitif et doit impérativement être fait avant votre départ.",
+      "En tant que futur créateur issu du salariat, vous pouvez bénéficier des allocations chômage lors de votre lancement. Le choix entre l'ARE mensuelle et l'ARCE (capital à 60%) est une décision financière majeure et définitive à faire impérativement avant votre départ.",
     content: `Imaginons <b>Thomas, ex-salarié à 3 000€ net/mois</b>, avec <b>24 mois de droits ARE</b> à environ 2 100€/mois. Il a deux options au moment de créer son activité.<br>
 <br>
 <b>Option 1 — ARE : le filet de sécurité mensuel</b><br>
@@ -120,19 +124,20 @@ Quand vos revenus d'activité dépassent votre ancien salaire, l'ARE tombe à z�
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F15252',
-        title: 'ARCE vs ARE — Service-Public.fr',
+        title: 'ARCE vs ARE',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'futur_choix_structure',
-    category: 'Simulation',
+    category: 'fiscalite',
     type: 'information',
     priority: 1,
     title: 'Micro, SASU ou EURL : quelle structure pour votre lancement ?',
     summary:
-      "Le choix de votre structure juridique est la décision la plus structurante de votre création d'entreprise — elle détermine votre niveau de charges sociales, votre protection personnelle, votre fiscalité et votre capacité à optimiser vos revenus à terme. Une mauvaise structure peut vous coûter plusieurs milliers d'euros par an ou vous priver de protections importantes en cas d'arrêt. Prenez le temps d'analyser chaque option avant de vous immatriculer.",
+      "Le choix de votre structure juridique est la décision la plus structurante de votre création : charges sociales, protection, fiscalité et optimisation des revenus. Une mauvaise structure peut coûter des milliers d'euros par an. Analysez chaque option avant de vous immatriculer.",
     content: `<b>Option 1 — Micro-entreprise</b><br>
 Idéale pour tester votre activité rapidement. Création en ligne en 10 minutes, comptabilité ultra-simplifiée (livre des recettes uniquement), cotisations sociales proportionnelles au CA réel (12,3% BIC services, 21,2% BNC, 6,2% ventes).<br>
 Limites : plafond de CA (77 700€ services / 188 700€ ventes) possible de dépasser deux années consécutives, impossible de déduire vos frais réels, pas d'optimisation salaire/dividendes possible.<br>
@@ -153,27 +158,30 @@ Votre conseiller Timbr peut vous réaliser une simulation comparative personnali
     sources: [
       {
         url: 'https://bpifrance-creation.fr/encyclopedie/structures-juridiques/choix-du-statut-generalites/criteres-choix-structure-juridique',
-        title: 'Critères de choix de structure juridique — BPI France Création',
+        title: 'Critères de choix de structure juridique',
+        website_name: 'BPI France Création',
       },
       {
         url: 'https://www.shine.fr/blog/sasu-sarl/',
-        title: 'SASU vs SARL — Shine',
+        title: 'SASU vs SARL',
+        website_name: 'Shine',
       },
       {
         url: 'https://www.legalstart.fr/fiches-pratiques/statut-entreprise/sasu-ou-sarl/',
-        title: 'SASU ou SARL — Legalstart',
+        title: 'SASU ou SARL',
+        website_name: 'Legalstart',
       },
     ],
   },
 
   {
     id: 'futur_acre_eligibilite',
-    category: 'TNS',
+    category: 'aides',
     type: 'success',
     priority: 2,
     title: 'ACRE : réduisez de 50% vos charges sociales dès votre lancement',
     summary:
-      "L'ACRE (Aide à la Création ou Reprise d'Entreprise) est l'un des dispositifs les plus avantageux pour les nouveaux créateurs : elle réduit vos cotisations sociales de 50% pendant les 12 premiers mois d'activité. En micro-entreprise, cette réduction est automatique à l'immatriculation. En société, elle doit être demandée dans un délai strict de 45 jours — un délai non prolongeable qui coûte cher si on le rate.",
+      "L'ACRE réduit vos cotisations sociales de 50% pendant 12 mois. En micro-entreprise, c'est automatique à l'immatriculation. En société, la demande doit être faite sous 45 jours — un délai strict et non prolongeable qui coûte cher si on le rate.",
     content: `<b>Ce qu'apporte l'ACRE concrètement</b><br>
 L'ACRE réduit de 50% toutes vos cotisations sociales pendant les 12 premiers mois d'activité à compter de votre date d'immatriculation.<br>
 <br>
@@ -199,19 +207,20 @@ Pour un CA de 50 000€ en BNC : cotisations normales ≈ 10 600€ / avec ACRE 
     sources: [
       {
         url: 'https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html',
-        title: "L'essentiel du statut auto-entrepreneur — URSSAF",
+        title: "L'essentiel du statut auto-entrepreneur",
+        website_name: 'URSSAF',
       },
     ],
   },
 
   {
     id: 'futur_tva_franchise_explication',
-    category: 'TVA',
+    category: 'tva',
     type: 'information',
     priority: 3,
     title: 'TVA : ce que vous devez comprendre avant votre premier client',
     summary:
-      "La franchise en base de TVA vous permet de facturer sans TVA si votre CA reste sous {{tva_seuil_base}}€. Simple au démarrage — mais il y a une règle de basculement que beaucoup ignorent, et une raison concrète d'opter pour la TVA dès le début si vous avez des dépenses professionnelles importantes.",
+      'La franchise TVA permet de facturer sans TVA sous {{tva_seuil_base}}€ de CA. Attention : une règle de basculement méconnue existe, et opter pour la TVA dès le début peut être avantageux si vos dépenses professionnelles sont importantes.',
     content: `<b>Le principe : sous {{tva_seuil_base}}€ de CA, pas de TVA</b><br>
 En dessous du seuil de franchise, vous facturez sans TVA — pratique et avantageux pour les clients particuliers (B2C). Mention obligatoire sur chaque facture : «TVA non applicable, article 293B du CGI».<br>
 <br>
@@ -236,24 +245,26 @@ Exemple : achat d'un MacBook Pro à 2 400€ TTC (400€ de TVA). En franchise T
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F21746',
-        title: 'Franchise en base de TVA — Service-Public.fr',
+        title: 'Franchise en base de TVA',
+        website_name: 'Service-Public.fr',
       },
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23569',
-        title: 'Déduction de la TVA — Service-Public.fr',
+        title: 'Déduction de la TVA',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'futur_compte_bancaire_pro',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'information',
     priority: 4,
     title:
       'Compte bancaire professionnel : séparez vos flux dès le premier jour',
     summary:
-      "Dès le lancement de votre activité, disposer d'un compte bancaire dédié est la meilleure pratique pour séparer clairement vos flux professionnels de vos finances personnelles. Pour les sociétés, c'est une obligation légale dès la création. Pour les micro-entrepreneurs, c'est obligatoire après 2 ans de CA supérieur à 10 000€ — mais fortement conseillé dès le premier euro facturé.",
+      "Un compte bancaire dédié sépare clairement vos flux pro et perso. Pour les sociétés, c'est obligatoire dès la création. Pour les micro-entrepreneurs, c'est obligatoire après 2 ans de CA supérieur à 10 000€ — mais fortement conseillé dès le premier euro facturé.",
     content: `<b>Pourquoi un compte dédié dès le départ ?</b><br>
 • Séparation claire des flux professionnels et personnels → comptabilité simplifiée<br>
 • Facilite vos déclarations de CA et réduit le risque en cas de contrôle fiscal<br>
@@ -274,20 +285,21 @@ Pièce d'identité, justificatif de domicile, extrait Kbis ou attestation d'imma
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F35991',
-        title: 'Compte bancaire professionnel — Service-Public.fr',
+        title: 'Compte bancaire professionnel',
+        website_name: 'Service-Public.fr',
       },
     ],
   },
 
   {
     id: 'futur_abattement_explication',
-    category: 'Fiscalité',
+    category: 'fiscalite',
     type: 'information',
     priority: 4,
     title:
       "L'abattement forfaitaire : comprendre comment vos revenus seront imposés en micro",
     summary:
-      "Si vous choisissez la micro-entreprise et n'optez pas pour le versement libératoire, vos revenus seront soumis au barème progressif de l'impôt sur le revenu. L'administration applique automatiquement un abattement forfaitaire sur votre CA — il remplace la déduction de vos frais réels. Comprendre ce mécanisme est essentiel pour anticiper votre charge fiscale réelle dès le lancement.",
+      "En micro-entreprise sans versement libératoire, vos revenus sont soumis au barème progressif de l'IR. Un abattement forfaitaire sur votre CA remplace la déduction des frais réels. Comprendre ce mécanisme est essentiel pour anticiper votre charge fiscale dès le lancement.",
     content: `<b>Comment fonctionne l'abattement en micro-entreprise</b><br>
 L'abattement est un pourcentage de réduction automatique appliqué sur votre CA brut. L'administration considère que ce pourcentage couvre forfaitairement l'ensemble de vos charges professionnelles — vous ne pouvez donc pas déduire vos frais réels en plus.<br>
 <br>
@@ -314,7 +326,8 @@ L'abattement est forfaitaire : si vos frais réels dépassent ce pourcentage (ma
     sources: [
       {
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F36244',
-        title: "Fiscalité de l'auto-entrepreneur — Service-Public.fr",
+        title: "Fiscalité de l'auto-entrepreneur",
+        website_name: 'Service-Public.fr',
       },
     ],
   },
