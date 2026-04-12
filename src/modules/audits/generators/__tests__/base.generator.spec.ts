@@ -75,7 +75,7 @@ describe('BaseAuditGenerator — createItem', () => {
     expect(item.category).toBe('Fiscalité');
     expect(item.priority).toBe(2);
     expect(item.sources).toEqual([
-      { url: 'https://example.com', title: 'Example' },
+      { url: 'https://example.com', title: 'Example', website_name: 'Example' },
     ]);
   });
 
