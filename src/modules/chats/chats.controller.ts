@@ -18,7 +18,7 @@ import { FilesInterceptor } from '@nestjs/platform-express';
 import { ChatsService } from './chats.service';
 import { ChatMessagesService } from '../chat-messages';
 import { ChatAttachmentsService } from '../chat-attachments';
-import { ChatGPTService } from './chatgpt.service';
+import { LLMService } from './llm.service';
 import { UsersService, TokenUsageService } from '../users';
 import { JwtAuthGuard } from '../../guards';
 import { CreateChatDto, PaginationQueryDto, SendMessageDto } from './chats.dto';
@@ -31,7 +31,7 @@ export class ChatsController {
     private readonly chatsService: ChatsService,
     private readonly chatMessagesService: ChatMessagesService,
     private readonly chatAttachmentsService: ChatAttachmentsService,
-    private readonly chatGPTService: ChatGPTService,
+    private readonly llmService: LLMService,
     private readonly usersService: UsersService,
     private readonly tokenUsageService: TokenUsageService,
   ) {}
@@ -98,25 +98,28 @@ export class ChatsController {
     // Check token limit before proceeding
     await this.tokenUsageService.checkTokenLimit(user);
 
+    // Resolve subscription tier
+    const tier = await this.tokenUsageService.getUserTier(user.id);
+
     const hasFiles = files && files.length > 0;
 
-    // Generate title from first message
-    const title = await this.chatGPTService.generateChatTitle(
+    // Get response from LLM service (RAG + OpenAI) — also returns a title since context is empty
+    const response = await this.llmService.sendMessage(
       body.firstMessage,
+      body.type,
+      tier,
+      [],
     );
 
-    // Create chat first so we have the chatId for S3 path
+    // Create chat with title from LLM response
     const chat = await this.chatsService.create({
       user,
-      title,
+      title: response.title || 'Nouvelle conversation',
       type: body.type,
       openai_thread_id: null,
     });
 
-    // Upload attachments to S3 before calling OpenAI
-    let attachments = [];
-    let attachmentUrls: string[] = [];
-    // Create user message first so we can link attachments
+    // Create user message
     const userMessage = await this.chatMessagesService.create({
       chat,
       role: 'user',
@@ -124,6 +127,8 @@ export class ChatsController {
       token_cost: 0,
     });
 
+    // Upload attachments to S3
+    let attachments = [];
     if (hasFiles) {
       attachments = await this.chatAttachmentsService.createMany(
         userMessage,
@@ -131,16 +136,7 @@ export class ChatsController {
         user.id,
         chat.id,
       );
-      attachmentUrls = attachments.map((a) => a.path);
     }
-
-    // Get response from ChatGPT with S3 URLs
-    const response = await this.chatGPTService.sendMessage(
-      body.firstMessage,
-      body.type,
-      [],
-      attachmentUrls.length > 0 ? attachmentUrls : undefined,
-    );
 
     // Store assistant message
     const assistantMessage = await this.chatMessagesService.create({
@@ -188,8 +184,9 @@ export class ChatsController {
     // Check token limit before proceeding
     await this.tokenUsageService.checkTokenLimit(user);
 
-    // Upload attachments to S3 first so we have URLs for OpenAI
-    let attachmentUrls: string[] = [];
+    // Resolve subscription tier
+    const tier = await this.tokenUsageService.getUserTier(user.id);
+
     const hasFiles = files && files.length > 0;
 
     // Get existing conversation from chat_message table
@@ -199,31 +196,13 @@ export class ChatsController {
       1000,
     );
 
-    // Build conversation history, reconstructing array format for messages with attachments
-    const conversationHistory = messagesResult.data.map((msg) => {
-      const hasMessageAttachments =
-        msg.attachments && msg.attachments.length > 0;
+    // Build conversation history (text only for LLM service)
+    const conversationHistory = messagesResult.data.map((msg) => ({
+      role: msg.role,
+      content: msg.content,
+    }));
 
-      if (hasMessageAttachments && msg.role === 'user') {
-        return {
-          role: msg.role,
-          content: [
-            { type: 'text' as const, text: msg.content },
-            ...msg.attachments.map((att) => ({
-              type: 'image_url' as const,
-              image_url: { url: att.path },
-            })),
-          ],
-        };
-      }
-
-      return {
-        role: msg.role,
-        content: msg.content,
-      };
-    });
-
-    // Store new messages in chat_message table first
+    // Store new user message
     const newMessages = await this.chatMessagesService.createMany([
       { chat, role: 'user', content: body.message, token_cost: 0 },
     ]);
@@ -237,15 +216,14 @@ export class ChatsController {
         user.id,
         chat.id,
       );
-      attachmentUrls = attachments.map((a) => a.path);
     }
 
-    // Get response from ChatGPT with full conversation history
-    const response = await this.chatGPTService.sendMessage(
+    // Get response from LLM service (RAG + OpenAI) with conversation history
+    const response = await this.llmService.sendMessage(
       body.message,
       chat.type,
+      tier,
       conversationHistory,
-      attachmentUrls.length > 0 ? attachmentUrls : undefined,
     );
 
     // Store assistant response
