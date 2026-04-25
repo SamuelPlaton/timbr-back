@@ -25,6 +25,20 @@ export class SendMessageDto {
   message: string;
 }
 
+export class UpsertMessageDto {
+  @IsString()
+  @IsNotEmpty()
+  message: string;
+
+  @IsOptional()
+  @IsString()
+  chatId?: string;
+
+  @IsOptional()
+  @IsEnum(ChatTypeEnum)
+  type?: ChatTypeEnum;
+}
+
 export class PaginationQueryDto {
   @IsOptional()
   @Type(() => Number)

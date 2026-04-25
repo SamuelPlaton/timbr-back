@@ -18,6 +18,13 @@ interface LLMChatResponse {
   title: string | null;
 }
 
+export type LLMStreamEvent =
+  | { type: 'sources'; sources: LLMSource[] }
+  | { type: 'token'; text: string }
+  | { type: 'title'; title: string }
+  | { type: 'done'; token_cost: number; details: Record<string, unknown> }
+  | { type: 'error'; message: string };
+
 @Injectable()
 export class LLMService {
   private readonly logger = new Logger(LLMService.name);
@@ -83,5 +90,75 @@ export class LLMService {
       sources: data.sources || [],
       title: data.title || null,
     };
+  }
+
+  async *sendMessageStream(
+    message: string,
+    chatType: ChatTypeEnum,
+    tier: string,
+    conversationHistory: ChatMessageInput[] = [],
+  ): AsyncGenerator<LLMStreamEvent> {
+    const context = conversationHistory.slice(-10).map((msg) => ({
+      role: msg.role,
+      content: msg.content,
+    }));
+
+    const body = {
+      question: message,
+      chat_type: this.getChatType(chatType),
+      tier,
+      context,
+    };
+
+    this.logger.debug(
+      `Streaming LLM service: tier=${tier}, chat_type=${body.chat_type}`,
+    );
+
+    const response = await fetch(`${this.llmServiceUrl}/chat/stream`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok || !response.body) {
+      const error = await response.text();
+      this.logger.error(`LLM stream error (${response.status}): ${error}`);
+      yield {
+        type: 'error',
+        message: `LLM service returned ${response.status}`,
+      };
+      return;
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    try {
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+
+        // SSE events are separated by double newline
+        const parts = buffer.split('\n\n');
+        buffer = parts.pop() || '';
+
+        for (const part of parts) {
+          const line = part.trim();
+          if (!line.startsWith('data: ')) continue;
+
+          const payload = line.slice('data: '.length);
+          try {
+            yield JSON.parse(payload) as LLMStreamEvent;
+          } catch (e) {
+            this.logger.warn(`Failed to parse SSE payload: ${payload} ${e}`);
+          }
+        }
+      }
+    } finally {
+      reader.releaseLock();
+    }
   }
 }
