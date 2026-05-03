@@ -17,15 +17,29 @@ export class BrevoService {
     const rawKey = process.env.BREVO_API_KEY ?? '';
     const key = rawKey.trim();
 
-    this.logger.log(
-      `Brevo key — présente: ${!!key}, longueur brute: ${rawKey.length}, longueur trimée: ${key.length}, début: "${key.substring(0, 12)}..."`,
-    );
-
     this.apiInstance = new ContactsApi();
     this.apiInstance.setApiKey(0, key);
 
     this.emailApiInstance = new TransactionalEmailsApi();
     this.emailApiInstance.setApiKey(0, key);
+
+    // Diagnostic: valide la clé directement via l'API REST
+    fetch('https://api.brevo.com/v3/account', {
+      headers: { 'api-key': key },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.email) {
+          this.logger.log(
+            `Brevo account OK — email: ${data.email}, plan: ${data.plan?.[0]?.type}`,
+          );
+        } else {
+          this.logger.error('Brevo account check échoué:', data);
+        }
+      })
+      .catch((err) =>
+        this.logger.error('Brevo account check — erreur réseau:', err.message),
+      );
   }
 
   async createOrUpdateContact(
@@ -91,8 +105,11 @@ export class BrevoService {
         to,
         templateId,
         error: error.message,
+        status: error.response?.status,
+        brevoResponse: error.response?.body ?? error.response?.data,
+        headers: error.response?.headers,
       });
-      // Don't throw error to prevent blocking the operation
+      throw error;
     }
   }
 

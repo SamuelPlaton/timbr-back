@@ -4,6 +4,7 @@ import {
   Controller,
   forwardRef,
   Inject,
+  InternalServerErrorException,
   NotFoundException,
   Post,
   UnauthorizedException,
@@ -13,6 +14,7 @@ import {
   UseGuards,
   Request,
 } from '@nestjs/common';
+import { randomUUID } from 'crypto';
 import { AuthService } from './auth.service';
 import { UsersService } from '../users';
 import { BrevoService } from '../brevo/brevo.service';
@@ -60,16 +62,26 @@ export class AuthController {
       body.email,
     );
 
+    // Pre-generate the user ID so we can build the verification link before saving to DB.
+    // If the email fails, the user is never created.
+    const userId = randomUUID();
+
+    try {
+      await this.authService.sendVerificationEmail(userId, body.email);
+    } catch {
+      throw new InternalServerErrorException(
+        "L'envoi de l'email de vérification a échoué. Votre compte n'a pas été créé, veuillez réessayer.",
+      );
+    }
+
     const user = await this.userService.create({
+      id: userId,
       email: body.email,
       password_hash: hashedPassword,
       first_name: body.first_name,
       last_name: body.last_name,
       stripe_customer_id: stripeCustomerId,
     });
-
-    // Send verification email
-    await this.authService.sendVerificationEmail(user.id, user.email);
 
     return {
       data: {

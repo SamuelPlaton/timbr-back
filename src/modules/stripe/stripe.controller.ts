@@ -101,7 +101,9 @@ export class StripeController {
           subscriptionCreated.customer as string,
         );
         if (customerCreated) {
-          await this.brevoService.sendTransactionalEmail(customerCreated, 16);
+          try {
+            await this.brevoService.sendTransactionalEmail(customerCreated, 16);
+          } catch {}
         }
         break;
 
@@ -119,7 +121,9 @@ export class StripeController {
           subscriptionDeleted.customer as string,
         );
         if (customerDeleted) {
-          await this.brevoService.sendTransactionalEmail(customerDeleted, 17);
+          try {
+            await this.brevoService.sendTransactionalEmail(customerDeleted, 17);
+          } catch {}
         }
         break;
 
