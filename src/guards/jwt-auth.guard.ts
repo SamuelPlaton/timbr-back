@@ -18,27 +18,14 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
       );
     }
 
-    console.log('[JWT Guard] Checking authentication');
     return super.canActivate(context);
   }
 
-  handleRequest(err: any, user: any, info: any) {
-    console.log('[JWT Guard] Handle request:', {
-      error: err?.message,
-      user: user?.email,
-      info: info?.message,
-    });
-
+  handleRequest(err: any, user: any) {
     if (err || !user) {
-      console.error('[JWT Guard] Authentication failed:', {
-        error: err?.message,
-        info: info?.message,
-        hasUser: !!user,
-      });
       throw err || new UnauthorizedException('Token invalide ou expiré');
     }
 
-    console.log('[JWT Guard] Authentication successful for user:', user.email);
     return user;
   }
 }

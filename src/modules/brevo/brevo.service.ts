@@ -14,11 +14,18 @@ export class BrevoService {
   private emailApiInstance: TransactionalEmailsApi;
 
   constructor() {
+    const rawKey = process.env.BREVO_API_KEY ?? '';
+    const key = rawKey.trim();
+
+    this.logger.log(
+      `Brevo key — présente: ${!!key}, longueur brute: ${rawKey.length}, longueur trimée: ${key.length}, début: "${key.substring(0, 12)}..."`,
+    );
+
     this.apiInstance = new ContactsApi();
-    this.apiInstance.setApiKey(0, process.env.BREVO_API_KEY);
+    this.apiInstance.setApiKey(0, key);
 
     this.emailApiInstance = new TransactionalEmailsApi();
-    this.emailApiInstance.setApiKey(0, process.env.BREVO_API_KEY);
+    this.emailApiInstance.setApiKey(0, key);
   }
 
   async createOrUpdateContact(
