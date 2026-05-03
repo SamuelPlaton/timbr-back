@@ -101,11 +101,7 @@ export class StripeController {
           subscriptionCreated.customer as string,
         );
         if (customerCreated) {
-          await this.brevoService.sendTransactionalEmail(
-            customerCreated,
-            2, // Template ID for subscription confirmation
-            { plan: this.getPlanNameFromSubscription(subscriptionCreated) },
-          );
+          await this.brevoService.sendTransactionalEmail(customerCreated, 16);
         }
         break;
 
@@ -123,10 +119,7 @@ export class StripeController {
           subscriptionDeleted.customer as string,
         );
         if (customerDeleted) {
-          await this.brevoService.sendTransactionalEmail(
-            customerDeleted,
-            3, // Template ID for subscription cancellation
-          );
+          await this.brevoService.sendTransactionalEmail(customerDeleted, 17);
         }
         break;
 

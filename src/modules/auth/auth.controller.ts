@@ -68,8 +68,6 @@ export class AuthController {
       stripe_customer_id: stripeCustomerId,
     });
 
-    await this.brevoService.createOrUpdateContact(body.email);
-
     // Send verification email
     await this.authService.sendVerificationEmail(user.id, user.email);
 
@@ -151,7 +149,7 @@ export class AuthController {
 
     // Send password reset email via Brevo
     const resetLink = `${process.env.FRONTEND_URL}/auth/reset-password?token=${token}`;
-    await this.brevoService.sendTransactionalEmail(user.email, 1, {
+    await this.brevoService.sendTransactionalEmail(user.email, 14, {
       RESET_PASSWORD_LINK: resetLink,
     });
 

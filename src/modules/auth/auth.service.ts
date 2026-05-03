@@ -77,7 +77,7 @@ export class AuthService {
     const verificationCode = generateEmailVerificationCode(email, userId);
     const verificationLink = `${process.env.FRONTEND_URL}/verify-email?id=${userId}&code=${verificationCode}`;
 
-    await this.brevoService.sendTransactionalEmail(email, 2, {
+    await this.brevoService.sendTransactionalEmail(email, 15, {
       VALIDATE_ACCOUNT_LINK: verificationLink,
     });
   }
@@ -96,6 +96,7 @@ export class AuthService {
       await this.userApi.update(user, {
         email_verified_at: new Date(),
       });
+      await this.brevoService.createOrUpdateContact(user.email);
       return true;
     }
 
