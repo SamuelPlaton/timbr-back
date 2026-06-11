@@ -4,6 +4,7 @@ import {
   IsEnum,
   IsOptional,
   IsInt,
+  MaxLength,
   Min,
 } from 'class-validator';
 import { Type } from 'class-transformer';
@@ -28,6 +29,7 @@ export class SendMessageDto {
 export class UpsertMessageDto {
   @IsString()
   @IsNotEmpty()
+  @MaxLength(20_000)
   message: string;
 
   @IsOptional()

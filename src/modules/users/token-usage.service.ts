@@ -56,7 +56,7 @@ export class TokenUsageService {
       .update(User)
       .set({
         current_month_token_usage: () =>
-          `current_month_token_usage + ${Math.round(tokenCost)}`,
+          `current_month_token_usage + ${Math.max(0, Math.round(tokenCost || 0))}`,
       })
       .where('id = :id', { id: userId })
       .execute();

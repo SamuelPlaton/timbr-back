@@ -9,6 +9,8 @@ import {
   ValidationPipe,
   UsePipes,
   BadRequestException,
+  ForbiddenException,
+  NotFoundException,
   forwardRef,
   Inject,
 } from '@nestjs/common';
@@ -77,8 +79,12 @@ export class UsersController {
 
   @Get(':id')
   @UseGuards(JwtAuthGuard)
-  async getUser(@Param('id') id: string) {
-    const user = await this.usersService.findOne({ id });
+  async getUser(@Param('id') id: string, @Request() req) {
+    if (req.user.id !== id) {
+      throw new ForbiddenException('Accès non autorisé');
+    }
+    const user = await this.usersService.findOneOrFail({ id });
+    if (!user) throw new NotFoundException('Utilisateur non trouvé');
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password_hash, ...result } = user;
     return { data: result };

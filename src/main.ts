@@ -33,21 +33,21 @@ async function bootstrap() {
     }),
   );
 
-  // Swagger documentation
-  const config = new DocumentBuilder()
-    .setTitle('Timbr API')
-    .setDescription(
-      "API pour l'aide à l'administration des entreprises françaises",
-    )
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  if (process.env.NODE_ENV !== 'production') {
+    const config = new DocumentBuilder()
+      .setTitle('Timbr API')
+      .setDescription(
+        "API pour l'aide à l'administration des entreprises françaises",
+      )
+      .setVersion('1.0')
+      .addBearerAuth()
+      .build();
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('api', app, document);
+  }
 
   const port = process.env.PORT || 3001;
   await app.listen(port);
   console.log(`🚀 Application démarrée sur http://localhost:${port}`);
-  console.log(`📚 Documentation Swagger sur http://localhost:${port}/api`);
 }
 bootstrap();

@@ -125,7 +125,12 @@ export class AuthController {
 
     this.validateRefreshToken(existingRefreshToken);
 
-    const payload = this.authService['jwtService'].verify(body.refresh_token);
+    let payload: { sub: string };
+    try {
+      payload = this.authService.verifyRefreshToken(body.refresh_token);
+    } catch {
+      throw new UnauthorizedException('Token de rafraîchissement invalide');
+    }
 
     return {
       data: {

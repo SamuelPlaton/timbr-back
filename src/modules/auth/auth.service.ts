@@ -32,6 +32,10 @@ export class AuthService {
     return this.jwtService.sign({ sub: userId });
   }
 
+  verifyRefreshToken(token: string): { sub: string } {
+    return this.jwtService.verify(token);
+  }
+
   findRefreshToken(filters: object = {}): Promise<RefreshToken> {
     return this.authApi.findRefreshToken(filters);
   }

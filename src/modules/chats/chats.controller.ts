@@ -3,6 +3,7 @@ import {
   Body,
   Controller,
   Delete,
+  ForbiddenException,
   Get,
   NotFoundException,
   Param,
@@ -16,6 +17,7 @@ import {
   UseInterceptors,
   UploadedFiles,
 } from '@nestjs/common';
+import { hasFeatureAccess } from '../../config/subscription.config';
 import type { Response } from 'express';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { ChatsService } from './chats.service';
@@ -24,6 +26,8 @@ import { ChatAttachmentsService } from '../chat-attachments';
 import { LLMService } from './llm.service';
 import { UsersService, TokenUsageService } from '../users';
 import { JwtAuthGuard } from '../../guards';
+import { Feature } from '../../config/subscription.config';
+import { ChatTypeEnum } from '../../entities';
 import { PaginationQueryDto, UpsertMessageDto } from './chats.dto';
 import { multerConfig } from '../../config/multer.config';
 import { Chat } from '../../entities';
@@ -105,6 +109,14 @@ export class ChatsController {
     const hasFiles = files && files.length > 0;
     const isNewChat = !body.chatId;
 
+    if (hasFiles && !hasFeatureAccess(tier, Feature.FILE_ATTACHMENTS)) {
+      throw new ForbiddenException({
+        code: 'FEATURE_NOT_AVAILABLE',
+        message:
+          'Les pièces jointes nécessitent un abonnement Solo ou supérieur.',
+      });
+    }
+
     // Validate params by branch
     let chat: Chat;
     let conversationHistory: { role: string; content: string }[] = [];
@@ -114,6 +126,17 @@ export class ChatsController {
         throw new BadRequestException(
           'Le champ "type" est requis pour un nouveau chat.',
         );
+      }
+      const advancedTypes = [ChatTypeEnum.COMPLETE, ChatTypeEnum.PEDAGOGUE];
+      if (
+        advancedTypes.includes(body.type) &&
+        !hasFeatureAccess(tier, Feature.ADVANCED_CHAT_TYPES)
+      ) {
+        throw new ForbiddenException({
+          code: 'FEATURE_NOT_AVAILABLE',
+          message:
+            'Ce type de chat nécessite un abonnement Boost ou supérieur.',
+        });
       }
       // Temporary title, will be updated once LLM provides one
       chat = await this.chatsService.create({
