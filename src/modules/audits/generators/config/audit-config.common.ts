@@ -258,6 +258,44 @@ Quelle que soit votre structure, votre première année complète d'activité es
       },
     ],
   },
+
+  {
+    id: 'tresorerie_spiko_fonds_monetaire',
+    category: 'optimisation',
+    type: 'success',
+    priority: 3,
+    title: 'Spiko : rémunérez votre trésorerie dormante au taux sans risque',
+    summary:
+      'Votre trésorerie qui dort sur un compte courant à 0% peut être placée sur un fonds monétaire Spiko, à environ 2,25% de rendement, contre 1,25% pour la rémunération active de Qonto sur une trésorerie équivalente. Liquidité totale (retrait à tout moment, sans blocage ni pénalité) : une alternative simple aux comptes à terme bancaires classiques.',
+    content: `<b>Le problème du compte courant qui ne rapporte rien</b><br>
+Que vous soyez en société, en micro-entreprise ou en nom propre, la trésorerie qui reste sur votre compte courant professionnel ne rapporte généralement aucun intérêt. Sur plusieurs dizaines de milliers d'euros, c'est un coût d'opportunité réel chaque année.<br>
+<br>
+<b>Qu'est-ce que Spiko ?</b><br>
+Spiko est une société de gestion française agréée par l'AMF et l'ACPR, qui propose des fonds monétaires investis exclusivement en bons du Trésor (dette d'État court terme) — l'un des placements les plus sûrs qui existent. Contrairement à un compte à terme bancaire classique, votre argent n'est jamais bloqué.<br>
+<br>
+<b>Fonctionnement</b><br>
+• Rendement quotidien, proche du taux sans risque de la zone euro — <b>environ 2,25%/an</b> actuellement chez Spiko<br>
+• À titre de comparaison : la rémunération active de Qonto sur la trésorerie du compte pro tourne autour de <b>1,25%/an</b> — Spiko affiche donc un rendement sensiblement supérieur sur un excédent de trésorerie équivalent<br>
+• Retrait possible à tout moment, sous un jour ouvré, sans préavis ni pénalité sur les intérêts acquis<br>
+• Dépôt initial à partir de 1 000€, puis dépôts/retraits libres dès 1€<br>
+• Traitement comptable et fiscal assimilé à un compte à terme classique pour votre entreprise<br>
+<br>
+<b>Pour qui ?</b><br>
+Ce type de solution s'adresse à toute structure disposant d'une trésorerie excédentaire, quelle que soit sa forme juridique : société (SASU, SARL, SAS, EURL), micro-entreprise ou activité en nom propre. Il ne remplace pas votre fonds de roulement immédiat, mais permet de faire fructifier l'excédent plutôt que de le laisser dormir.<br>
+<br>
+<b>Complément ou alternative ?</b><br>
+Contrairement à un compte-titres (ETF, actions), il n'y a ici aucun risque de marché sur le capital : c'est une solution de trésorerie, pas un placement d'investissement long terme. À réserver à votre trésorerie de précaution ou vos excédents court terme.<br>
+<br>
+<b>Point de vigilance</b><br>
+Les taux évoluent avec les taux directeurs de la BCE : les chiffres ci-dessus sont indicatifs et à vérifier au moment de votre décision, mais l'écart de rendement entre un fonds monétaire dédié comme Spiko et la rémunération active d'une néobanque reste généralement significatif.`,
+    sources: [
+      {
+        url: 'https://www.spiko.io/fr/academie/comment-placer-sa-tresorerie-dentreprise',
+        title: "Comment placer sa trésorerie d'entreprise",
+        website_name: 'Spiko',
+      },
+    ],
+  },
 ];
 
 export default config;

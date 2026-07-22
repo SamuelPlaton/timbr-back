@@ -312,6 +312,14 @@ export class SocieteAuditGenerator extends BaseAuditGenerator {
     // on skills donated to associations, capped at 20k€ or 5‰ CA.
     items.push(this.createItem('societe_mecenat_competences'));
 
+    // Indemnités kilométriques: educational — always shown. Deductible for
+    // the company and exempt of social contributions for the director.
+    items.push(this.createItem('societe_indemnites_kilometriques'));
+
+    // Chèques-vacances: educational — always shown. Employer-funded
+    // exemption up to 30% of monthly SMIC per beneficiary per year.
+    items.push(this.createItem('societe_cheque_vacances'));
+
     return items;
   }
 

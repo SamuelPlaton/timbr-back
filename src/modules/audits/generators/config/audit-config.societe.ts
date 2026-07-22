@@ -1065,6 +1065,79 @@ Le mécénat de compétences renforce votre image d'entreprise engagée, dévelo
       },
     ],
   },
+
+  {
+    id: 'societe_indemnites_kilometriques',
+    category: 'optimisation',
+    type: 'success',
+    priority: 3,
+    title:
+      'Indemnités kilométriques : optimisez la prise en charge de vos déplacements professionnels',
+    summary:
+      'Vos déplacements professionnels en véhicule personnel peuvent être remboursés par votre société via le barème kilométrique officiel : une charge déductible du résultat et non imposable pour vous, sous réserve de respecter les conditions et de tenir un justificatif de vos trajets.',
+    content: `<b>Comment ça fonctionne</b><br>
+Si vous utilisez votre véhicule personnel (voiture, moto, scooter) pour des déplacements professionnels, votre société peut vous rembourser ces frais via le barème kilométrique publié chaque année par l'administration fiscale. Le montant dépend de la puissance fiscale du véhicule et du nombre de kilomètres professionnels parcourus dans l'année.<br>
+<br>
+<b>Un double avantage</b><br>
+• Pour la société : ce remboursement est une <b>charge déductible</b> du résultat imposable, au même titre que les autres frais professionnels<br>
+• Pour vous : ces indemnités sont <b>exonérées de cotisations sociales et non imposables</b>, dans la limite du barème officiel<br>
+<br>
+<b>Frais réels ou barème kilométrique ?</b><br>
+Deux options s'offrent à vous : le barème kilométrique forfaitaire (simple, pas de justificatif de dépense à conserver) ou la déduction des frais réels (carburant, assurance, entretien, amortissement). Le barème est en général plus avantageux pour un kilométrage annuel modéré ; les frais réels deviennent intéressants au-delà d'un usage professionnel intensif.<br>
+<br>
+<b>Conditions à respecter</b><br>
+• Le véhicule doit vous appartenir personnellement (ou être en location/crédit-bail à votre nom)<br>
+• Les trajets doivent être strictement professionnels (rendez-vous clients, déplacements pour l'activité...) — le trajet domicile-lieu de travail habituel est généralement exclu<br>
+• Tenez un <b>carnet de bord</b> détaillant dates, motifs, distances et destinations : c'est la pièce justificative exigée en cas de contrôle<br>
+• Le régime applicable diffère selon que votre société est soumise à l'IS (barème salarié classique) ou à l'IR<br>
+<br>
+Votre conseiller Timbr peut vous aider à estimer le montant annuel déductible selon votre kilométrage professionnel.`,
+    sources: [
+      {
+        url: 'https://www.economie.gouv.fr/entreprises/deduction-frais-deplacement',
+        title: 'Déduire les frais de déplacement du résultat fiscal',
+        website_name: 'Economie.gouv.fr',
+      },
+    ],
+  },
+
+  {
+    id: 'societe_cheque_vacances',
+    category: 'optimisation',
+    type: 'information',
+    priority: 3,
+    title:
+      'Chèques-vacances : un complément de rémunération exonéré de charges',
+    summary:
+      "Votre société peut financer des chèques-vacances ANCV pour vous et vos salariés. Deux plafonds à connaître : jusqu'à environ 1 800€/an par bénéficiaire, c'est non imposable côté personnel (impôt sur le revenu) ; et dans la limite de 30% du SMIC mensuel brut par bénéficiaire et par an, c'est en plus non soumis aux cotisations sociales côté entreprise. Un levier de rémunération complémentaire méconnu, sous conditions.",
+    content: `<b>Le principe</b><br>
+Le chèque-vacances est un titre de paiement, émis par l'Agence Nationale pour les Chèques-Vacances (ANCV), utilisable pour financer des dépenses de loisirs et de vacances (hébergement, transport, activités culturelles et sportives...). Toute entreprise, quelle que soit sa taille, peut en proposer à ses salariés dès lors qu'elle a signé une convention avec l'ANCV.<br>
+<br>
+<b>Deux plafonds d'exonération à distinguer</b><br>
+• <b>Côté bénéficiaire (vous ou votre salarié) :</b> la participation employeur est non imposable à l'impôt sur le revenu dans la limite d'<b>un SMIC mensuel brut, soit environ 1 800€ par an et par bénéficiaire</b>. Au-delà, elle est imposable comme un complément de revenu.<br>
+• <b>Côté entreprise :</b> pour les entreprises de <b>moins de 50 salariés sans CSE</b>, cette même participation est en plus exonérée de cotisations sociales patronales (hors CSG, CRDS et versement mobilité) dans une limite plus basse, de <b>30% du SMIC mensuel brut</b> par bénéficiaire et par an. Entre ce plafond et le SMIC mensuel entier, la participation reste non imposable pour vous mais redevient soumise aux cotisations sociales.<br>
+<br>
+<b>Charge déductible pour la société</b><br>
+Le financement des chèques-vacances constitue une charge déductible du résultat imposable de votre société, au même titre qu'un élément de rémunération classique — tout en étant plus avantageux socialement dans la limite de l'exonération.<br>
+<br>
+<b>Et pour vous, dirigeant ?</b><br>
+En tant que président de SASU/SAS (assimilé-salarié), vous pouvez généralement en bénéficier au même titre qu'un salarié. En tant que gérant majoritaire de SARL/EURL (travailleur non salarié), le régime d'exonération est plus restrictif et mérite d'être vérifié avec votre expert-comptable avant mise en place, car l'exonération sociale cible avant tout le régime salarié.<br>
+<br>
+<b>Comment le mettre en place</b><br>
+Signez une convention avec l'ANCV (ancv.com), définissez les critères d'attribution (souvent liés à l'ancienneté ou à la situation familiale), puis financez les chèques selon la répartition employeur/bénéficiaire de votre choix. Les titres émis restent valables l'année d'émission plus deux années suivantes.`,
+    sources: [
+      {
+        url: 'https://www.urssaf.fr/portail/sites/urssaf/home/employeur/calculer-les-cotisations/les-elements-a-prendre-en-compte/les-prestations-liees-aux-activi/les-prestations-non-soumises-a-c/les-cheques-vacances.html',
+        title: 'Les chèques-vacances : exonération de cotisations',
+        website_name: 'Urssaf.fr',
+      },
+      {
+        url: 'https://www.economie.gouv.fr/entreprises/gerer-ses-ressources-humaines-et-ses-salaries/entreprises-tout-ce-que-vous-devez-savoir',
+        title: 'Chèques-vacances : ce que les entreprises doivent savoir',
+        website_name: 'Economie.gouv.fr',
+      },
+    ],
+  },
 ];
 
 export default config;

@@ -372,6 +372,16 @@ describe('SocieteAuditGenerator', () => {
     expect(ids).toContain('societe_choix_is_ir');
   });
 
+  it('should always include societe_indemnites_kilometriques and societe_cheque_vacances', () => {
+    const ids = getCardIds(
+      generator,
+      societeCtx({ legal_form: LegalForm.SASU }),
+    );
+
+    expect(ids).toContain('societe_indemnites_kilometriques');
+    expect(ids).toContain('societe_cheque_vacances');
+  });
+
   it('should include societe_cfe_cotisation when creation year < current year', () => {
     const previousYear = `${new Date().getFullYear() - 1}-06-15`;
     const ids = getCardIds(

@@ -49,6 +49,11 @@ export class CommonAuditGenerator extends BaseAuditGenerator {
     // and may not know they can use them for professional training.
     items.push(this.createItem('tresorerie_cpf_formations'));
 
+    // Educational — always shown for every situation (FUTUR/MICRO/SOCIETE).
+    // Idle cash sitting on a 0%-interest current account is a universal
+    // opportunity cost regardless of legal structure.
+    items.push(this.createItem('tresorerie_spiko_fonds_monetaire'));
+
     return items;
   }
 

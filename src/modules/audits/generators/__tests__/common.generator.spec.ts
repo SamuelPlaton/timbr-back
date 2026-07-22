@@ -25,6 +25,7 @@ describe('CommonAuditGenerator', () => {
     expect(ids).toContain('tresorerie_cpf_formations');
     expect(ids).toContain('common_facturation_conforme');
     expect(ids).toContain('common_protection_sociale');
+    expect(ids).toContain('tresorerie_spiko_fonds_monetaire');
   });
 
   // ── Closing date ──────────────────────────────────────────────────────
